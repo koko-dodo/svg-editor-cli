@@ -22,14 +22,31 @@ describe("SvgFileStore", () => {
     expect(await fs.readFile(path, "utf8")).toBe("original");
     expect(await fs.readdir(directory)).toEqual(["original.svg"]);
   });
-  it("cleans up after a partial write failure", async () => {
+  it("preserves the old target after real partial temporary-file bytes are written", async () => {
+    const path = join(directory, "original.svg");
+    const original = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/>');
+    await fs.writeFile(path, original);
+    let temporary: string | undefined;
+    let observedPartial = false;
+    const rename = vi.fn(fs.rename);
     const open: typeof fs.open = async (...args) => {
       const handle = await fs.open(...args);
-      vi.spyOn(handle, "writeFile").mockRejectedValue(new Error("disk full"));
+      if (args[1] === "wx") {
+        temporary = String(args[0]);
+        vi.spyOn(handle, "writeFile").mockImplementation(async () => {
+          await handle.write(Buffer.from("<svg incomplete"));
+          observedPartial = (await fs.readFile(temporary!, "utf8")) === "<svg incomplete";
+          throw new Error("disk full after partial write");
+        });
+      }
       return handle;
     };
-    await expect(new SvgFileStore({ ...fs, open }).save(join(directory, "fail.svg"), new SvgDocument())).rejects.toThrow("cannot write file");
-    expect(await fs.readdir(directory)).toEqual([]);
+    await expect(new SvgFileStore({ ...fs, open, rename }).save(path, new SvgDocument())).rejects.toThrow(`cannot write file: ${path}`);
+    expect(observedPartial).toBe(true);
+    expect(rename).not.toHaveBeenCalled();
+    expect(await fs.readFile(path)).toEqual(original);
+    expect(await fs.readdir(directory)).toEqual(["original.svg"]);
+    await expect(fs.stat(temporary!)).rejects.toMatchObject({ code: "ENOENT" });
   });
   it("reports missing/unwritable paths and rejects invalid UTF-8", async () => {
     const store = new SvgFileStore();
