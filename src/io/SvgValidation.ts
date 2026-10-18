@@ -1,4 +1,4 @@
-/** Limits apply equally to imports and exports, keeping saved files readable. */
+/** Resource limits protect imports; exports validate XML without import quotas. */
 export class SvgValidation {
   static readonly namespace = "http://www.w3.org/2000/svg";
   static readonly maxBytes = 1024 * 1024;
@@ -17,12 +17,6 @@ export class SvgValidation {
         (code >= 0xe000 && code <= 0xfffd) || (code >= 0x10000 && code <= 0x10ffff))) {
         throw new Error("invalid XML character");
       }
-    }
-  }
-  static paint(value: string): void {
-    // Deliberately limited to literal colors/keywords. No URLs, CSS escapes or variables.
-    if (!/^(?:[a-zA-Z]+|#[0-9a-fA-F]{3,8}|(?:rgb|rgba|hsl|hsla)\([0-9.,%+\- /]+\))$/.test(value.trim())) {
-      throw new Error(`unsupported SVG paint: ${value}`);
     }
   }
   static size(xml: string): void {

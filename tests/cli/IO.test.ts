@@ -13,12 +13,14 @@ it("awaits real read/edit/save in input order and routes warnings/errors separat
     await fs.writeFile(input, '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="30"><rect x="0" y="0" width="2" height="3"/></svg>');
     const out = new PassThrough(); const err = new PassThrough(); let stdout = ''; let stderr = '';
     out.on('data', chunk => { stdout += chunk; }); err.on('data', chunk => { stderr += chunk; });
-    await new Repl(Readable.from([`read "${input}"\nmove rect1 5 6\nsave "${output}"\nundo\nread "${output}"\nshow rect1\nsave\n`]), out, err).run();
+    await new Repl(Readable.from([`read "${input}"\nmove rect1 5 6\nset rect1 fill "hsl(120deg 50% 50%)"\nsave "${output}"\nundo\nread "${output}"\nshow rect1\nsave\n`]), out, err).run();
     expect(stderr).toBe('warning: assigned id rect1 to unnamed <rect>\nerror: undo not allowed after io command\n');
     expect(stdout).toContain(`read ${input} (1 elements)`);
     expect(stdout).toContain(`saved to ${output} (1 elements)`);
     expect(stdout).toContain('x=5 y=6 width=2 height=3');
     expect(stdout).not.toContain('warning:'); expect(stdout).not.toContain('Task 7');
-    expect(new SvgReader().read(await fs.readFile(output, 'utf8')).document.hasShape('rect1')).toBe(true);
+    const restored = new SvgReader().read(await fs.readFile(output, 'utf8')).document;
+    expect(restored.hasShape('rect1')).toBe(true);
+    expect(restored.getShapeSnapshot('rect1').fill).toBe('hsl(120deg 50% 50%)');
   } finally { await fs.rm(directory, { recursive: true, force: true }); }
 });

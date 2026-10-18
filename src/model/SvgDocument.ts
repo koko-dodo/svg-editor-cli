@@ -143,7 +143,8 @@ export class SvgDocument {
 
   addTo(groupId: string, id: string): void {
     this.withStructureCopy(work => {
-      const target = work.requireContainer(groupId);
+      const target = work.requireLocation(groupId).shape;
+      if (!(target instanceof Group)) throw new Error(`not a container: ${groupId}`);
       const source = work.requireLocation(id);
       const destination = work.requireLocation(groupId);
       if (source.shape === target || destination.ancestors.some(parent => parent === source.shape)) {

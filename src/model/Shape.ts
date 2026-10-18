@@ -1,3 +1,5 @@
+import { StyleValidation } from "./StyleValidation";
+
 export interface ShapeStyle {
   readonly fill?: string;
   readonly stroke?: string;
@@ -74,6 +76,7 @@ export abstract class Shape {
   private setCommonAttribute(name: string, value: string | number): boolean {
     if (name === "fill" || name === "stroke") {
       if (typeof value !== "string") throw new Error(`${name} must be a string`);
+      StyleValidation.paint(value);
       if (name === "fill") this._fill = value;
       else this._stroke = value;
       return true;

@@ -1,3 +1,4 @@
+import { StyleValidation } from "../model/StyleValidation";
 import { SaxesParser } from "saxes";
 import { DOMParser } from "@xmldom/xmldom";
 import type { Element, Node } from "@xmldom/xmldom";
@@ -36,7 +37,10 @@ export class SvgReader {
       if (node === root || node.nodeType === 8 || (node.nodeType === 7 && node.nodeName === "xml") || (node.nodeType === 3 && !node.nodeValue?.trim())) continue;
       throw new Error("unsupported XML document content");
     }
-    this.attributes(root, ["width", "height", "viewBox"]);
+    this.attributes(root, ["width", "height", "viewBox", "version"]);
+    if (root.hasAttribute("version") && !["1.0", "1.1", "2.0"].includes(root.getAttribute("version")!)) {
+      throw new Error("unsupported SVG version");
+    }
     const width = V.number(root.getAttribute("width"), "width");
     const height = V.number(root.getAttribute("height"), "height");
     const document = new SvgDocument(width, height);
@@ -86,7 +90,7 @@ export class SvgReader {
       for (const name of ShapeSchema.styles) if (element.hasAttribute(name)) {
         const value = element.getAttribute(name)!;
         if (name === "stroke-width") values[name] = V.number(value, name);
-        else { V.paint(value); values[name] = value; }
+        else { StyleValidation.paint(value); values[name] = value; }
       }
       // Schema validation establishes the discriminated construction shape.
       const shape = factory.create(values as unknown as ShapeDefinition);

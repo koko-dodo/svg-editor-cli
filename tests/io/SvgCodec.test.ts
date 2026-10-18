@@ -65,7 +65,8 @@ describe("SVG codec", () => {
     const doc = new SvgDocument(); const factory = new ShapeFactory();
     doc.addShape(factory.create({ type: "text", id: "t", x: 0, y: 0, text: '\0' }));
     expect(() => writer.write(doc)).toThrow("XML character");
-    doc.setAttribute("t", "text", "safe"); doc.setAttribute("t", "fill", "url(https://evil)");
-    expect(() => writer.write(doc)).toThrow("paint");
+    doc.setAttribute("t", "text", "safe");
+    expect(() => doc.setAttribute("t", "fill", "url(https://evil)")).toThrow("paint");
+    expect(() => writer.write(doc)).not.toThrow();
   });
 });
