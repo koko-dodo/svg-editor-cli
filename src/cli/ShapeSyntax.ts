@@ -1,3 +1,4 @@
+import { ShapeSchema } from "../services/EditorTypes";
 import type { CreateRequest, ShapeDetails } from "../services/EditorTypes";
 import { Tokenizer } from "./Tokenizer";
 import type { Token } from "./Tokenizer";
@@ -14,13 +15,13 @@ interface ShapeDescription {
 /** Single source for CLI create grammar and presentation labels/layouts. */
 export class ShapeSyntax {
   private readonly descriptions: readonly ShapeDescription[] = [
-    { tag: "rect", modelType: "Rectangle", fields: ["x", "y", "width", "height"], optionalStyle: "fill", summary: "x={x} y={y} w={width} h={height}", position: "({x},{y})" },
-    { tag: "circle", modelType: "Circle", fields: ["cx", "cy", "r"], optionalStyle: "fill", summary: "cx={cx} cy={cy} r={r}", position: "({cx},{cy})" },
-    { tag: "ellipse", modelType: "Ellipse", fields: ["cx", "cy", "rx", "ry"], optionalStyle: "fill", summary: "cx={cx} cy={cy} rx={rx} ry={ry}", position: "({cx},{cy})" },
-    { tag: "line", modelType: "Line", fields: ["x1", "y1", "x2", "y2"], optionalStyle: "stroke", summary: "({x1},{y1}) -> ({x2},{y2})", position: "({x1},{y1}) -> ({x2},{y2})" },
-    { tag: "text", modelType: "TextShape", fields: ["x", "y", "text"], summary: "({x},{y}) {text}", position: "({x},{y})" },
-    { tag: "g", modelType: "Group", fields: [], summary: "", position: null },
-  ];
+    { tag: "rect", optionalStyle: "fill" as const, summary: "x={x} y={y} w={width} h={height}", position: "({x},{y})" },
+    { tag: "circle", optionalStyle: "fill" as const, summary: "cx={cx} cy={cy} r={r}", position: "({cx},{cy})" },
+    { tag: "ellipse", optionalStyle: "fill" as const, summary: "cx={cx} cy={cy} rx={rx} ry={ry}", position: "({cx},{cy})" },
+    { tag: "line", optionalStyle: "stroke" as const, summary: "({x1},{y1}) -> ({x2},{y2})", position: "({x1},{y1}) -> ({x2},{y2})" },
+    { tag: "text", summary: "({x},{y}) {text}", position: "({x},{y})" },
+    { tag: "g", summary: "", position: null },
+  ].map(layout => ({ ...layout, ...ShapeSchema.forTag(layout.tag) }));
 
   parse(tokens: readonly Token[]): CreateRequest {
     if (tokens.length < 2) throw new Error("usage: create <type> <id> [params...] [in <containerId>]");

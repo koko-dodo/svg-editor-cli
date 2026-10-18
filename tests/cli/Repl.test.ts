@@ -89,11 +89,10 @@ describe("Repl", () => {
     expect(result.stdout).toContain("canvas 800x600 created");
     expect(result.stderr).toBe("");
   });
-  it("prints IO stage notices to stdout without a business error or barrier", async () => {
-    const result = await session("init\ncreate g g\nundo\nread a.svg\nsave\nredo\n");
-    expect(result.stderr).toBe("");
-    expect(result.stdout).toContain("read is not available yet; SVG IO will be integrated in Task 7.");
-    expect(result.stdout).toContain("save is not available yet; SVG IO will be integrated in Task 7.");
+  it("continues after failed IO and retains redo", async () => {
+    const result = await session("init\ncreate g g\nundo\nread /missing-svg-test/a.svg\nsave\nredo\n");
+    expect(result.stderr).toContain("error: cannot read file: /missing-svg-test/a.svg");
+    expect(result.stderr).toContain("error: no default save path");
     expect(result.editor.show("g").id).toBe("g");
   });
   it("runs the actual main entry as a noninteractive process", () => {

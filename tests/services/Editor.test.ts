@@ -68,8 +68,8 @@ describe("Editor", () => {
       () => editor.group("g", ["r"]), () => editor.ungroup("g"), () => editor.addTo("g", "r"),
       () => editor.front("r"), () => editor.back("r"), () => editor.undo(), () => editor.redo(),
     ]) expect(action).toThrow("no document. use 'init' or 'read' first");
-    expect("read" in editor).toBe(false);
-    expect("save" in editor).toBe(false);
+    expect(typeof editor.read).toBe("function");
+    expect(typeof editor.save).toBe("function");
   });
 
   it("initializes default or explicit dimensions and sets a history barrier", () => {

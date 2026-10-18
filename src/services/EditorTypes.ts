@@ -23,3 +23,10 @@ export type ShapeDetails = Omit<ShapeView, "children">;
 export type { CommandResult } from "../commands/CommandResult";
 export type { HistoryResult } from "../commands/CommandHistory";
 export type { DocumentView, ShapeView } from "../commands/DocumentViewBuilder";
+
+export { ShapeSchema } from "../model/ShapeSchema";
+export interface FileResult {
+  readonly path: string;
+  readonly elements: number;
+  readonly warnings: readonly { readonly code: "assigned-id"; readonly tag: string; readonly id: string }[];
+}

@@ -9,7 +9,11 @@ function harness() {
   const catalog = new CommandCatalog();
   const parser = new Parser(catalog);
   const dispatcher = new Dispatcher(editor, catalog);
-  const run = (line: string) => dispatcher.execute(parser.parse(line)!);
+  const run = (line: string) => {
+    const result = dispatcher.execute(parser.parse(line)!);
+    if (!Array.isArray(result)) throw new Error("use asynchronous IO harness");
+    return result;
+  };
   return { editor, run };
 }
 
@@ -20,7 +24,7 @@ describe("Dispatcher and catalog feedback", () => {
     for (const name of ["init", "canvas", "create", "delete", "move", "scale", "set", "group", "ungroup", "addto", "front", "back", "tree", "show", "help", "undo", "redo", "read", "save"]) {
       expect(help).toContain(name);
     }
-    expect(help).toContain("Task 7");
+    expect(help).not.toContain("Task 7");
     expect(editor.getStatus().hasDocument).toBe(false);
   });
   it("matches example move/set/delete feedback and real undo/redo states", () => {
@@ -93,12 +97,5 @@ describe("Dispatcher and catalog feedback", () => {
     expect(() => run(source)).toThrow(error);
     expect({ tree: editor.tree(), history: editor.getStatus() }).toEqual(before);
     run("redo"); expect(editor.show("r").attributes.x).toBe(2);
-  });
-  it("IO notices are not edits, errors, or history barriers", () => {
-    const { editor, run } = harness(); run("init"); run("create g g"); run("undo");
-    const before = { tree: editor.tree(), history: editor.getStatus() };
-    expect(run('read "other file.svg"')[0]).toContain("Task 7");
-    expect(run("save")[0]).toContain("Task 7");
-    expect({ tree: editor.tree(), history: editor.getStatus() }).toEqual(before);
   });
 });

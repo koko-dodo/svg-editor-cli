@@ -29,17 +29,25 @@ export class Repl {
         lines.prompt();
       }
       for await (const line of lines) {
-        let messages: string[] = [];
+        let messages: readonly string[] = [];
+        let warnings: readonly string[] = [];
         let error: string | undefined;
         try {
           const request = this.parser.parse(line);
-          if (request !== null) messages = this.dispatcher.execute(request);
+          if (request !== null) {
+            const result = await this.dispatcher.execute(request);
+            if (Array.isArray(result)) messages = result;
+            else { messages = result.stdout; warnings = result.stderr; }
+          }
         } catch (cause) {
           error = this.formatter.error(cause);
         }
         // Stream failures are not reported as rejected editing commands.
         if (error !== undefined) this.errors.write(`${error}\n`);
-        else for (const message of messages) this.output.write(`${message}\n`);
+        else {
+          for (const warning of warnings) this.errors.write(`${warning}\n`);
+          for (const message of messages) this.output.write(`${message}\n`);
+        }
         if (this.interactive && !closed) lines.prompt();
       }
     } finally {

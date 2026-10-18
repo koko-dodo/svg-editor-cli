@@ -1,3 +1,4 @@
+import type { CliExecution } from "./CliOutput";
 import type { Editor } from "../services/Editor";
 import type { CommandResult, DocumentView, ShapeView } from "../services/EditorTypes";
 import type { ParsedCommand } from "./ParsedCommand";
@@ -19,7 +20,7 @@ interface Feedback {
 interface Definition {
   readonly syntax: string;
   readonly parse: (args: readonly Token[]) => ParsedCommand;
-  readonly run: (request: ParsedCommand, editor: Editor, formatter: Formatter, before: DocumentView | undefined) => string[];
+  readonly run: (request: ParsedCommand, editor: Editor, formatter: Formatter, before: DocumentView | undefined) => CliExecution;
   readonly describe: ((context: Feedback) => string) | undefined;
 }
 
@@ -123,11 +124,18 @@ export class CommandCatalog {
       const result = e.redo();
       return [this.feedback({ result: result.command, before: b, after: result.restored, direction: result.direction, formatter: f })];
     });
-    this.register("read", "read <file.svg> [Task 7: IO pending]", args => ({ kind: "read", path: this.id(args, "read <file.svg>") }),
-      () => ["read is not available yet; SVG IO will be integrated in Task 7."]);
-    this.register("save", "save [file.svg] [Task 7: IO pending]", args => {
+    this.register("read", "read <file.svg>", args => ({ kind: "read", path: this.id(args, "read <file.svg>") }),
+      async (c, e) => {
+        const result = await e.read(c.path);
+        return { stdout: [`read ${JSON.stringify(result.path).slice(1, -1)} (${result.elements} elements)`],
+          stderr: result.warnings.map(w => `warning: assigned id ${w.id} to unnamed <${w.tag}>`) };
+      });
+    this.register("save", "save [file.svg]", args => {
       this.arity(args, 0, 1, "save [file.svg]"); return { kind: "save", path: args[0]?.value };
-    }, () => ["save is not available yet; SVG IO will be integrated in Task 7."]);
+    }, async (c, e) => {
+      const result = await e.save(c.path);
+      return { stdout: [`saved to ${JSON.stringify(result.path).slice(1, -1)} (${result.elements} elements)`], stderr: [] };
+    });
   }
 
   parse(tokens: readonly Token[]): ParsedCommand | null {
@@ -138,14 +146,14 @@ export class CommandCatalog {
     return definition.parse(tokens.slice(1));
   }
 
-  execute(request: ParsedCommand, editor: Editor, formatter: Formatter, before: DocumentView | undefined): string[] {
+  execute(request: ParsedCommand, editor: Editor, formatter: Formatter, before: DocumentView | undefined): CliExecution {
     const definition = this.definitions.get(request.kind)!;
     return definition.run(request, editor, formatter, before);
   }
 
   private register<K extends Name>(name: K, syntax: string,
     parse: (args: readonly Token[]) => Request<K>,
-    run: (request: Request<K>, editor: Editor, formatter: Formatter, before: DocumentView | undefined) => string[],
+    run: (request: Request<K>, editor: Editor, formatter: Formatter, before: DocumentView | undefined) => CliExecution,
     describe?: (context: Feedback) => string): void {
     this.definitions.set(name, {
       syntax, parse, describe,
