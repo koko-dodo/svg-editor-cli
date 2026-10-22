@@ -42,12 +42,16 @@ src/
 ```plantuml
 @startuml
 skinparam componentStyle rectangle
+left to right direction
+
 component "main.ts" as Main
-package "cli" as CLI {}
-package "services" as Services {}
-package "commands" as Commands {}
-package "model" as Model {}
-package "io" as IO {}
+
+package "cli" as CLI
+package "services" as Services
+package "commands" as Commands
+package "model" as Model
+package "io" as IO
+
 Main ..> CLI
 CLI ..> Services
 Services ..> Commands
@@ -55,6 +59,7 @@ Services ..> Model
 Services ..> IO
 Commands ..> Model
 IO ..> Model
+
 @enduml
 ```
 
@@ -78,6 +83,7 @@ IO ..> Model
 | `CommandHistory` | 管理命令执行、状态快照及 Undo/Redo 历史 |
 
 以 `move r1 50 20` 为例：
+
 ```
 CLI → Editor → CommandHistory.execute(MoveCommand)
                     → MoveCommand.execute(工作副本) → SvgDocument → Shape.move()
@@ -122,7 +128,7 @@ SVG 文档具有树形结构，普通图形和分组容器可以递归组合。
 
 #### 1.3.3 设计模式的协作
 
-Command处理编辑行为，负责封装操作并参与历史管理；
+Command 处理编辑行为，负责封装操作并参与历史管理；
 Composite 模式处理图形结构，将该操作正确地作用于图形树；
 两者协同工作。
 
@@ -307,57 +313,45 @@ Phase 1 只要求支持六种内置图形类型，完整插件系统会增加当
 
 ## 2. 与 AI 协作的过程记录
 
-### 2.1 第一次架构评审：模块职责与依赖关系
+### 2.1 模块职责与依赖关系
 
-**初始方案：**
+**问题背景：** 初始方案采用五模块架构，但 Editor 同时承担命令协调、文档管理和文件操作，职责边界容易扩大。
 
-采用五模块架构，由 Editor 协调命令执行、文档管理和文件读写，CommandHistory 管理撤销重做历史，SvgDocument 维护图形对象树。
+**AI 建议：** Codex 建议保留模块划分，将几何与结构规则放在模型中、编辑操作封装为 Command，让 Editor 只负责应用层协调，避免成为上帝类。
 
-**AI 提出的建议：**
+**人工判断：** 接受职责分离，同时暂不引入独立 CommandFactory 或通用 CommandBus，以控制当前规模下的抽象成本。
 
-Codex 认为整体模块划分适合 Phase 1，无须重新设计目录，但指出 Editor、Command 和 SvgDocument 的职责边界需要进一步明确。
+**最终方案及验证：** 明确了 CLI、services、commands、model、io 的单向依赖。实现中的职责与 §1 一致，源码核查和全模块依赖测试未发现违反约定的跨层导入。
 
-特别是，如果 Editor 同时承担命令解析、几何操作、文件读写和历史管理，可能逐渐演变为上帝类。
+### 2.2 文档对象隔离与结构约束
 
-Codex 建议将具体编辑行为交给 Command 和领域模型，Editor 仅负责应用层协调。
+**问题背景：** Group 提供子节点增删接口，外部若直接修改文档中的 Group，可能绕过单父和全局 ID 约束。
 
-**人工判断与决策：**
+**AI 建议：** 评审比较了 Group 静态 WeakMap 归属记录与文档隔离对象等方案，以限制未经文档检查的结构变更。
 
-接受这一建议，保留原有模块划分，但进一步明确职责：
+**人工判断：** 不引入隐藏的全局归属状态，选择添加和查询均复制子树，所有文档编辑按 ID 进行。
 
-- CLI 负责交互和命令解析。
-- Editor 提供类型化应用接口并创建 Command。
-- Command 负责执行具体编辑操作。
-- SvgDocument 管理文档结构及 ID 约束。
-- Shape 负责自身几何行为。
-- CommandHistory 管理编辑历史。
-- IO 负责文件读写。
+**最终方案及验证：** SvgDocument 统一维护结构约束，Group 保留局部操作接口。`tests/model/SvgDocument.test.ts` 验证输入与查询隔离、共享节点和循环拒绝、跨容器迁移及失败原子性。Group 单独使用时不承担跨容器的全局归属检查。
 
-同时决定暂不引入独立的 CommandFactory 或通用 CommandBus，避免在当前项目规模下产生不必要的抽象。
+### 2.3 当前文档归属与历史管理
 
-**阶段结果：**
+**问题背景：** Editor 与历史管理器若分别持有可变当前文档，可能出现状态不一致，影响撤销重做与失败恢复。
 
-形成更明确的模块职责和单向依赖规则，为后续编码提供约束。
+**AI 建议：** 将当前文档版本和快照栈集中到 CommandHistory，统一执行与提交编辑操作。
 
-### 2.2 文档对象隔离与结构约束（Task 2～3）
+**人工判断：** 采用单一状态所有者，并允许命令成功后再防御性克隆一次，接受复制成本以保证引用隔离。
 
-AI 评审指出：外部可直接修改 Group 子节点时，文档的单父与全局 ID 约束可能被绕过。讨论过 Group 静态 WeakMap 归属记录以及文档隔离对象等方案。人工决定不引入隐藏的全局归属状态，选择添加和查询均复制子树，所有文档编辑按 ID 进行。
+**最终方案及验证：** Editor 只创建命令、协调生命周期和提供查询。`tests/commands/CommandHistory.test.ts` 验证属性、结构和顺序的恢复、失败后 Redo 保留、历史屏障，以及 Undo/Redo 不重新执行命令；应用层测试验证 Editor 通过历史管理器完成编辑。
 
-最终由 SvgDocument 统一维护结构约束，Group 保留局部操作接口。`tests/model/SvgDocument.test.ts` 验证了输入/查询隔离、共享节点和循环拒绝、跨容器迁移及失败原子性；没有将 Group 单独使用时的跨容器共享误写成已禁止。
+### 2.4 编辑与保存的样式一致性
 
-### 2.3 当前文档归属调整（Task 4～5）
+**问题背景：** 模型允许设置的部分样式值会被 Writer 拒绝，导致编辑成功后无法保存；仅比较读写往返结果也不足以发现双方一致遗漏的信息。
 
-AI 提出的历史管理推荐方案将当前文档与快照栈集中到 CommandHistory，避免 Editor 和历史管理器分别持有可变当前文档。人工确认采用该方案，并允许命令成功后再防御性克隆一次，接受复制成本以换取引用隔离。
+**AI 建议：** 统一编辑与 IO 的样式校验，检查导出资源限制，并增加不依赖读写双方互相验证的契约测试。
 
-Editor 最终成为创建具体命令、协调生命周期和查询的薄入口。`tests/commands/CommandHistory.test.ts` 验证完整属性/结构/顺序恢复、失败后 Redo 保留、屏障以及 Undo/Redo 不重新执行命令；Editor 测试验证应用层不会绕开历史管理。
+**人工判断：** 只修复一致性问题，不扩大为通用 SVG 支持，也不改变既定分组和继承语义。
 
-### 2.4 审计发现样式校验不一致（Task 8.1～8.3）
-
-AI 审计复现了模型允许设置的样式在 Writer 中被拒绝的问题，并指出仅凭读写往返相等不足以证明满足实验。人工要求只修复相关一致性问题，不扩大为通用 SVG 支持，也不改变既定分组和继承语义。
-
-Task 8.2 新增 `model/StyleValidation.ts`，由 Shape、Reader、Writer 共用；ShapeFactory 通过图形构造复用校验，model 无需依赖 io。非法样式在编辑阶段即被拒绝。Writer 移除导入配额，Reader 保留安全上限，因此超限导出仍不能直接读回。该阶段 527 项测试通过。
-
-Task 8.3 补充手写 SVG 导入、独立 XML 导出断言、实验典型会话和真实临时文件部分写入后抛错等测试，最终 26 个文件、535 项测试通过；这提供了独立证据，不代表所有 SVG 或浏览器视觉效果都已验证。
+**最终方案及验证：** 新增 `src/model/StyleValidation.ts`，由 Shape、Reader、Writer 共用，ShapeFactory 通过图形构造复用校验，避免 model 依赖 io。非法样式在编辑阶段即被拒绝；Writer 移除导入配额，Reader 保留安全上限，超限导出仍不能直接读回。测试补充了合法样式保存读取、非法样式失败后历史保持、手写 SVG 导入及独立 XML 导出断言，验证结果见 §4。
 
 ## 3. 架构一致性自查
 
@@ -380,7 +374,7 @@ Task 8.3 补充手写 SVG 导入、独立 XML 导出断言、实验典型会话�
 
 - **Command**：十种编辑操作由十个具体 Command 类实现 `execute(document): CommandResult`，由 Editor 创建、CommandHistory 在副本上执行，参数通过 ID 定位。front/back 在实验表中合为一行，在代码中分别实现。
 - **Composite**：Group 与五种叶子均继承 Shape，命令不按叶子类型分派 move/scale/set；具体变换在模型内实现，集合与字段均封装。当前预检策略针对内置图形，不承诺任意插件的副作用原子性。
-- **R5 的项目解释**：CommandCatalog 集中命令名的解析、执行与反馈；ShapeFactory 是类型名到具体构造类的唯一入口。ShapeSchema 描述标签、类名和属性，ShapeSyntax 保留 CLI 参数及展示布局；这些表属于描述性元数据，不是另一套图形创建或几何算法分发。
+- **名称分发与元数据**：CommandCatalog 集中命令名的解析、执行与反馈；ShapeFactory 是类型名到具体构造类的唯一入口。ShapeSchema 描述标签、类名和属性，ShapeSyntax 保留 CLI 参数及展示布局；这些表属于描述性元数据，不是另一套图形创建或几何算法分发。
 
 Reader 仍有 text/g 内容特例，Writer 和 DocumentViewBuilder 仍使用类名识别元数据。名称分派的严格验收口径与未来类名变更风险尚在，不能声称已实现无需修改核心的插件机制。
 
@@ -388,12 +382,12 @@ Reader 仍有 text/g 内容特例，Writer 和 DocumentViewBuilder 仍使用类�
 
 | 项目 | 当前决策及边界 |
 |---|---|
-| R1：参数语法 | `init 400` 高度取 600；canvas 查询无参数，修改必须同时给宽高；group 接受至少一个成员。实验的 `canvas [w] [h]`、`group <newGid> <id1> <id2>…` 未完全消除歧义，按此前人工确认实现，仍需确认验收口径。 |
+| 参数语法 | `init 400` 高度取 600；canvas 查询无参数，修改必须同时给宽高；group 接受至少一个成员。实验的 `canvas [w] [h]`、`group <newGid> <id1> <id2>…` 未完全消除歧义，按项目约定实现，仍需确认验收口径。 |
 | 分组位置与顺序 | 新 Group 放在最近公共父容器的最早受影响分支处，成员按原文档 DFS 顺序排列；拒绝祖先和后代同时入组。LCA/插入位置是项目补充约定。 |
-| R4：继承样式 | group/ungroup/addto 保留显式样式，不固化原父容器的继承值；换父容器可能改变外观。实验明确结构和顺序，未明确要求外观保持。 |
-| R2：导入范围 | 已允许根节点 version=1.0/1.1/2.0；视觉属性不能静默忽略。仍为有限 SVG 子集，详见 §4.2。 |
-| R3：样式与保存 | 共用 StyleValidation；非法值失败不进入历史。导出不再施加导入配额，但不保证任意大小文档的性能或可再次导入。 |
-| R6：错误分类 | addto 目标不存在为 `no such shape`；create 的 in 目标不存在仍为 `no such container`，非容器仍为 `not a container`。 |
+| 继承样式 | group/ungroup/addto 保留显式样式，不固化原父容器的继承值；换父容器可能改变外观。实验明确结构和顺序，未明确要求外观保持。 |
+| 导入范围 | 已允许根节点 version=1.0/1.1/2.0；视觉属性不能静默忽略。仍为有限 SVG 子集，详见 §4.2。 |
+| 样式与保存 | 共用 StyleValidation；非法值失败不进入历史。导出不再施加导入配额，但不保证任意大小文档的性能或可再次导入。 |
+| 错误分类 | addto 目标不存在为 `no such shape`；create 的 in 目标不存在仍为 `no such container`，非容器仍为 `not a container`。 |
 
 CLI 另采用以下已确认约定：仅双引号分组，支持转义双引号与反斜杠，其他反斜杠保留；忽略空行及允许缩进的行首 # 注释，不支持行尾注释。命令名大小写敏感；help 可在无文档时使用；EOF 结束，交互模式显示 `svg>`，脚本模式不显示提示符。成功输出到 stdout，warning/error 到 stderr，异步命令逐行 await。
 
@@ -411,9 +405,9 @@ read/save 失败不改变文档、历史或默认路径；默认保存路径仅�
 | 独立实验契约 | `tests/io/SvgContract.test.ts`：手写导入数据的明确期望、直接解析导出 XML；`tests/contracts/Session.test.ts`：实验 §6 完整会话及 RGB/HSL 保存读取。 |
 | 故障与项目约定 | `tests/io/SvgFileStore.test.ts`：临时文件已写入部分字节后抛错，旧目标完整；`tests/contracts/GroupStyle.test.ts`：显式样式与父容器变化；Architecture 测试检查全部业务层依赖。 |
 
-Task 8.3 的实际验证结果：`npm run build` 通过；`npm test` 的 **26 个测试文件、535 项测试全部通过**；`git diff --check` 通过。Task 8.4 仅修改本文档，并再次检查 diff；测试数量记录的是上述已执行结果。
+自动化验证结果：`npm run build` 通过；`npm test` 的 **26 个测试文件、535 项测试全部通过**；`git diff --check` 通过。测试数量对应最近一次已执行的代码验证，本次文档润色未重新运行测试。
 
-手工验收证据目前限于 Task 8.1 的内存命令探测（参数错误、结构变化、样式与导入边界）；完整会话与真实入口由自动化测试回放。尚无可据此宣称通过的完整人工交互终端或浏览器验收记录。提交前可用 `npm run cli` 回放实验 §6/§6.1，检查保存结果、错误后继续和 Ctrl-C，另用浏览器检查 SVG 预览；这些是待人工确认项。
+手动验收已通过 CLI 完成六种图形创建、几何编辑、分组与解组、Z-order、Undo/Redo、历史屏障、错误恢复及 SVG 文件读写验证，并在浏览器中预览了生成的 SVG 文件，基本显示正常。该验收确认了主要交互流程和基本显示效果，不代表已验证像素级渲染一致性或所有浏览器的兼容性。
 
 ### 4.2 SVG 支持范围与限制
 
@@ -426,6 +420,6 @@ Task 8.3 的实际验证结果：`npm run build` 通过；`npm test` 的 **26 �
 
 ### 4.3 未验证与交付边界
 
-未验证浏览器像素渲染、真实磁盘耗尽、跨平台文件系统权限/崩溃持久性、真实终端 Ctrl-C。部分写入故障使用真实临时文件加注入异常，不等同于耗尽磁盘；样式测试验证显式属性与继承来源，不计算渲染像素。依赖测试覆盖当前字面量相对路径，不保证识别运行时计算路径、未来路径别名或任意动态加载。
+尚未验证像素级渲染一致性、真实磁盘耗尽、跨平台文件系统权限与崩溃持久性；真实终端 Ctrl-C 也未列入本次已确认的手动验收范围。部分写入故障使用真实临时文件加注入异常，不等同于耗尽磁盘；样式测试验证显式属性与继承来源，不计算渲染像素。依赖测试覆盖当前字面量相对路径，不保证识别运行时计算路径、未来路径别名或任意动态加载。
 
 本项目不包含 GUI、box 插件或完整 SVG/CSS 支持。提交历史、远程推送、截止时间以及最终提交的 `final` 标签需人工核查和执行，不能由测试通过推断已完成交付。
