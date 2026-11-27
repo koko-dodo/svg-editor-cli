@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { Group } from "../../src/model/Group";
+import { Group } from "../../plugins/builtin-shapes/Group";
 import { Shape } from "../../src/model/Shape";
-import { Rectangle } from "../../src/model/Rectangle";
-import { Circle } from "../../src/model/Circle";
-import { Ellipse } from "../../src/model/Ellipse";
-import { Line } from "../../src/model/Line";
-import { TextShape } from "../../src/model/TextShape";
+import { Rectangle } from "../../plugins/builtin-shapes/Rectangle";
+import { Circle } from "../../plugins/builtin-shapes/Circle";
+import { Ellipse } from "../../plugins/builtin-shapes/Ellipse";
+import { Line } from "../../plugins/builtin-shapes/Line";
+import { TextShape } from "../../plugins/builtin-shapes/TextShape";
 
 function fixture() {
   const root = new Group("root", { fill: "red", stroke: "black", "stroke-width": 2 });

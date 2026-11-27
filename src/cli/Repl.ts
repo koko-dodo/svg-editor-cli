@@ -9,11 +9,12 @@ import { Parser } from "./Parser";
 export class Repl {
   private readonly parser: Parser;
   private readonly dispatcher: Dispatcher;
-  private readonly formatter = new Formatter();
+  private readonly formatter: Formatter;
 
   constructor(private readonly input: Readable, private readonly output: Writable,
-    private readonly errors: Writable, private readonly interactive = false, editor = new Editor()) {
-    const catalog = new CommandCatalog();
+    private readonly errors: Writable, private readonly interactive = false, editor: Editor) {
+    this.formatter = new Formatter(editor.registry, () => editor.observation());
+    const catalog = new CommandCatalog(editor.registry);
     this.parser = new Parser(catalog);
     this.dispatcher = new Dispatcher(editor, catalog, this.formatter);
   }

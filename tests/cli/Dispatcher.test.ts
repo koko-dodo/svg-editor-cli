@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { Editor } from "../../src/services/Editor";
-import { CommandCatalog } from "../../src/cli/CommandCatalog";
-import { Dispatcher } from "../../src/cli/Dispatcher";
+import { Editor } from "../support/defaults";
+import { CommandCatalog } from "../support/defaults";
+import { Dispatcher } from "../support/defaults";
 import { Parser } from "../../src/cli/Parser";
 
 function harness() {

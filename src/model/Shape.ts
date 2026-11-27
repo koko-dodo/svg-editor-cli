@@ -1,3 +1,5 @@
+import type { ContainerShape } from "./ContainerShape";
+import type { Attributes, DocumentQuery } from "../api/Domain";
 import { StyleValidation } from "./StyleValidation";
 
 export interface ShapeStyle {
@@ -6,6 +8,12 @@ export interface ShapeStyle {
   readonly "stroke-width"?: number;
 }
 
+/**
+ * Domain model for cooperative plugins, not a malicious-JavaScript sandbox.
+ * Plugin authors are responsible for encapsulation and faithful state copying;
+ * kernel freezing/reference checks are supplementary defenses, not proofs of
+ * arbitrary JS internals (Map/Set, private fields, closures, etc.).
+ */
 export abstract class Shape {
   private readonly _id: string;
   private _fill: string | undefined;
@@ -25,8 +33,28 @@ export abstract class Shape {
   get stroke(): string | undefined { return this._stroke; }
   get strokeWidth(): number | undefined { return this._strokeWidth; }
 
+  abstract readonly kind: string;
+
+  /** Complete scalar semantic state, including styles; never return mutable state. */
+  attributes(): Attributes { return Object.freeze(this.copyStyle()); }
+
+  asContainer(): ContainerShape | null { return null; }
+
+  /**
+   * Synchronous, pure final-tree validation: do not mutate this node, other
+   * nodes, caches or external state, and do not schedule delayed work.
+   * Runtime guards cannot establish purity for all possible plugin internals.
+   */
+  validate(_query: DocumentQuery): void {}
+
   abstract move(dx: number, dy: number): void;
   abstract scale(factor: number): void;
+  /**
+   * Return a faithful, independent copy without modifying the source. Preserve
+   * semantic kind, attributes, hierarchy, child order and behavior. The plugin
+   * must correctly copy ALL mutable instance state, including state that the
+   * kernel cannot inspect. No mutable state may remain shared with the source.
+   */
   abstract clone(): Shape;
 
   setAttribute(name: string, value: string | number): void {

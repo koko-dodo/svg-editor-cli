@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Ellipse } from "../../src/model/Ellipse";
+import { Ellipse } from "../../plugins/builtin-shapes/Ellipse";
 
 describe("Ellipse", () => {
   const make = () => new Ellipse("s1", 1, 2, 3, 4, { fill: "red", stroke: "blue", "stroke-width": 2 });

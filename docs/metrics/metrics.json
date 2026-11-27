@@ -1,0 +1,6999 @@
+{
+  "schema": 1,
+  "analyzer": "TypeScript 7.0.2 native AST + scanner",
+  "baseline": {
+    "commit": "177eb20e131849132a777ec0ca576c37a5b00728",
+    "totals": {
+      "kernel": {
+        "files": 40,
+        "lines": 2118,
+        "nonblank": 1912,
+        "sloc": 1848,
+        "functions": 327,
+        "ccFunctions": 666,
+        "ccModule": 36,
+        "cc": 702
+      },
+      "host": {
+        "files": 1,
+        "lines": 7,
+        "nonblank": 6,
+        "sloc": 6,
+        "functions": 1,
+        "ccFunctions": 2,
+        "ccModule": 2,
+        "cc": 4
+      },
+      "plugins": {
+        "files": 0,
+        "lines": 0,
+        "nonblank": 0,
+        "sloc": 0,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0
+      },
+      "vscode": {
+        "files": 0,
+        "lines": 0,
+        "nonblank": 0,
+        "sloc": 0,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0
+      },
+      "cli": {
+        "files": 41,
+        "lines": 2125,
+        "nonblank": 1918,
+        "sloc": 1854,
+        "functions": 328,
+        "ccFunctions": 668,
+        "ccModule": 38,
+        "cc": 706
+      }
+    },
+    "files": [
+      {
+        "path": "src/cli/CliOutput.ts",
+        "blob": "f98a72756dae32c64eff5ff3b9866caddb24b983",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 6,
+        "nonblank": 6,
+        "sloc": 5,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/cli/CommandCatalog.ts",
+        "blob": "1b2d85ad6f616f82a5bab5640d82ccbb0a226725",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 192,
+        "nonblank": 185,
+        "sloc": 184,
+        "functions": 63,
+        "ccFunctions": 90,
+        "ccModule": 1,
+        "cc": 91,
+        "maxFunctionCC": 5,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 31,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 32,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 35,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 36,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 39,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 44,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 45,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 45,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 50,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 51,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 51,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 55,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 58,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 58,
+            "complexity": 5
+          },
+          {
+            "name": "<anonymous>",
+            "line": 66,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 69,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 69,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 73,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 76,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 76,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 82,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 84,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 85,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 85,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 90,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 91,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 91,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 96,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 99,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 99,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 103,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 104,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 104,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 105,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 106,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 106,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 107,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 109,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 110,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 111,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 112,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 114,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 115,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 117,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 121,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 123,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 127,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 128,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 131,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 133,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 135,
+            "complexity": 1
+          },
+          {
+            "name": "parse",
+            "line": 141,
+            "complexity": 3
+          },
+          {
+            "name": "execute",
+            "line": 149,
+            "complexity": 1
+          },
+          {
+            "name": "register",
+            "line": 154,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 160,
+            "complexity": 2
+          },
+          {
+            "name": "arity",
+            "line": 167,
+            "complexity": 3
+          },
+          {
+            "name": "id",
+            "line": 170,
+            "complexity": 1
+          },
+          {
+            "name": "help",
+            "line": 173,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 174,
+            "complexity": 1
+          },
+          {
+            "name": "edit",
+            "line": 176,
+            "complexity": 1
+          },
+          {
+            "name": "feedback",
+            "line": 179,
+            "complexity": 1
+          },
+          {
+            "name": "target",
+            "line": 182,
+            "complexity": 3
+          },
+          {
+            "name": "orderFeedback",
+            "line": 188,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "src/cli/Dispatcher.ts",
+        "blob": "89c6cf560c5e12b761cb0d772901b99b5b946a28",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 15,
+        "nonblank": 13,
+        "sloc": 13,
+        "functions": 2,
+        "ccFunctions": 3,
+        "ccModule": 1,
+        "cc": 4,
+        "maxFunctionCC": 2,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 11,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "src/cli/Formatter.ts",
+        "blob": "3fd261f50be3c5e64d5f0373534197d43386bcf7",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 70,
+        "nonblank": 62,
+        "sloc": 62,
+        "functions": 18,
+        "ccFunctions": 30,
+        "ccModule": 1,
+        "cc": 31,
+        "maxFunctionCC": 4,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "label",
+            "line": 7,
+            "complexity": 1
+          },
+          {
+            "name": "parent",
+            "line": 8,
+            "complexity": 2
+          },
+          {
+            "name": "value",
+            "line": 9,
+            "complexity": 2
+          },
+          {
+            "name": "position",
+            "line": 12,
+            "complexity": 1
+          },
+          {
+            "name": "tree",
+            "line": 14,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 16,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 17,
+            "complexity": 3
+          },
+          {
+            "name": "show",
+            "line": 33,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 35,
+            "complexity": 1
+          },
+          {
+            "name": "find",
+            "line": 42,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 43,
+            "complexity": 4
+          },
+          {
+            "name": "error",
+            "line": 54,
+            "complexity": 2
+          },
+          {
+            "name": "singleLine",
+            "line": 58,
+            "complexity": 1
+          },
+          {
+            "name": "summary",
+            "line": 62,
+            "complexity": 1
+          },
+          {
+            "name": "styles",
+            "line": 65,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 67,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 68,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/cli/ParsedCommand.ts",
+        "blob": "c4aa59118ae161a8c59df6167804160481344967",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 22,
+        "nonblank": 21,
+        "sloc": 21,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/cli/Parser.ts",
+        "blob": "826ca6b8c2f4dc370a3e8537af97308aa7ce963c",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 11,
+        "nonblank": 10,
+        "sloc": 9,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 7,
+            "complexity": 1
+          },
+          {
+            "name": "parse",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/cli/Repl.ts",
+        "blob": "3765dfb9d3464a8943d55fc5f46b085826d55127",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 57,
+        "nonblank": 54,
+        "sloc": 53,
+        "functions": 3,
+        "ccFunctions": 13,
+        "ccModule": 1,
+        "cc": 14,
+        "maxFunctionCC": 11,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 14,
+            "complexity": 1
+          },
+          {
+            "name": "run",
+            "line": 21,
+            "complexity": 11
+          },
+          {
+            "name": "<anonymous>",
+            "line": 24,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/cli/ShapeSyntax.ts",
+        "blob": "f7b11d3fc9e56adf4a5aac7999a8a4a7c6ed6785",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 78,
+        "nonblank": 73,
+        "sloc": 69,
+        "functions": 16,
+        "ccFunctions": 39,
+        "ccModule": 1,
+        "cc": 40,
+        "maxFunctionCC": 15,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 24,
+            "complexity": 1
+          },
+          {
+            "name": "parse",
+            "line": 26,
+            "complexity": 15
+          },
+          {
+            "name": "<anonymous>",
+            "line": 29,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 47,
+            "complexity": 2
+          },
+          {
+            "name": "tag",
+            "line": 56,
+            "complexity": 2
+          },
+          {
+            "name": "fields",
+            "line": 57,
+            "complexity": 2
+          },
+          {
+            "name": "summary",
+            "line": 58,
+            "complexity": 2
+          },
+          {
+            "name": "position",
+            "line": 59,
+            "complexity": 2
+          },
+          {
+            "name": "help",
+            "line": 63,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 63,
+            "complexity": 1
+          },
+          {
+            "name": "description",
+            "line": 65,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 66,
+            "complexity": 1
+          },
+          {
+            "name": "usage",
+            "line": 68,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 69,
+            "complexity": 2
+          },
+          {
+            "name": "render",
+            "line": 72,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 73,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "src/cli/Tokenizer.ts",
+        "blob": "9cb1413e8272f9dbb90a076675283fd9567fe8fa",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 47,
+        "nonblank": 45,
+        "sloc": 44,
+        "functions": 2,
+        "ccFunctions": 19,
+        "ccModule": 1,
+        "cc": 20,
+        "maxFunctionCC": 16,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "tokenize",
+            "line": 8,
+            "complexity": 16
+          },
+          {
+            "name": "number",
+            "line": 40,
+            "complexity": 3
+          }
+        ]
+      },
+      {
+        "path": "src/commands/AddToCommand.ts",
+        "blob": "0de26b4de6077e49620a1034b2fd0f40054b5e67",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/BackCommand.ts",
+        "blob": "b8a675e7255f3820f1b29fed0e374a86c03f38e5",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/Command.ts",
+        "blob": "f24a65305e9ab1620e30e294b0aabe7f82bfd829",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 7,
+        "nonblank": 6,
+        "sloc": 5,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/commands/CommandHistory.ts",
+        "blob": "622114cad97721354327b9ed999b17704ff8c994",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 138,
+        "nonblank": 124,
+        "sloc": 116,
+        "functions": 20,
+        "ccFunctions": 38,
+        "ccModule": 1,
+        "cc": 39,
+        "maxFunctionCC": 11,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "hasDocument",
+            "line": 33,
+            "complexity": 1
+          },
+          {
+            "name": "isBlocked",
+            "line": 34,
+            "complexity": 1
+          },
+          {
+            "name": "canUndo",
+            "line": 35,
+            "complexity": 2
+          },
+          {
+            "name": "canRedo",
+            "line": 36,
+            "complexity": 2
+          },
+          {
+            "name": "getDocumentSnapshot",
+            "line": 38,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 42,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 43,
+            "complexity": 1
+          },
+          {
+            "name": "undo",
+            "line": 61,
+            "complexity": 1
+          },
+          {
+            "name": "redo",
+            "line": 62,
+            "complexity": 1
+          },
+          {
+            "name": "replaceDocumentWithBarrier",
+            "line": 65,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 66,
+            "complexity": 1
+          },
+          {
+            "name": "markBarrier",
+            "line": 73,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 74,
+            "complexity": 1
+          },
+          {
+            "name": "restore",
+            "line": 80,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 81,
+            "complexity": 5
+          },
+          {
+            "name": "requireDocument",
+            "line": 102,
+            "complexity": 2
+          },
+          {
+            "name": "copyResult",
+            "line": 107,
+            "complexity": 11
+          },
+          {
+            "name": "<anonymous>",
+            "line": 116,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 123,
+            "complexity": 1
+          },
+          {
+            "name": "mutate",
+            "line": 132,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "src/commands/CommandResult.ts",
+        "blob": "82203719b7e09515f73d5a4875da3651f908ab5d",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 9,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/commands/CreateCommand.ts",
+        "blob": "3dd6c9a89db415d23fd1f4012646b3552adc45e1",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 21,
+        "nonblank": 18,
+        "sloc": 18,
+        "functions": 2,
+        "ccFunctions": 3,
+        "ccModule": 1,
+        "cc": 4,
+        "maxFunctionCC": 2,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 9,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 13,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "src/commands/DeleteCommand.ts",
+        "blob": "b712cf71120ab151a0c22b3cab3ff11705c2f4fb",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/DocumentViewBuilder.ts",
+        "blob": "86d3d7680f835a8de1cf59a71d50e2428ebd9488",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 54,
+        "nonblank": 50,
+        "sloc": 46,
+        "functions": 4,
+        "ccFunctions": 10,
+        "ccModule": 1,
+        "cc": 11,
+        "maxFunctionCC": 7,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "capture",
+            "line": 22,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 26,
+            "complexity": 1
+          },
+          {
+            "name": "shape",
+            "line": 30,
+            "complexity": 7
+          },
+          {
+            "name": "<anonymous>",
+            "line": 51,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/FrontCommand.ts",
+        "blob": "da64c6573ba5426d87dc50ee548faa840136196e",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/GroupCommand.ts",
+        "blob": "a65c5c6f96d36319c918069ccb5c152965f3e6ab",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 20,
+        "nonblank": 17,
+        "sloc": 17,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 12,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/MoveCommand.ts",
+        "blob": "b5d6c245f697c6c3f1e6b1002cf4c4f533454592",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/ScaleCommand.ts",
+        "blob": "eff469f759194dd3aa9ed2ce542913033394dfef",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/SetAttributeCommand.ts",
+        "blob": "c595626b6c699e579884951cd0f43425431a3a49",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/UngroupCommand.ts",
+        "blob": "a03539398809133154d35b5c508aefe6471b9320",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/io/SvgFileStore.ts",
+        "blob": "2144d1fac70e638c5875984b5d340e29fa453735",
+        "role": "kernel",
+        "responsibility": "SVG and filesystem IO",
+        "lines": 52,
+        "nonblank": 49,
+        "sloc": 48,
+        "functions": 4,
+        "ccFunctions": 12,
+        "ccModule": 1,
+        "cc": 13,
+        "maxFunctionCC": 6,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 11,
+            "complexity": 1
+          },
+          {
+            "name": "read",
+            "line": 13,
+            "complexity": 6
+          },
+          {
+            "name": "save",
+            "line": 35,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 47,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/io/SvgReader.ts",
+        "blob": "94c7bf5dd9dfb4f821c8e0117535f33286efa9de",
+        "role": "kernel",
+        "responsibility": "SVG and filesystem IO",
+        "lines": 123,
+        "nonblank": 120,
+        "sloc": 118,
+        "functions": 13,
+        "ccFunctions": 70,
+        "ccModule": 1,
+        "cc": 71,
+        "maxFunctionCC": 25,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "read",
+            "line": 16,
+            "complexity": 25
+          },
+          {
+            "name": "<anonymous>",
+            "line": 20,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 21,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 22,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 27,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 31,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 33,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 48,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 53,
+            "complexity": 8
+          },
+          {
+            "name": "<anonymous>",
+            "line": 58,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 86,
+            "complexity": 9
+          },
+          {
+            "name": "attributes",
+            "line": 104,
+            "complexity": 7
+          },
+          {
+            "name": "children",
+            "line": 113,
+            "complexity": 8
+          }
+        ]
+      },
+      {
+        "path": "src/io/SvgValidation.ts",
+        "blob": "c6af5a5f74d095db405f9dc0464d0285e46f1576",
+        "role": "kernel",
+        "responsibility": "SVG and filesystem IO",
+        "lines": 26,
+        "nonblank": 26,
+        "sloc": 25,
+        "functions": 3,
+        "ccFunctions": 17,
+        "ccModule": 1,
+        "cc": 18,
+        "maxFunctionCC": 11,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "number",
+            "line": 7,
+            "complexity": 4
+          },
+          {
+            "name": "characters",
+            "line": 13,
+            "complexity": 11
+          },
+          {
+            "name": "size",
+            "line": 22,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "src/io/SvgWriter.ts",
+        "blob": "f2d5227e14ec54cce5e9bee6bb28ee540f39566f",
+        "role": "kernel",
+        "responsibility": "SVG and filesystem IO",
+        "lines": 42,
+        "nonblank": 41,
+        "sloc": 40,
+        "functions": 2,
+        "ccFunctions": 11,
+        "ccModule": 1,
+        "cc": 12,
+        "maxFunctionCC": 9,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "write",
+            "line": 10,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 16,
+            "complexity": 9
+          }
+        ]
+      },
+      {
+        "path": "src/main.ts",
+        "blob": "d5735635583fcfdc82e1dbd3ea2b67cc2da6b9e9",
+        "role": "host",
+        "responsibility": "Host startup / composition / module loading",
+        "lines": 7,
+        "nonblank": 6,
+        "sloc": 6,
+        "functions": 1,
+        "ccFunctions": 2,
+        "ccModule": 2,
+        "cc": 4,
+        "maxFunctionCC": 2,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 4,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "src/model/Circle.ts",
+        "blob": "ccf3d047fe21bdb4464b3aebfd0dfe46d1efc5c5",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 49,
+        "nonblank": 42,
+        "sloc": 42,
+        "functions": 8,
+        "ccFunctions": 11,
+        "ccModule": 1,
+        "cc": 12,
+        "maxFunctionCC": 4,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 9,
+            "complexity": 1
+          },
+          {
+            "name": "cx",
+            "line": 16,
+            "complexity": 1
+          },
+          {
+            "name": "cy",
+            "line": 17,
+            "complexity": 1
+          },
+          {
+            "name": "r",
+            "line": 18,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 20,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 29,
+            "complexity": 1
+          },
+          {
+            "name": "setOwnAttribute",
+            "line": 39,
+            "complexity": 4
+          },
+          {
+            "name": "clone",
+            "line": 46,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/model/Ellipse.ts",
+        "blob": "fcc23f05148c50b617d165c2842021eb5487c4df",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 55,
+        "nonblank": 48,
+        "sloc": 48,
+        "functions": 9,
+        "ccFunctions": 13,
+        "ccModule": 1,
+        "cc": 14,
+        "maxFunctionCC": 5,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 10,
+            "complexity": 1
+          },
+          {
+            "name": "cx",
+            "line": 18,
+            "complexity": 1
+          },
+          {
+            "name": "cy",
+            "line": 19,
+            "complexity": 1
+          },
+          {
+            "name": "rx",
+            "line": 20,
+            "complexity": 1
+          },
+          {
+            "name": "ry",
+            "line": 21,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 23,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 32,
+            "complexity": 1
+          },
+          {
+            "name": "setOwnAttribute",
+            "line": 44,
+            "complexity": 5
+          },
+          {
+            "name": "clone",
+            "line": 52,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/model/Group.ts",
+        "blob": "91399d1beef32005bcd69618d3412f0913133a62",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 96,
+        "nonblank": 83,
+        "sloc": 73,
+        "functions": 15,
+        "ccFunctions": 32,
+        "ccModule": 1,
+        "cc": 33,
+        "maxFunctionCC": 8,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "children",
+            "line": 13,
+            "complexity": 1
+          },
+          {
+            "name": "indexOf",
+            "line": 17,
+            "complexity": 1
+          },
+          {
+            "name": "addChild",
+            "line": 21,
+            "complexity": 8
+          },
+          {
+            "name": "removeChild",
+            "line": 32,
+            "complexity": 2
+          },
+          {
+            "name": "move",
+            "line": 39,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 42,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 45,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 47,
+            "complexity": 1
+          },
+          {
+            "name": "setOwnAttribute",
+            "line": 50,
+            "complexity": 1
+          },
+          {
+            "name": "clone",
+            "line": 54,
+            "complexity": 2
+          },
+          {
+            "name": "contains",
+            "line": 60,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 63,
+            "complexity": 3
+          },
+          {
+            "name": "collectLeaves",
+            "line": 67,
+            "complexity": 3
+          },
+          {
+            "name": "transform",
+            "line": 80,
+            "complexity": 4
+          }
+        ]
+      },
+      {
+        "path": "src/model/Line.ts",
+        "blob": "1ddf380420e6af34ba68f3d5ccbb803ca2c21d73",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 59,
+        "nonblank": 52,
+        "sloc": 52,
+        "functions": 9,
+        "ccFunctions": 13,
+        "ccModule": 1,
+        "cc": 14,
+        "maxFunctionCC": 5,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 10,
+            "complexity": 1
+          },
+          {
+            "name": "x1",
+            "line": 18,
+            "complexity": 1
+          },
+          {
+            "name": "y1",
+            "line": 19,
+            "complexity": 1
+          },
+          {
+            "name": "x2",
+            "line": 20,
+            "complexity": 1
+          },
+          {
+            "name": "y2",
+            "line": 21,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 23,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 36,
+            "complexity": 1
+          },
+          {
+            "name": "setOwnAttribute",
+            "line": 48,
+            "complexity": 5
+          },
+          {
+            "name": "clone",
+            "line": 56,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/model/Rectangle.ts",
+        "blob": "9f9758c19237fdc866e28a1509ee72770849f021",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 55,
+        "nonblank": 48,
+        "sloc": 48,
+        "functions": 9,
+        "ccFunctions": 13,
+        "ccModule": 1,
+        "cc": 14,
+        "maxFunctionCC": 5,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 10,
+            "complexity": 1
+          },
+          {
+            "name": "x",
+            "line": 18,
+            "complexity": 1
+          },
+          {
+            "name": "y",
+            "line": 19,
+            "complexity": 1
+          },
+          {
+            "name": "width",
+            "line": 20,
+            "complexity": 1
+          },
+          {
+            "name": "height",
+            "line": 21,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 23,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 32,
+            "complexity": 1
+          },
+          {
+            "name": "setOwnAttribute",
+            "line": 44,
+            "complexity": 5
+          },
+          {
+            "name": "clone",
+            "line": 52,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/model/Shape.ts",
+        "blob": "02f411906b20ea41202c33ce81218971771c4e5e",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 90,
+        "nonblank": 77,
+        "sloc": 76,
+        "functions": 12,
+        "ccFunctions": 34,
+        "ccModule": 1,
+        "cc": 35,
+        "maxFunctionCC": 6,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 15,
+            "complexity": 6
+          },
+          {
+            "name": "id",
+            "line": 23,
+            "complexity": 1
+          },
+          {
+            "name": "fill",
+            "line": 24,
+            "complexity": 1
+          },
+          {
+            "name": "stroke",
+            "line": 25,
+            "complexity": 1
+          },
+          {
+            "name": "strokeWidth",
+            "line": 26,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 32,
+            "complexity": 2
+          },
+          {
+            "name": "finite",
+            "line": 38,
+            "complexity": 3
+          },
+          {
+            "name": "nonNegative",
+            "line": 43,
+            "complexity": 2
+          },
+          {
+            "name": "numeric",
+            "line": 49,
+            "complexity": 3
+          },
+          {
+            "name": "scaleFactor",
+            "line": 61,
+            "complexity": 4
+          },
+          {
+            "name": "copyStyle",
+            "line": 68,
+            "complexity": 4
+          },
+          {
+            "name": "setCommonAttribute",
+            "line": 76,
+            "complexity": 6
+          }
+        ]
+      },
+      {
+        "path": "src/model/ShapeFactory.ts",
+        "blob": "d9ea0a6721f8076b769523661e405838d1e7a7f5",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 35,
+        "nonblank": 32,
+        "sloc": 30,
+        "functions": 1,
+        "ccFunctions": 7,
+        "ccModule": 1,
+        "cc": 8,
+        "maxFunctionCC": 7,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "create",
+            "line": 23,
+            "complexity": 7
+          }
+        ]
+      },
+      {
+        "path": "src/model/ShapeSchema.ts",
+        "blob": "6d37f0e7bc87d31079d4447aac8e5a9efae91551",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 24,
+        "nonblank": 23,
+        "sloc": 22,
+        "functions": 5,
+        "ccFunctions": 7,
+        "ccModule": 1,
+        "cc": 8,
+        "maxFunctionCC": 2,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 12,
+            "complexity": 1
+          },
+          {
+            "name": "forTag",
+            "line": 14,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 15,
+            "complexity": 1
+          },
+          {
+            "name": "forModel",
+            "line": 19,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 20,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/model/StyleValidation.ts",
+        "blob": "74047d5e93e32f83101c7ca84fb0f063d233036c",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 47,
+        "nonblank": 45,
+        "sloc": 43,
+        "functions": 7,
+        "ccFunctions": 27,
+        "ccModule": 1,
+        "cc": 28,
+        "maxFunctionCC": 20,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "paint",
+            "line": 12,
+            "complexity": 20
+          },
+          {
+            "name": "<anonymous>",
+            "line": 24,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 34,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 35,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 35,
+            "complexity": 1
+          },
+          {
+            "name": "number",
+            "line": 42,
+            "complexity": 2
+          },
+          {
+            "name": "reject",
+            "line": 46,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/model/SvgDocument.ts",
+        "blob": "58cea01d5f41622dd8d306aab89eaa39937d1085",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 262,
+        "nonblank": 231,
+        "sloc": 217,
+        "functions": 49,
+        "ccFunctions": 89,
+        "ccModule": 1,
+        "cc": 90,
+        "maxFunctionCC": 11,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 22,
+            "complexity": 1
+          },
+          {
+            "name": "width",
+            "line": 29,
+            "complexity": 1
+          },
+          {
+            "name": "height",
+            "line": 30,
+            "complexity": 1
+          },
+          {
+            "name": "resize",
+            "line": 32,
+            "complexity": 1
+          },
+          {
+            "name": "hasShape",
+            "line": 39,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 40,
+            "complexity": 1
+          },
+          {
+            "name": "getShapeSnapshot",
+            "line": 43,
+            "complexity": 1
+          },
+          {
+            "name": "getRootSnapshots",
+            "line": 47,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 48,
+            "complexity": 1
+          },
+          {
+            "name": "getParentId",
+            "line": 51,
+            "complexity": 2
+          },
+          {
+            "name": "addShape",
+            "line": 55,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 60,
+            "complexity": 1
+          },
+          {
+            "name": "deleteShape",
+            "line": 67,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 71,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 75,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 79,
+            "complexity": 1
+          },
+          {
+            "name": "group",
+            "line": 87,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 88,
+            "complexity": 11
+          },
+          {
+            "name": "<anonymous>",
+            "line": 91,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 98,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 100,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 115,
+            "complexity": 2
+          },
+          {
+            "name": "ungroup",
+            "line": 129,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 130,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 137,
+            "complexity": 1
+          },
+          {
+            "name": "addTo",
+            "line": 144,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 145,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 150,
+            "complexity": 1
+          },
+          {
+            "name": "bringToFront",
+            "line": 158,
+            "complexity": 1
+          },
+          {
+            "name": "sendToBack",
+            "line": 162,
+            "complexity": 1
+          },
+          {
+            "name": "clone",
+            "line": 166,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 168,
+            "complexity": 1
+          },
+          {
+            "name": "validateDimension",
+            "line": 172,
+            "complexity": 4
+          },
+          {
+            "name": "validateIndex",
+            "line": 178,
+            "complexity": 4
+          },
+          {
+            "name": "childrenOf",
+            "line": 182,
+            "complexity": 2
+          },
+          {
+            "name": "locations",
+            "line": 186,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 188,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 189,
+            "complexity": 2
+          },
+          {
+            "name": "requireLocation",
+            "line": 198,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 199,
+            "complexity": 1
+          },
+          {
+            "name": "requireContainer",
+            "line": 204,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 205,
+            "complexity": 1
+          },
+          {
+            "name": "insert",
+            "line": 211,
+            "complexity": 2
+          },
+          {
+            "name": "detach",
+            "line": 216,
+            "complexity": 2
+          },
+          {
+            "name": "reorder",
+            "line": 221,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 230,
+            "complexity": 1
+          },
+          {
+            "name": "withStructureCopy",
+            "line": 239,
+            "complexity": 1
+          },
+          {
+            "name": "validateForest",
+            "line": 246,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 250,
+            "complexity": 5
+          }
+        ]
+      },
+      {
+        "path": "src/model/TextShape.ts",
+        "blob": "ec1aefb0ed7e76898dbb97cf5bd73c8cdbbde3c5",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 52,
+        "nonblank": 45,
+        "sloc": 45,
+        "functions": 8,
+        "ccFunctions": 13,
+        "ccModule": 1,
+        "cc": 14,
+        "maxFunctionCC": 5,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 9,
+            "complexity": 2
+          },
+          {
+            "name": "x",
+            "line": 17,
+            "complexity": 1
+          },
+          {
+            "name": "y",
+            "line": 18,
+            "complexity": 1
+          },
+          {
+            "name": "text",
+            "line": 19,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 21,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 30,
+            "complexity": 1
+          },
+          {
+            "name": "setOwnAttribute",
+            "line": 38,
+            "complexity": 5
+          },
+          {
+            "name": "clone",
+            "line": 49,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/services/Editor.ts",
+        "blob": "5c9c2d45af7ccc331c282e0488bc4c968799ba44",
+        "role": "kernel",
+        "responsibility": "Application operations / saved baseline / feedback",
+        "lines": 173,
+        "nonblank": 150,
+        "sloc": 147,
+        "functions": 23,
+        "ccFunctions": 32,
+        "ccModule": 1,
+        "cc": 33,
+        "maxFunctionCC": 4,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 29,
+            "complexity": 1
+          },
+          {
+            "name": "read",
+            "line": 31,
+            "complexity": 1
+          },
+          {
+            "name": "save",
+            "line": 43,
+            "complexity": 3
+          },
+          {
+            "name": "assertIdle",
+            "line": 57,
+            "complexity": 2
+          },
+          {
+            "name": "init",
+            "line": 61,
+            "complexity": 1
+          },
+          {
+            "name": "getCanvas",
+            "line": 70,
+            "complexity": 1
+          },
+          {
+            "name": "resizeCanvas",
+            "line": 75,
+            "complexity": 1
+          },
+          {
+            "name": "create",
+            "line": 84,
+            "complexity": 2
+          },
+          {
+            "name": "delete",
+            "line": 91,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 96,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 101,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 106,
+            "complexity": 1
+          },
+          {
+            "name": "group",
+            "line": 111,
+            "complexity": 1
+          },
+          {
+            "name": "ungroup",
+            "line": 116,
+            "complexity": 1
+          },
+          {
+            "name": "addTo",
+            "line": 121,
+            "complexity": 1
+          },
+          {
+            "name": "front",
+            "line": 126,
+            "complexity": 1
+          },
+          {
+            "name": "back",
+            "line": 131,
+            "complexity": 1
+          },
+          {
+            "name": "undo",
+            "line": 136,
+            "complexity": 1
+          },
+          {
+            "name": "redo",
+            "line": 137,
+            "complexity": 1
+          },
+          {
+            "name": "tree",
+            "line": 142,
+            "complexity": 3
+          },
+          {
+            "name": "show",
+            "line": 150,
+            "complexity": 1
+          },
+          {
+            "name": "getStatus",
+            "line": 155,
+            "complexity": 1
+          },
+          {
+            "name": "findView",
+            "line": 165,
+            "complexity": 4
+          }
+        ]
+      },
+      {
+        "path": "src/services/EditorTypes.ts",
+        "blob": "0147046888aa583f858d8405c47ee16d6d680188",
+        "role": "kernel",
+        "responsibility": "Application operations / saved baseline / feedback",
+        "lines": 32,
+        "nonblank": 26,
+        "sloc": 23,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 1,
+        "cc": 1,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      }
+    ]
+  },
+  "current": {
+    "commit": "da65fd1855a0cc9f3145cf05e7095289be7b7e1b",
+    "totals": {
+      "kernel": {
+        "files": 49,
+        "lines": 2470,
+        "nonblank": 2253,
+        "sloc": 2108,
+        "functions": 338,
+        "ccFunctions": 785,
+        "ccModule": 34,
+        "cc": 819
+      },
+      "host": {
+        "files": 6,
+        "lines": 246,
+        "nonblank": 227,
+        "sloc": 217,
+        "functions": 31,
+        "ccFunctions": 102,
+        "ccModule": 11,
+        "cc": 113
+      },
+      "plugins": {
+        "files": 14,
+        "lines": 658,
+        "nonblank": 594,
+        "sloc": 586,
+        "functions": 173,
+        "ccFunctions": 266,
+        "ccModule": 13,
+        "cc": 279
+      },
+      "vscode": {
+        "files": 4,
+        "lines": 126,
+        "nonblank": 117,
+        "sloc": 111,
+        "functions": 17,
+        "ccFunctions": 41,
+        "ccModule": 4,
+        "cc": 45
+      },
+      "cli": {
+        "files": 69,
+        "lines": 3374,
+        "nonblank": 3074,
+        "sloc": 2911,
+        "functions": 542,
+        "ccFunctions": 1153,
+        "ccModule": 58,
+        "cc": 1211
+      }
+    },
+    "files": [
+      {
+        "path": "plugins/builtin-commands/BuiltinCommand.ts",
+        "blob": "7f9c6ea4f27af07d4674626d123f20a618b54b9a",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 48,
+        "nonblank": 41,
+        "sloc": 40,
+        "functions": 11,
+        "ccFunctions": 19,
+        "ccModule": 1,
+        "cc": 20,
+        "maxFunctionCC": 4,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "singleLine",
+            "line": 9,
+            "complexity": 1
+          },
+          {
+            "name": "formatting",
+            "line": 11,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 12,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 20,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 23,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 24,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 25,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 27,
+            "complexity": 2
+          },
+          {
+            "name": "constructor",
+            "line": 35,
+            "complexity": 1
+          },
+          {
+            "name": "parse",
+            "line": 40,
+            "complexity": 1
+          },
+          {
+            "name": "describeOperation",
+            "line": 45,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "plugins/builtin-commands/BuiltinCommands.ts",
+        "blob": "e97a25da64a4a30d3a53ea1c0839e3327bbbd0b9",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 114,
+        "nonblank": 113,
+        "sloc": 113,
+        "functions": 80,
+        "ccFunctions": 110,
+        "ccModule": 1,
+        "cc": 111,
+        "maxFunctionCC": 6,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 9,
+            "complexity": 1
+          },
+          {
+            "name": "result",
+            "line": 10,
+            "complexity": 1
+          },
+          {
+            "name": "required",
+            "line": 13,
+            "complexity": 2
+          },
+          {
+            "name": "constructor",
+            "line": 19,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 20,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 23,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 23,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 24,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 27,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 27,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 27,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 29,
+            "complexity": 6
+          },
+          {
+            "name": "<anonymous>",
+            "line": 31,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 31,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 31,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 31,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 36,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 36,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 36,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 36,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 40,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 43,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 43,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 43,
+            "complexity": 5
+          },
+          {
+            "name": "<anonymous>",
+            "line": 51,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 54,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 54,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 54,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 58,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 61,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 61,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 61,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 67,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 69,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 70,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 70,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 70,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 75,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 75,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 75,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 75,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 80,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 83,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 83,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 83,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 87,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 87,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 87,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 87,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 88,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 88,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 88,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 88,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 89,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 91,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 91,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 92,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 92,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 92,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 93,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 95,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 95,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 96,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 98,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 98,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 99,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 101,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 101,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 102,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 102,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 102,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 102,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 103,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 105,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 105,
+            "complexity": 1
+          },
+          {
+            "name": "register",
+            "line": 107,
+            "complexity": 1
+          },
+          {
+            "name": "arity",
+            "line": 110,
+            "complexity": 3
+          },
+          {
+            "name": "id",
+            "line": 111,
+            "complexity": 1
+          },
+          {
+            "name": "target",
+            "line": 112,
+            "complexity": 3
+          },
+          {
+            "name": "orderFeedback",
+            "line": 113,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "plugins/builtin-commands/Requests.ts",
+        "blob": "a5c3f05e65423063f9f30b96a85908cb9f9d2f5c",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 23,
+        "nonblank": 22,
+        "sloc": 22,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "plugins/builtin-commands/index.ts",
+        "blob": "2a33228b5e6919af88f41d7c56d173dbd65b8359",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 5,
+        "nonblank": 4,
+        "sloc": 4,
+        "functions": 1,
+        "ccFunctions": 1,
+        "ccModule": 1,
+        "cc": 2,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "activate",
+            "line": 4,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "plugins/builtin-shapes/BuiltinShapeProvider.ts",
+        "blob": "c26ec6c9ed43b19e1210c2a95075b1cef846f036",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 88,
+        "nonblank": 86,
+        "sloc": 85,
+        "functions": 24,
+        "ccFunctions": 54,
+        "ccModule": 1,
+        "cc": 55,
+        "maxFunctionCC": 13,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 13,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 14,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 15,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 16,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 17,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 18,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 28,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 38,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 39,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 41,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 43,
+            "complexity": 2
+          },
+          {
+            "name": "parseCreate",
+            "line": 46,
+            "complexity": 13
+          },
+          {
+            "name": "<anonymous>",
+            "line": 57,
+            "complexity": 2
+          },
+          {
+            "name": "create",
+            "line": 61,
+            "complexity": 1
+          },
+          {
+            "name": "read",
+            "line": 64,
+            "complexity": 8
+          },
+          {
+            "name": "write",
+            "line": 74,
+            "complexity": 6
+          },
+          {
+            "name": "present",
+            "line": 80,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 81,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 82,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 82,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 84,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 85,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 85,
+            "complexity": 1
+          },
+          {
+            "name": "readAttribute",
+            "line": 87,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "plugins/builtin-shapes/Circle.ts",
+        "blob": "56f9d239c78180d05b4a7e7b96cadcb4abd5312f",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 56,
+        "nonblank": 47,
+        "sloc": 47,
+        "functions": 9,
+        "ccFunctions": 12,
+        "ccModule": 1,
+        "cc": 13,
+        "maxFunctionCC": 4,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "attributes",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 16,
+            "complexity": 1
+          },
+          {
+            "name": "cx",
+            "line": 23,
+            "complexity": 1
+          },
+          {
+            "name": "cy",
+            "line": 24,
+            "complexity": 1
+          },
+          {
+            "name": "r",
+            "line": 25,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 27,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 36,
+            "complexity": 1
+          },
+          {
+            "name": "setOwnAttribute",
+            "line": 46,
+            "complexity": 4
+          },
+          {
+            "name": "clone",
+            "line": 53,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "plugins/builtin-shapes/Ellipse.ts",
+        "blob": "d7bda95d73cd8f051adeeb05d403fc3595bdee79",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 62,
+        "nonblank": 53,
+        "sloc": 53,
+        "functions": 10,
+        "ccFunctions": 14,
+        "ccModule": 1,
+        "cc": 15,
+        "maxFunctionCC": 5,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "attributes",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 17,
+            "complexity": 1
+          },
+          {
+            "name": "cx",
+            "line": 25,
+            "complexity": 1
+          },
+          {
+            "name": "cy",
+            "line": 26,
+            "complexity": 1
+          },
+          {
+            "name": "rx",
+            "line": 27,
+            "complexity": 1
+          },
+          {
+            "name": "ry",
+            "line": 28,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 30,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 39,
+            "complexity": 1
+          },
+          {
+            "name": "setOwnAttribute",
+            "line": 51,
+            "complexity": 5
+          },
+          {
+            "name": "clone",
+            "line": 59,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "plugins/builtin-shapes/Group.ts",
+        "blob": "dbd0a1e7171b5aa93978e127534a89455ecd6669",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 16,
+        "nonblank": 13,
+        "sloc": 12,
+        "functions": 2,
+        "ccFunctions": 3,
+        "ccModule": 1,
+        "cc": 4,
+        "maxFunctionCC": 2,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 9,
+            "complexity": 1
+          },
+          {
+            "name": "clone",
+            "line": 11,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "plugins/builtin-shapes/Line.ts",
+        "blob": "46afaebe1d57f399174ed814e323d30a1a921f1d",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 66,
+        "nonblank": 57,
+        "sloc": 57,
+        "functions": 10,
+        "ccFunctions": 14,
+        "ccModule": 1,
+        "cc": 15,
+        "maxFunctionCC": 5,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "attributes",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 17,
+            "complexity": 1
+          },
+          {
+            "name": "x1",
+            "line": 25,
+            "complexity": 1
+          },
+          {
+            "name": "y1",
+            "line": 26,
+            "complexity": 1
+          },
+          {
+            "name": "x2",
+            "line": 27,
+            "complexity": 1
+          },
+          {
+            "name": "y2",
+            "line": 28,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 30,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 43,
+            "complexity": 1
+          },
+          {
+            "name": "setOwnAttribute",
+            "line": 55,
+            "complexity": 5
+          },
+          {
+            "name": "clone",
+            "line": 63,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "plugins/builtin-shapes/Rectangle.ts",
+        "blob": "b3a0eb511e7d0e65378aeca96cb62bf1117bb3bb",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 62,
+        "nonblank": 53,
+        "sloc": 53,
+        "functions": 10,
+        "ccFunctions": 14,
+        "ccModule": 1,
+        "cc": 15,
+        "maxFunctionCC": 5,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "attributes",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 17,
+            "complexity": 1
+          },
+          {
+            "name": "x",
+            "line": 25,
+            "complexity": 1
+          },
+          {
+            "name": "y",
+            "line": 26,
+            "complexity": 1
+          },
+          {
+            "name": "width",
+            "line": 27,
+            "complexity": 1
+          },
+          {
+            "name": "height",
+            "line": 28,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 30,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 39,
+            "complexity": 1
+          },
+          {
+            "name": "setOwnAttribute",
+            "line": 51,
+            "complexity": 5
+          },
+          {
+            "name": "clone",
+            "line": 59,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "plugins/builtin-shapes/ShapeFactory.ts",
+        "blob": "ae0f90fd15960b1f1de5f19b3500eb9fb06cddd9",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 28,
+        "nonblank": 25,
+        "sloc": 21,
+        "functions": 1,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 2,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "create",
+            "line": 20,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "plugins/builtin-shapes/ShapeSchema.ts",
+        "blob": "6d37f0e7bc87d31079d4447aac8e5a9efae91551",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 24,
+        "nonblank": 23,
+        "sloc": 22,
+        "functions": 5,
+        "ccFunctions": 7,
+        "ccModule": 1,
+        "cc": 8,
+        "maxFunctionCC": 2,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 12,
+            "complexity": 1
+          },
+          {
+            "name": "forTag",
+            "line": 14,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 15,
+            "complexity": 1
+          },
+          {
+            "name": "forModel",
+            "line": 19,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 20,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "plugins/builtin-shapes/TextShape.ts",
+        "blob": "b729613e2095b2c06c2ea8407f8e2fbe3ef5dd0d",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 59,
+        "nonblank": 50,
+        "sloc": 50,
+        "functions": 9,
+        "ccFunctions": 14,
+        "ccModule": 1,
+        "cc": 15,
+        "maxFunctionCC": 5,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "attributes",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 16,
+            "complexity": 2
+          },
+          {
+            "name": "x",
+            "line": 24,
+            "complexity": 1
+          },
+          {
+            "name": "y",
+            "line": 25,
+            "complexity": 1
+          },
+          {
+            "name": "text",
+            "line": 26,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 28,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 37,
+            "complexity": 1
+          },
+          {
+            "name": "setOwnAttribute",
+            "line": 45,
+            "complexity": 5
+          },
+          {
+            "name": "clone",
+            "line": 56,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "plugins/builtin-shapes/index.ts",
+        "blob": "cb05399a8123d862901a8c9bb60a939baa7074ec",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 7,
+        "nonblank": 7,
+        "sloc": 7,
+        "functions": 1,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 2,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "activate",
+            "line": 4,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "src/api/AttributeHandler.ts",
+        "blob": "a1dac4448b4f4a51aa0799eafee2fd2a6ec5d667",
+        "role": "kernel",
+        "responsibility": "Public domain and extension contracts",
+        "lines": 21,
+        "nonblank": 20,
+        "sloc": 18,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/api/Command.ts",
+        "blob": "b8e29db9d587bbf8d5bfccfe521a5dca1eedd163",
+        "role": "kernel",
+        "responsibility": "Public domain and extension contracts",
+        "lines": 64,
+        "nonblank": 62,
+        "sloc": 54,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/api/CommandResult.ts",
+        "blob": "8415cd504df4745797f1f1db578f35bcd1101db5",
+        "role": "kernel",
+        "responsibility": "Public domain and extension contracts",
+        "lines": 22,
+        "nonblank": 20,
+        "sloc": 13,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/api/Domain.ts",
+        "blob": "cb559a5491600894a57e87328b15baee341cc654",
+        "role": "kernel",
+        "responsibility": "Public domain and extension contracts",
+        "lines": 24,
+        "nonblank": 23,
+        "sloc": 21,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/api/Editing.ts",
+        "blob": "a384b1f5583e281a6cfebd59b0b4414b5f2b323b",
+        "role": "kernel",
+        "responsibility": "Public domain and extension contracts",
+        "lines": 27,
+        "nonblank": 26,
+        "sloc": 24,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/api/Feedback.ts",
+        "blob": "2c0bba7f11b0088fbf007e505d0687a9f88d4c4c",
+        "role": "kernel",
+        "responsibility": "Public domain and extension contracts",
+        "lines": 19,
+        "nonblank": 18,
+        "sloc": 18,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/api/Numbers.ts",
+        "blob": "44fb9666817846b364078257475fd4055b263a8e",
+        "role": "kernel",
+        "responsibility": "Public domain and extension contracts",
+        "lines": 15,
+        "nonblank": 15,
+        "sloc": 14,
+        "functions": 2,
+        "ccFunctions": 7,
+        "ccModule": 1,
+        "cc": 8,
+        "maxFunctionCC": 4,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "parseNumberToken",
+            "line": 3,
+            "complexity": 3
+          },
+          {
+            "name": "parseSvgNumber",
+            "line": 10,
+            "complexity": 4
+          }
+        ]
+      },
+      {
+        "path": "src/api/Plugin.ts",
+        "blob": "e64fb55802e1dc9434ffcbc68846996fc0b4f424",
+        "role": "kernel",
+        "responsibility": "Public domain and extension contracts",
+        "lines": 17,
+        "nonblank": 14,
+        "sloc": 11,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/api/Registration.ts",
+        "blob": "1838c75c5b6af161f5565e8a2e3a67a3346157a3",
+        "role": "kernel",
+        "responsibility": "Public domain and extension contracts",
+        "lines": 18,
+        "nonblank": 17,
+        "sloc": 16,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/api/ShapeProvider.ts",
+        "blob": "71f922d0a6e636db1695067d5d8f5a8ba7cc5fba",
+        "role": "kernel",
+        "responsibility": "Public domain and extension contracts",
+        "lines": 61,
+        "nonblank": 60,
+        "sloc": 50,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/api/TreeDecorator.ts",
+        "blob": "156b4299263b69e98fa2d204ffc6df1d148cbbc6",
+        "role": "kernel",
+        "responsibility": "Public domain and extension contracts",
+        "lines": 14,
+        "nonblank": 13,
+        "sloc": 10,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/api/index.ts",
+        "blob": "0a38d085c5f338ea4c34db9297394561bf2fe4cd",
+        "role": "kernel",
+        "responsibility": "Public domain and extension contracts",
+        "lines": 16,
+        "nonblank": 15,
+        "sloc": 14,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 1,
+        "cc": 1,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/cli/CliOutput.ts",
+        "blob": "f98a72756dae32c64eff5ff3b9866caddb24b983",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 6,
+        "nonblank": 6,
+        "sloc": 5,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/cli/CommandCatalog.ts",
+        "blob": "4bd9eb99a3658b751ec2bec29469338edcdddcaf",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 53,
+        "nonblank": 48,
+        "sloc": 46,
+        "functions": 9,
+        "ccFunctions": 29,
+        "ccModule": 1,
+        "cc": 30,
+        "maxFunctionCC": 12,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "observation",
+            "line": 6,
+            "complexity": 12
+          },
+          {
+            "name": "<anonymous>",
+            "line": 12,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 16,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 23,
+            "complexity": 1
+          },
+          {
+            "name": "parse",
+            "line": 25,
+            "complexity": 9
+          },
+          {
+            "name": "<anonymous>",
+            "line": 32,
+            "complexity": 1
+          },
+          {
+            "name": "invocation",
+            "line": 43,
+            "complexity": 2
+          },
+          {
+            "name": "help",
+            "line": 49,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 50,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/cli/Dispatcher.ts",
+        "blob": "8e58102472c0b641888b0c0271d12daaa83aa75a",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 76,
+        "nonblank": 71,
+        "sloc": 70,
+        "functions": 17,
+        "ccFunctions": 32,
+        "ccModule": 1,
+        "cc": 33,
+        "maxFunctionCC": 5,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 11,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 14,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 19,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 23,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 30,
+            "complexity": 1
+          },
+          {
+            "name": "output",
+            "line": 36,
+            "complexity": 3
+          },
+          {
+            "name": "host",
+            "line": 40,
+            "complexity": 5
+          },
+          {
+            "name": "<anonymous>",
+            "line": 42,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 44,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 45,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 46,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 47,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 48,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 49,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 50,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 57,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 68,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/cli/Formatter.ts",
+        "blob": "224488aa2686f19206f56b8c2923f355b7f5e98d",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 94,
+        "nonblank": 81,
+        "sloc": 80,
+        "functions": 20,
+        "ccFunctions": 37,
+        "ccModule": 1,
+        "cc": 38,
+        "maxFunctionCC": 4,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 9,
+            "complexity": 1
+          },
+          {
+            "name": "view",
+            "line": 12,
+            "complexity": 2
+          },
+          {
+            "name": "label",
+            "line": 18,
+            "complexity": 1
+          },
+          {
+            "name": "parent",
+            "line": 22,
+            "complexity": 3
+          },
+          {
+            "name": "value",
+            "line": 28,
+            "complexity": 2
+          },
+          {
+            "name": "position",
+            "line": 32,
+            "complexity": 1
+          },
+          {
+            "name": "tree",
+            "line": 36,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 40,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 42,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 44,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 45,
+            "complexity": 3
+          },
+          {
+            "name": "show",
+            "line": 61,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 64,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 66,
+            "complexity": 1
+          },
+          {
+            "name": "find",
+            "line": 71,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 72,
+            "complexity": 4
+          },
+          {
+            "name": "error",
+            "line": 83,
+            "complexity": 2
+          },
+          {
+            "name": "singleLine",
+            "line": 87,
+            "complexity": 1
+          },
+          {
+            "name": "summary",
+            "line": 89,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 92,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/cli/ParsedCommand.ts",
+        "blob": "52863e6804a6bae535517f4e819206a59d2c5f1b",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 2,
+        "nonblank": 2,
+        "sloc": 1,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/cli/Parser.ts",
+        "blob": "826ca6b8c2f4dc370a3e8537af97308aa7ce963c",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 11,
+        "nonblank": 10,
+        "sloc": 9,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 7,
+            "complexity": 1
+          },
+          {
+            "name": "parse",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/cli/Repl.ts",
+        "blob": "750ecc6936a5c0daacb4867e7188feb4969b5b33",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 58,
+        "nonblank": 55,
+        "sloc": 54,
+        "functions": 4,
+        "ccFunctions": 14,
+        "ccModule": 1,
+        "cc": 15,
+        "maxFunctionCC": 11,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 14,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 16,
+            "complexity": 1
+          },
+          {
+            "name": "run",
+            "line": 22,
+            "complexity": 11
+          },
+          {
+            "name": "<anonymous>",
+            "line": 25,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/cli/Tokenizer.ts",
+        "blob": "9cb1413e8272f9dbb90a076675283fd9567fe8fa",
+        "role": "kernel",
+        "responsibility": "CLI parsing / execution / rendering",
+        "lines": 47,
+        "nonblank": 45,
+        "sloc": 44,
+        "functions": 2,
+        "ccFunctions": 19,
+        "ccModule": 1,
+        "cc": 20,
+        "maxFunctionCC": 16,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "tokenize",
+            "line": 8,
+            "complexity": 16
+          },
+          {
+            "name": "number",
+            "line": 40,
+            "complexity": 3
+          }
+        ]
+      },
+      {
+        "path": "src/commands/AddToCommand.ts",
+        "blob": "0de26b4de6077e49620a1034b2fd0f40054b5e67",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/BackCommand.ts",
+        "blob": "b8a675e7255f3820f1b29fed0e374a86c03f38e5",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/Command.ts",
+        "blob": "f24a65305e9ab1620e30e294b0aabe7f82bfd829",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 7,
+        "nonblank": 6,
+        "sloc": 5,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/commands/CommandHistory.ts",
+        "blob": "66ae9f2b87706c6fc0dc75c5ef1fdfbbb2024bf1",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 190,
+        "nonblank": 170,
+        "sloc": 161,
+        "functions": 28,
+        "ccFunctions": 67,
+        "ccModule": 1,
+        "cc": 68,
+        "maxFunctionCC": 23,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 43,
+            "complexity": 1
+          },
+          {
+            "name": "executeAction",
+            "line": 45,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 46,
+            "complexity": 1
+          },
+          {
+            "name": "executeAttributes",
+            "line": 49,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 50,
+            "complexity": 1
+          },
+          {
+            "name": "hasDocument",
+            "line": 53,
+            "complexity": 1
+          },
+          {
+            "name": "isBlocked",
+            "line": 54,
+            "complexity": 1
+          },
+          {
+            "name": "canUndo",
+            "line": 55,
+            "complexity": 2
+          },
+          {
+            "name": "canRedo",
+            "line": 56,
+            "complexity": 2
+          },
+          {
+            "name": "getDocumentSnapshot",
+            "line": 58,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 62,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 63,
+            "complexity": 2
+          },
+          {
+            "name": "undo",
+            "line": 84,
+            "complexity": 1
+          },
+          {
+            "name": "redo",
+            "line": 85,
+            "complexity": 1
+          },
+          {
+            "name": "replaceDocumentWithBarrier",
+            "line": 88,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 89,
+            "complexity": 1
+          },
+          {
+            "name": "markBarrier",
+            "line": 97,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 98,
+            "complexity": 1
+          },
+          {
+            "name": "restore",
+            "line": 104,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 105,
+            "complexity": 6
+          },
+          {
+            "name": "requireDocument",
+            "line": 128,
+            "complexity": 2
+          },
+          {
+            "name": "copyResult",
+            "line": 133,
+            "complexity": 23
+          },
+          {
+            "name": "<anonymous>",
+            "line": 144,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 151,
+            "complexity": 1
+          },
+          {
+            "name": "prepare",
+            "line": 165,
+            "complexity": 7
+          },
+          {
+            "name": "<anonymous>",
+            "line": 173,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 177,
+            "complexity": 2
+          },
+          {
+            "name": "mutate",
+            "line": 184,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "src/commands/CommandResult.ts",
+        "blob": "63cd3c44018aabe6c508335121cd12a38b1a3dd8",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 1,
+        "nonblank": 1,
+        "sloc": 1,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/commands/CreateCommand.ts",
+        "blob": "3dd6c9a89db415d23fd1f4012646b3552adc45e1",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 21,
+        "nonblank": 18,
+        "sloc": 18,
+        "functions": 2,
+        "ccFunctions": 3,
+        "ccModule": 1,
+        "cc": 4,
+        "maxFunctionCC": 2,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 9,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 13,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "src/commands/DeleteCommand.ts",
+        "blob": "b712cf71120ab151a0c22b3cab3ff11705c2f4fb",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/DocumentViewBuilder.ts",
+        "blob": "8f19aa9ce16039da35e848a78ad5d26456e2a768",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 8,
+        "nonblank": 7,
+        "sloc": 6,
+        "functions": 1,
+        "ccFunctions": 1,
+        "ccModule": 1,
+        "cc": 2,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "capture",
+            "line": 7,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/EditingContext.ts",
+        "blob": "667e13c7e14156038eda13a10d8e0e7f28bc8276",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 40,
+        "nonblank": 38,
+        "sloc": 36,
+        "functions": 18,
+        "ccFunctions": 22,
+        "ccModule": 1,
+        "cc": 23,
+        "maxFunctionCC": 4,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "executeScoped",
+            "line": 7,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 9,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 10,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 12,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 13,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 14,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 15,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 16,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 17,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 18,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 19,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 20,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 21,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 22,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 23,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 24,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 29,
+            "complexity": 1
+          },
+          {
+            "name": "attributePort",
+            "line": 38,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/FrontCommand.ts",
+        "blob": "da64c6573ba5426d87dc50ee548faa840136196e",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/GroupCommand.ts",
+        "blob": "a65c5c6f96d36319c918069ccb5c152965f3e6ab",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 20,
+        "nonblank": 17,
+        "sloc": 17,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 12,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/MoveCommand.ts",
+        "blob": "b5d6c245f697c6c3f1e6b1002cf4c4f533454592",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/ScaleCommand.ts",
+        "blob": "eff469f759194dd3aa9ed2ce542913033394dfef",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/SetAttributeCommand.ts",
+        "blob": "c595626b6c699e579884951cd0f43425431a3a49",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/commands/UngroupCommand.ts",
+        "blob": "a03539398809133154d35b5c508aefe6471b9320",
+        "role": "kernel",
+        "responsibility": "Domain edit commands / snapshot transactions",
+        "lines": 12,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 2,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "execute",
+            "line": 8,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/extensions/ExtensionRegistry.ts",
+        "blob": "d2e507c9cb46e073f8c48331ad8a297e712945f5",
+        "role": "kernel",
+        "responsibility": "Generic registration / lookup / dispatch",
+        "lines": 195,
+        "nonblank": 185,
+        "sloc": 181,
+        "functions": 51,
+        "ccFunctions": 98,
+        "ccModule": 1,
+        "cc": 99,
+        "maxFunctionCC": 9,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "key",
+            "line": 16,
+            "complexity": 4
+          },
+          {
+            "name": "selectorKey",
+            "line": 20,
+            "complexity": 2
+          },
+          {
+            "name": "copySelector",
+            "line": 23,
+            "complexity": 4
+          },
+          {
+            "name": "method",
+            "line": 28,
+            "complexity": 2
+          },
+          {
+            "name": "feedback",
+            "line": 33,
+            "complexity": 2
+          },
+          {
+            "name": "readPolicy",
+            "line": 36,
+            "complexity": 6
+          },
+          {
+            "name": "<anonymous>",
+            "line": 38,
+            "complexity": 2
+          },
+          {
+            "name": "copyShape",
+            "line": 42,
+            "complexity": 3
+          },
+          {
+            "name": "copyCommand",
+            "line": 50,
+            "complexity": 3
+          },
+          {
+            "name": "copyDecorator",
+            "line": 54,
+            "complexity": 1
+          },
+          {
+            "name": "copyAttribute",
+            "line": 57,
+            "complexity": 1
+          },
+          {
+            "name": "requireVoid",
+            "line": 61,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 62,
+            "complexity": 1
+          },
+          {
+            "name": "names",
+            "line": 64,
+            "complexity": 1
+          },
+          {
+            "name": "emptyState",
+            "line": 68,
+            "complexity": 1
+          },
+          {
+            "name": "register",
+            "line": 77,
+            "complexity": 9
+          },
+          {
+            "name": "<anonymous>",
+            "line": 85,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 90,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 90,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 91,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 91,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 92,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 92,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 93,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 93,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 101,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 114,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 115,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 115,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 116,
+            "complexity": 1
+          },
+          {
+            "name": "contributions",
+            "line": 123,
+            "complexity": 1
+          },
+          {
+            "name": "shape",
+            "line": 124,
+            "complexity": 1
+          },
+          {
+            "name": "command",
+            "line": 125,
+            "complexity": 1
+          },
+          {
+            "name": "attribute",
+            "line": 126,
+            "complexity": 1
+          },
+          {
+            "name": "shapeForSvg",
+            "line": 129,
+            "complexity": 2
+          },
+          {
+            "name": "shapeServices",
+            "line": 135,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 136,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 142,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 143,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 143,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 144,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 145,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 150,
+            "complexity": 1
+          },
+          {
+            "name": "treeTags",
+            "line": 155,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 161,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 164,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 165,
+            "complexity": 1
+          },
+          {
+            "name": "selectAttribute",
+            "line": 170,
+            "complexity": 6
+          },
+          {
+            "name": "<anonymous>",
+            "line": 177,
+            "complexity": 1
+          },
+          {
+            "name": "attributeAction",
+            "line": 185,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 187,
+            "complexity": 3
+          }
+        ]
+      },
+      {
+        "path": "src/host/composition.ts",
+        "blob": "da1512224d70bf36e1c8ab8dda01a2db75b1a269",
+        "role": "host",
+        "responsibility": "Host startup / composition / module loading",
+        "lines": 46,
+        "nonblank": 41,
+        "sloc": 39,
+        "functions": 7,
+        "ccFunctions": 10,
+        "ccModule": 1,
+        "cc": 11,
+        "maxFunctionCC": 3,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "defaultRegistry",
+            "line": 14,
+            "complexity": 3
+          },
+          {
+            "name": "groupFactory",
+            "line": 26,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 27,
+            "complexity": 2
+          },
+          {
+            "name": "documentFactory",
+            "line": 35,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 37,
+            "complexity": 1
+          },
+          {
+            "name": "fileStore",
+            "line": 40,
+            "complexity": 1
+          },
+          {
+            "name": "createEditor",
+            "line": 44,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/host/loading/PluginConfig.ts",
+        "blob": "e01d1e39f302743e4748d489d48c5df12361b398",
+        "role": "host",
+        "responsibility": "Host startup / composition / module loading",
+        "lines": 25,
+        "nonblank": 23,
+        "sloc": 22,
+        "functions": 4,
+        "ccFunctions": 15,
+        "ccModule": 1,
+        "cc": 16,
+        "maxFunctionCC": 9,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "readConfig",
+            "line": 12,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 14,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 15,
+            "complexity": 9
+          },
+          {
+            "name": "<anonymous>",
+            "line": 16,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/host/loading/PluginData.ts",
+        "blob": "e010f9ae46269eb97f6d7c7b5f4b4de9dd9be1a9",
+        "role": "host",
+        "responsibility": "Host startup / composition / module loading",
+        "lines": 44,
+        "nonblank": 40,
+        "sloc": 38,
+        "functions": 11,
+        "ccFunctions": 39,
+        "ccModule": 1,
+        "cc": 40,
+        "maxFunctionCC": 11,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "record",
+            "line": 4,
+            "complexity": 5
+          },
+          {
+            "name": "copyValue",
+            "line": 10,
+            "complexity": 11
+          },
+          {
+            "name": "<anonymous>",
+            "line": 18,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 21,
+            "complexity": 1
+          },
+          {
+            "name": "manifest",
+            "line": 25,
+            "complexity": 8
+          },
+          {
+            "name": "<anonymous>",
+            "line": 28,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 29,
+            "complexity": 5
+          },
+          {
+            "name": "<anonymous>",
+            "line": 31,
+            "complexity": 3
+          },
+          {
+            "name": "describe",
+            "line": 39,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 40,
+            "complexity": 1
+          },
+          {
+            "name": "reason",
+            "line": 42,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "src/host/loading/PluginInstaller.ts",
+        "blob": "81820cb097b63aac2e8cc4e6382ce70b74b3ea6e",
+        "role": "host",
+        "responsibility": "Host startup / composition / module loading",
+        "lines": 57,
+        "nonblank": 53,
+        "sloc": 51,
+        "functions": 5,
+        "ccFunctions": 22,
+        "ccModule": 1,
+        "cc": 23,
+        "maxFunctionCC": 14,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 15,
+            "complexity": 1
+          },
+          {
+            "name": "install",
+            "line": 17,
+            "complexity": 14
+          },
+          {
+            "name": "<anonymous>",
+            "line": 31,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 34,
+            "complexity": 2
+          },
+          {
+            "name": "installCode",
+            "line": 49,
+            "complexity": 3
+          }
+        ]
+      },
+      {
+        "path": "src/host/loading/PluginLoader.ts",
+        "blob": "8105f93bc859d47696973af820d61ab68648276a",
+        "role": "host",
+        "responsibility": "Host startup / composition / module loading",
+        "lines": 56,
+        "nonblank": 53,
+        "sloc": 50,
+        "functions": 3,
+        "ccFunctions": 14,
+        "ccModule": 1,
+        "cc": 15,
+        "maxFunctionCC": 8,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "readManifest",
+            "line": 9,
+            "complexity": 5
+          },
+          {
+            "name": "constructor",
+            "line": 23,
+            "complexity": 1
+          },
+          {
+            "name": "loadFile",
+            "line": 25,
+            "complexity": 8
+          }
+        ]
+      },
+      {
+        "path": "src/io/SvgFileStore.ts",
+        "blob": "7df376c45f019eded8c690d01c38cdef7a08c02c",
+        "role": "kernel",
+        "responsibility": "SVG and filesystem IO",
+        "lines": 52,
+        "nonblank": 49,
+        "sloc": 48,
+        "functions": 4,
+        "ccFunctions": 12,
+        "ccModule": 1,
+        "cc": 13,
+        "maxFunctionCC": 6,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 11,
+            "complexity": 1
+          },
+          {
+            "name": "read",
+            "line": 13,
+            "complexity": 6
+          },
+          {
+            "name": "save",
+            "line": 35,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 47,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/io/SvgReader.ts",
+        "blob": "eb91cc0c0bc3e4401dfd03546d59a896772c45f8",
+        "role": "kernel",
+        "responsibility": "SVG and filesystem IO",
+        "lines": 141,
+        "nonblank": 138,
+        "sloc": 137,
+        "functions": 14,
+        "ccFunctions": 81,
+        "ccModule": 1,
+        "cc": 82,
+        "maxFunctionCC": 25,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 15,
+            "complexity": 1
+          },
+          {
+            "name": "read",
+            "line": 16,
+            "complexity": 25
+          },
+          {
+            "name": "<anonymous>",
+            "line": 20,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 21,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 22,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 27,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 31,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 33,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 48,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 54,
+            "complexity": 9
+          },
+          {
+            "name": "<anonymous>",
+            "line": 66,
+            "complexity": 13
+          },
+          {
+            "name": "<anonymous>",
+            "line": 106,
+            "complexity": 6
+          },
+          {
+            "name": "attributes",
+            "line": 122,
+            "complexity": 7
+          },
+          {
+            "name": "children",
+            "line": 131,
+            "complexity": 8
+          }
+        ]
+      },
+      {
+        "path": "src/io/SvgValidation.ts",
+        "blob": "c6af5a5f74d095db405f9dc0464d0285e46f1576",
+        "role": "kernel",
+        "responsibility": "SVG and filesystem IO",
+        "lines": 26,
+        "nonblank": 26,
+        "sloc": 25,
+        "functions": 3,
+        "ccFunctions": 17,
+        "ccModule": 1,
+        "cc": 18,
+        "maxFunctionCC": 11,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "number",
+            "line": 7,
+            "complexity": 4
+          },
+          {
+            "name": "characters",
+            "line": 13,
+            "complexity": 11
+          },
+          {
+            "name": "size",
+            "line": 22,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "src/io/SvgWriter.ts",
+        "blob": "71ae32e808b7b466d485dbcb5c30fcb548ab88e8",
+        "role": "kernel",
+        "responsibility": "SVG and filesystem IO",
+        "lines": 35,
+        "nonblank": 34,
+        "sloc": 33,
+        "functions": 3,
+        "ccFunctions": 11,
+        "ccModule": 1,
+        "cc": 12,
+        "maxFunctionCC": 8,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "write",
+            "line": 9,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 15,
+            "complexity": 8
+          }
+        ]
+      },
+      {
+        "path": "src/main.ts",
+        "blob": "c9eac6cfd848ef613aa8be5e31b5fe83a7012660",
+        "role": "host",
+        "responsibility": "Host startup / composition / module loading",
+        "lines": 18,
+        "nonblank": 17,
+        "sloc": 17,
+        "functions": 1,
+        "ccFunctions": 2,
+        "ccModule": 6,
+        "cc": 8,
+        "maxFunctionCC": 2,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 6
+          },
+          {
+            "name": "<anonymous>",
+            "line": 15,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "src/model/ContainerShape.ts",
+        "blob": "3188102fa452b1e058fabf21772fe1f14a620773",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 100,
+        "nonblank": 86,
+        "sloc": 72,
+        "functions": 15,
+        "ccFunctions": 30,
+        "ccModule": 1,
+        "cc": 31,
+        "maxFunctionCC": 7,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "asContainer",
+            "line": 13,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 16,
+            "complexity": 1
+          },
+          {
+            "name": "children",
+            "line": 21,
+            "complexity": 1
+          },
+          {
+            "name": "indexOf",
+            "line": 25,
+            "complexity": 1
+          },
+          {
+            "name": "addChild",
+            "line": 29,
+            "complexity": 7
+          },
+          {
+            "name": "removeChild",
+            "line": 40,
+            "complexity": 2
+          },
+          {
+            "name": "move",
+            "line": 47,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 50,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 53,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 55,
+            "complexity": 1
+          },
+          {
+            "name": "setOwnAttribute",
+            "line": 58,
+            "complexity": 1
+          },
+          {
+            "name": "contains",
+            "line": 64,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 67,
+            "complexity": 3
+          },
+          {
+            "name": "collectLeaves",
+            "line": 71,
+            "complexity": 3
+          },
+          {
+            "name": "transform",
+            "line": 84,
+            "complexity": 4
+          }
+        ]
+      },
+      {
+        "path": "src/model/DocumentView.ts",
+        "blob": "9b31c7235a54c183b9ad66bd7a7f47f6c86b3195",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 47,
+        "nonblank": 44,
+        "sloc": 44,
+        "functions": 9,
+        "ccFunctions": 14,
+        "ccModule": 1,
+        "cc": 15,
+        "maxFunctionCC": 4,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "captureView",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 9,
+            "complexity": 1
+          },
+          {
+            "name": "shapeView",
+            "line": 13,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 22,
+            "complexity": 1
+          },
+          {
+            "name": "queryView",
+            "line": 26,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 27,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 28,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 39,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 41,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "src/model/Shape.ts",
+        "blob": "e15408ea24214d1f310e1e778b2fd3faa3b45d61",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 118,
+        "nonblank": 101,
+        "sloc": 82,
+        "functions": 15,
+        "ccFunctions": 37,
+        "ccModule": 1,
+        "cc": 38,
+        "maxFunctionCC": 6,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 23,
+            "complexity": 6
+          },
+          {
+            "name": "id",
+            "line": 31,
+            "complexity": 1
+          },
+          {
+            "name": "fill",
+            "line": 32,
+            "complexity": 1
+          },
+          {
+            "name": "stroke",
+            "line": 33,
+            "complexity": 1
+          },
+          {
+            "name": "strokeWidth",
+            "line": 34,
+            "complexity": 1
+          },
+          {
+            "name": "attributes",
+            "line": 39,
+            "complexity": 1
+          },
+          {
+            "name": "asContainer",
+            "line": 41,
+            "complexity": 1
+          },
+          {
+            "name": "validate",
+            "line": 48,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 60,
+            "complexity": 2
+          },
+          {
+            "name": "finite",
+            "line": 66,
+            "complexity": 3
+          },
+          {
+            "name": "nonNegative",
+            "line": 71,
+            "complexity": 2
+          },
+          {
+            "name": "numeric",
+            "line": 77,
+            "complexity": 3
+          },
+          {
+            "name": "scaleFactor",
+            "line": 89,
+            "complexity": 4
+          },
+          {
+            "name": "copyStyle",
+            "line": 96,
+            "complexity": 4
+          },
+          {
+            "name": "setCommonAttribute",
+            "line": 104,
+            "complexity": 6
+          }
+        ]
+      },
+      {
+        "path": "src/model/ShapeTree.ts",
+        "blob": "5e7131be7cb7540d5f2e6e7df6edd7c9223d41b1",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 98,
+        "nonblank": 92,
+        "sloc": 79,
+        "functions": 12,
+        "ccFunctions": 52,
+        "ccModule": 1,
+        "cc": 53,
+        "maxFunctionCC": 12,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "validateForest",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 9,
+            "complexity": 12
+          },
+          {
+            "name": "attributesOf",
+            "line": 32,
+            "complexity": 5
+          },
+          {
+            "name": "description",
+            "line": 43,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 45,
+            "complexity": 3
+          },
+          {
+            "name": "references",
+            "line": 56,
+            "complexity": 10
+          },
+          {
+            "name": "cloneForest",
+            "line": 69,
+            "complexity": 11
+          },
+          {
+            "name": "<anonymous>",
+            "line": 73,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 78,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 80,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 81,
+            "complexity": 1
+          },
+          {
+            "name": "freezeModel",
+            "line": 96,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "src/model/StyleValidation.ts",
+        "blob": "74047d5e93e32f83101c7ca84fb0f063d233036c",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 47,
+        "nonblank": 45,
+        "sloc": 43,
+        "functions": 7,
+        "ccFunctions": 27,
+        "ccModule": 1,
+        "cc": 28,
+        "maxFunctionCC": 20,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "paint",
+            "line": 12,
+            "complexity": 20
+          },
+          {
+            "name": "<anonymous>",
+            "line": 24,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 34,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 35,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 35,
+            "complexity": 1
+          },
+          {
+            "name": "number",
+            "line": 42,
+            "complexity": 2
+          },
+          {
+            "name": "reject",
+            "line": 46,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/model/SvgDocument.ts",
+        "blob": "80747df079563e1d3e510a943aa4a98701b89678",
+        "role": "kernel",
+        "responsibility": "Domain structure / invariants / cloning",
+        "lines": 275,
+        "nonblank": 243,
+        "sloc": 226,
+        "functions": 48,
+        "ccFunctions": 89,
+        "ccModule": 1,
+        "cc": 90,
+        "maxFunctionCC": 12,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 25,
+            "complexity": 1
+          },
+          {
+            "name": "width",
+            "line": 32,
+            "complexity": 1
+          },
+          {
+            "name": "height",
+            "line": 33,
+            "complexity": 1
+          },
+          {
+            "name": "resize",
+            "line": 35,
+            "complexity": 1
+          },
+          {
+            "name": "hasShape",
+            "line": 42,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 43,
+            "complexity": 1
+          },
+          {
+            "name": "getShapeSnapshot",
+            "line": 46,
+            "complexity": 1
+          },
+          {
+            "name": "getRootSnapshots",
+            "line": 50,
+            "complexity": 1
+          },
+          {
+            "name": "getParentId",
+            "line": 54,
+            "complexity": 2
+          },
+          {
+            "name": "addShape",
+            "line": 58,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 63,
+            "complexity": 1
+          },
+          {
+            "name": "deleteShape",
+            "line": 70,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 74,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 78,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 82,
+            "complexity": 1
+          },
+          {
+            "name": "group",
+            "line": 90,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 91,
+            "complexity": 12
+          },
+          {
+            "name": "<anonymous>",
+            "line": 95,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 102,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 104,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 119,
+            "complexity": 2
+          },
+          {
+            "name": "ungroup",
+            "line": 133,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 134,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 142,
+            "complexity": 1
+          },
+          {
+            "name": "addTo",
+            "line": 149,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 150,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 155,
+            "complexity": 1
+          },
+          {
+            "name": "bringToFront",
+            "line": 163,
+            "complexity": 1
+          },
+          {
+            "name": "sendToBack",
+            "line": 167,
+            "complexity": 1
+          },
+          {
+            "name": "clone",
+            "line": 171,
+            "complexity": 1
+          },
+          {
+            "name": "validateDimension",
+            "line": 177,
+            "complexity": 4
+          },
+          {
+            "name": "validateIndex",
+            "line": 183,
+            "complexity": 4
+          },
+          {
+            "name": "childrenOf",
+            "line": 187,
+            "complexity": 2
+          },
+          {
+            "name": "locations",
+            "line": 191,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 193,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 194,
+            "complexity": 2
+          },
+          {
+            "name": "requireLocation",
+            "line": 204,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 205,
+            "complexity": 1
+          },
+          {
+            "name": "requireContainer",
+            "line": 210,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 211,
+            "complexity": 1
+          },
+          {
+            "name": "insert",
+            "line": 218,
+            "complexity": 2
+          },
+          {
+            "name": "detach",
+            "line": 223,
+            "complexity": 2
+          },
+          {
+            "name": "reorder",
+            "line": 228,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 237,
+            "complexity": 1
+          },
+          {
+            "name": "withStructureCopy",
+            "line": 246,
+            "complexity": 1
+          },
+          {
+            "name": "view",
+            "line": 254,
+            "complexity": 1
+          },
+          {
+            "name": "validateComplete",
+            "line": 260,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 269,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "src/services/Editor.ts",
+        "blob": "38c2f6793e549639369107aad7ce9e911fe74d88",
+        "role": "kernel",
+        "responsibility": "Application operations / saved baseline / feedback",
+        "lines": 221,
+        "nonblank": 195,
+        "sloc": 190,
+        "functions": 31,
+        "ccFunctions": 50,
+        "ccModule": 1,
+        "cc": 51,
+        "maxFunctionCC": 7,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 35,
+            "complexity": 2
+          },
+          {
+            "name": "executeInvocation",
+            "line": 41,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 43,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 45,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 48,
+            "complexity": 1
+          },
+          {
+            "name": "query",
+            "line": 53,
+            "complexity": 2
+          },
+          {
+            "name": "observation",
+            "line": 54,
+            "complexity": 1
+          },
+          {
+            "name": "executeAction",
+            "line": 59,
+            "complexity": 1
+          },
+          {
+            "name": "executeAttributes",
+            "line": 64,
+            "complexity": 1
+          },
+          {
+            "name": "read",
+            "line": 69,
+            "complexity": 1
+          },
+          {
+            "name": "save",
+            "line": 83,
+            "complexity": 3
+          },
+          {
+            "name": "assertIdle",
+            "line": 99,
+            "complexity": 2
+          },
+          {
+            "name": "init",
+            "line": 103,
+            "complexity": 1
+          },
+          {
+            "name": "getCanvas",
+            "line": 113,
+            "complexity": 1
+          },
+          {
+            "name": "resizeCanvas",
+            "line": 118,
+            "complexity": 1
+          },
+          {
+            "name": "create",
+            "line": 127,
+            "complexity": 7
+          },
+          {
+            "name": "delete",
+            "line": 137,
+            "complexity": 1
+          },
+          {
+            "name": "move",
+            "line": 142,
+            "complexity": 1
+          },
+          {
+            "name": "scale",
+            "line": 147,
+            "complexity": 1
+          },
+          {
+            "name": "setAttribute",
+            "line": 152,
+            "complexity": 1
+          },
+          {
+            "name": "group",
+            "line": 157,
+            "complexity": 1
+          },
+          {
+            "name": "ungroup",
+            "line": 162,
+            "complexity": 1
+          },
+          {
+            "name": "addTo",
+            "line": 167,
+            "complexity": 1
+          },
+          {
+            "name": "front",
+            "line": 172,
+            "complexity": 1
+          },
+          {
+            "name": "back",
+            "line": 177,
+            "complexity": 1
+          },
+          {
+            "name": "undo",
+            "line": 182,
+            "complexity": 1
+          },
+          {
+            "name": "redo",
+            "line": 183,
+            "complexity": 1
+          },
+          {
+            "name": "tree",
+            "line": 188,
+            "complexity": 3
+          },
+          {
+            "name": "show",
+            "line": 196,
+            "complexity": 1
+          },
+          {
+            "name": "getStatus",
+            "line": 203,
+            "complexity": 1
+          },
+          {
+            "name": "findView",
+            "line": 213,
+            "complexity": 4
+          }
+        ]
+      },
+      {
+        "path": "src/services/EditorTypes.ts",
+        "blob": "cd0bcd572b96f335cb0afb8f20078f0cff866237",
+        "role": "kernel",
+        "responsibility": "Application operations / saved baseline / feedback",
+        "lines": 32,
+        "nonblank": 24,
+        "sloc": 21,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "src/services/FeedbackResolver.ts",
+        "blob": "aa379c1f15b71804ea6bf63057935a3fdfa3496b",
+        "role": "kernel",
+        "responsibility": "Application operations / saved baseline / feedback",
+        "lines": 35,
+        "nonblank": 33,
+        "sloc": 31,
+        "functions": 3,
+        "ccFunctions": 16,
+        "ccModule": 1,
+        "cc": 17,
+        "maxFunctionCC": 11,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 6,
+            "complexity": 1
+          },
+          {
+            "name": "prepare",
+            "line": 8,
+            "complexity": 11
+          },
+          {
+            "name": "<anonymous>",
+            "line": 16,
+            "complexity": 4
+          }
+        ]
+      },
+      {
+        "path": "vscode-extension/src/SvgDocumentSymbolProvider.ts",
+        "blob": "3fd863c9870ff98780261e46d2aa81165eaa25a8",
+        "role": "vscode",
+        "responsibility": "VSCode providers / independent XML outline",
+        "lines": 23,
+        "nonblank": 21,
+        "sloc": 21,
+        "functions": 4,
+        "ccFunctions": 9,
+        "ccModule": 1,
+        "cc": 10,
+        "maxFunctionCC": 5,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 5,
+            "complexity": 1
+          },
+          {
+            "name": "provideDocumentSymbols",
+            "line": 7,
+            "complexity": 5
+          },
+          {
+            "name": "<anonymous>",
+            "line": 10,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 12,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "vscode-extension/src/SvgFileDecorationProvider.ts",
+        "blob": "7afd84c0fdde40bce67d94d43fc1787659b99034",
+        "role": "vscode",
+        "responsibility": "VSCode providers / independent XML outline",
+        "lines": 36,
+        "nonblank": 32,
+        "sloc": 30,
+        "functions": 4,
+        "ccFunctions": 15,
+        "ccModule": 1,
+        "cc": 16,
+        "maxFunctionCC": 9,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 9,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 13,
+            "complexity": 2
+          },
+          {
+            "name": "provideFileDecoration",
+            "line": 18,
+            "complexity": 9
+          },
+          {
+            "name": "dispose",
+            "line": 30,
+            "complexity": 3
+          }
+        ]
+      },
+      {
+        "path": "vscode-extension/src/XmlOutlineParser.ts",
+        "blob": "057e04ff449534f7b423cff0bc6b8888b61cca73",
+        "role": "vscode",
+        "responsibility": "VSCode providers / independent XML outline",
+        "lines": 54,
+        "nonblank": 52,
+        "sloc": 48,
+        "functions": 8,
+        "ccFunctions": 16,
+        "ccModule": 1,
+        "cc": 17,
+        "maxFunctionCC": 7,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "parse",
+            "line": 15,
+            "complexity": 7
+          },
+          {
+            "name": "<anonymous>",
+            "line": 15,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 22,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 23,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 24,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 25,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 26,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 36,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "vscode-extension/src/extension.ts",
+        "blob": "2945df63aaba009a359f596257bcdc77dd37b133",
+        "role": "vscode",
+        "responsibility": "VSCode providers / independent XML outline",
+        "lines": 13,
+        "nonblank": 12,
+        "sloc": 12,
+        "functions": 1,
+        "ccFunctions": 1,
+        "ccModule": 1,
+        "cc": 2,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "activate",
+            "line": 5,
+            "complexity": 1
+          }
+        ]
+      }
+    ]
+  },
+  "delta": {
+    "kernel": {
+      "files": 9,
+      "lines": 352,
+      "nonblank": 341,
+      "sloc": 260,
+      "functions": 11,
+      "ccFunctions": 119,
+      "ccModule": -2,
+      "cc": 117
+    },
+    "host": {
+      "files": 5,
+      "lines": 239,
+      "nonblank": 221,
+      "sloc": 211,
+      "functions": 30,
+      "ccFunctions": 100,
+      "ccModule": 9,
+      "cc": 109
+    },
+    "plugins": {
+      "files": 14,
+      "lines": 658,
+      "nonblank": 594,
+      "sloc": 586,
+      "functions": 173,
+      "ccFunctions": 266,
+      "ccModule": 13,
+      "cc": 279
+    },
+    "vscode": {
+      "files": 4,
+      "lines": 126,
+      "nonblank": 117,
+      "sloc": 111,
+      "functions": 17,
+      "ccFunctions": 41,
+      "ccModule": 4,
+      "cc": 45
+    },
+    "cli": {
+      "files": 28,
+      "lines": 1249,
+      "nonblank": 1156,
+      "sloc": 1057,
+      "functions": 214,
+      "ccFunctions": 485,
+      "ccModule": 20,
+      "cc": 505
+    }
+  }
+}

@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { SvgDocument } from "../../src/model/SvgDocument";
-import { Group } from "../../src/model/Group";
-import { Rectangle } from "../../src/model/Rectangle";
-import { Circle } from "../../src/model/Circle";
-import { Ellipse } from "../../src/model/Ellipse";
-import { Line } from "../../src/model/Line";
-import { TextShape } from "../../src/model/TextShape";
+import { SvgDocument } from "../support/defaults";
+import { Group } from "../../plugins/builtin-shapes/Group";
+import { Rectangle } from "../../plugins/builtin-shapes/Rectangle";
+import { Circle } from "../../plugins/builtin-shapes/Circle";
+import { Ellipse } from "../../plugins/builtin-shapes/Ellipse";
+import { Line } from "../../plugins/builtin-shapes/Line";
+import { TextShape } from "../../plugins/builtin-shapes/TextShape";
 import { CreateCommand } from "../../src/commands/CreateCommand";
 import { DeleteCommand } from "../../src/commands/DeleteCommand";
 import { MoveCommand } from "../../src/commands/MoveCommand";

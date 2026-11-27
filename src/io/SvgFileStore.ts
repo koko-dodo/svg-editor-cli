@@ -8,7 +8,7 @@ import { SvgValidation } from "./SvgValidation";
 
 /** File access is isolated for deterministic failure testing. */
 export class SvgFileStore {
-  constructor(private readonly files: Pick<typeof fs, "open" | "rename" | "unlink"> = fs) {}
+  constructor(private readonly reader: SvgReader, private readonly writer: SvgWriter, private readonly files: Pick<typeof fs, "open" | "rename" | "unlink"> = fs) {}
 
   async read(path: string) {
     const absolutePath = resolve(path);
@@ -29,11 +29,11 @@ export class SvgFileStore {
     } catch { throw new Error(`cannot read file: ${path}`); }
     if (bytes.length > SvgValidation.maxBytes) throw new Error("SVG file exceeds size limit");
     const xml = new TextDecoder("utf-8", { fatal: true }).decode(bytes);
-    return { ...new SvgReader().read(xml), path, absolutePath };
+    return { ...this.reader.read(xml), path, absolutePath };
   }
 
   async save(path: string, document: SvgDocument) {
-    const { xml, elements } = new SvgWriter().write(document);
+    const { xml, elements } = this.writer.write(document);
     const target = resolve(path);
     const temporary = join(dirname(target), `.${basename(target)}.${randomUUID()}.tmp`);
     let created = false;

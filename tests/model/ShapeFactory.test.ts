@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { ShapeFactory } from "../../src/model/ShapeFactory";
-import type { ShapeDefinition } from "../../src/model/ShapeFactory";
-import { Rectangle } from "../../src/model/Rectangle";
-import { Circle } from "../../src/model/Circle";
-import { Ellipse } from "../../src/model/Ellipse";
-import { Line } from "../../src/model/Line";
-import { TextShape } from "../../src/model/TextShape";
-import { Group } from "../../src/model/Group";
+import { ShapeFactory } from "../../plugins/builtin-shapes/ShapeFactory";
+import type { ShapeDefinition } from "../../plugins/builtin-shapes/ShapeFactory";
+import { Rectangle } from "../../plugins/builtin-shapes/Rectangle";
+import { Circle } from "../../plugins/builtin-shapes/Circle";
+import { Ellipse } from "../../plugins/builtin-shapes/Ellipse";
+import { Line } from "../../plugins/builtin-shapes/Line";
+import { TextShape } from "../../plugins/builtin-shapes/TextShape";
+import { Group } from "../../plugins/builtin-shapes/Group";
 
 const definitions: ShapeDefinition[] = [
   { type: "rect", id: "r", x: 1, y: 2, width: 3, height: 4 },

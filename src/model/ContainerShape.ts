@@ -1,8 +1,16 @@
 import { Shape } from "./Shape";
 import type { ShapeStyle } from "./Shape";
 
-/** Local containment only; SvgDocument will enforce unique IDs and single parents. */
-export class Group extends Shape {
+/**
+ * Local containment only; SvgDocument enforces unique IDs and single parents.
+ * Descendant transforms require synchronous, deterministic leaf operations and
+ * faithful, source-preserving clones (Shape.clone contract). Side effects or
+ * hidden shared mutable state violate this cooperative plugin contract.
+ */
+export abstract class ContainerShape extends Shape {
+  abstract readonly ungroupPolicy: "expand" | "reject-composite";
+
+  override asContainer(): ContainerShape { return this; }
   private readonly _children: Shape[] = [];
 
   constructor(id: string, style: ShapeStyle = {}) {
@@ -23,7 +31,7 @@ export class Group extends Shape {
       throw new Error("invalid child index");
     }
     if (this._children.includes(child)) throw new Error("child already exists in group");
-    if (child === this || (child instanceof Group && child.contains(this))) {
+    if (child === this || (child.asContainer()?.contains(this))) {
       throw new Error("cannot create circular containment");
     }
     this._children.splice(index, 0, child);
@@ -51,31 +59,27 @@ export class Group extends Shape {
     throw new Error(`unknown attribute: ${name}`);
   }
 
-  override clone(): Group {
-    const copy = new Group(this.id, this.copyStyle());
-    for (const child of this._children) copy.addChild(child.clone());
-    return copy;
-  }
+  abstract override clone(): ContainerShape;
 
-  private contains(target: Shape, visited = new Set<Group>()): boolean {
+  private contains(target: Shape, visited = new Set<ContainerShape>()): boolean {
     if (visited.has(this)) return false;
     visited.add(this);
     return this._children.some(child => child === target ||
-      (child instanceof Group && child.contains(target, visited)));
+      (child.asContainer()?.contains(target, visited) ?? false));
   }
 
   private collectLeaves(leaves: Shape[]): void {
     for (const child of this._children) {
-      if (child instanceof Group) child.collectLeaves(leaves);
+      const container = child.asContainer();
+      if (container !== null) container.collectLeaves(leaves);
       else leaves.push(child);
     }
   }
 
   /**
    * Preflight before touching originals; preserves all existing object references.
-   * Assumes synchronous, deterministic transforms and faithful clones, as provided
-   * by the five built-in leaves. Arbitrary side-effecting plugins need a stronger
-   * prepare/commit protocol before they can share this atomicity guarantee.
+   * Relies on the leaf-operation and clone contracts above. This preflight does
+   * not prove correctness for arbitrary JS state or roll back external effects.
    */
   private transform(operation: (shape: Shape) => void): void {
     const leaves: Shape[] = [];

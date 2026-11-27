@@ -1,7 +1,14 @@
-import { Shape } from "./Shape";
-import type { ShapeStyle } from "./Shape";
+import type { Attributes } from "../../src/api";
+import { Shape } from "../../src/api";
+import type { ShapeStyle } from "../../src/api";
 
 export class Line extends Shape {
+  readonly kind = "line";
+
+  override attributes(): Attributes {
+    return Object.freeze({ ...super.attributes(), x1: this._x1, y1: this._y1, x2: this._x2, y2: this._y2 });
+  }
+
   private _x1: number;
   private _y1: number;
   private _x2: number;
