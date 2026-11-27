@@ -1,5 +1,5 @@
 import { expect, it } from "vitest";
-import { Editor } from "../../src/services/Editor";
+import { Editor } from "../support/defaults";
 
 it("project R4: reparenting preserves explicit styles but changes the source of inherited styles", () => {
   const e = new Editor(); e.init();

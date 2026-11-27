@@ -7,9 +7,9 @@ import * as ts from "typescript/unstable/ast";
 
 // Project architecture agreement, not a prescribed directory layout in the lab.
 const allowed: Record<string, readonly string[]> = {
-  api: ["model"], model: ["api"], commands: ["model", "api"], io: ["model"],
+  api: ["model"], model: ["api"], commands: ["model", "api"], io: ["model", "api", "extensions"],
   extensions: ["api", "model"],
-  services: ["commands", "model", "io", "api"], cli: ["services"],
+  services: ["commands", "model", "io", "api", "extensions"], cli: ["services", "api", "extensions"], host: ["api", "model", "io", "services", "cli", "extensions"],
 };
 const root = resolve(__dirname, "../../src");
 function files(directory: string): string[] {
@@ -35,12 +35,13 @@ it("checks literal imports and re-exports recursively across every src module", 
       expect(existsSync(`${targetPath}.ts`) || existsSync(join(targetPath, "index.ts")), `${path}: ${specifier}`).toBe(true);
       const target = relative(root, targetPath);
       const to = target.split(/[\\/]/)[0]!;
-      if (from !== "main.ts" && from !== to && !allowed[from]?.includes(to)) {
+      const hostPlugin = from === "host" && targetPath.startsWith(resolve(root, "../plugins") + sep);
+      if (from !== "main.ts" && from !== to && !hostPlugin && !allowed[from]?.includes(to)) {
         violations.push(`${relative(root, path)} -> ${target}`);
       }
     }
   }
-  expect([...checked].sort()).toEqual(["api", "cli", "commands", "extensions", "io", "model", "services"]);
+  expect([...checked].sort()).toEqual(["api", "cli", "commands", "extensions", "host", "io", "model", "services"]);
   expect(violations).toEqual([]);
 });
 
@@ -179,5 +180,35 @@ it("keeps registry test plugins on the public API and the kernel independent of 
     for (const specifier of dependencies(readFileSync(path, "utf8"))) {
       expect(specifier).not.toMatch(/plugins|support|services|cli|host/);
     }
+  }
+});
+
+it("limits default plugins to their own package and the public API", () => {
+  const plugins = resolve(root, "../plugins");
+  for (const path of files(plugins)) {
+    const packageRoot = join(plugins, relative(plugins, path).split(sep)[0]!);
+    for (const specifier of dependencies(readFileSync(path, "utf8"))) {
+      expect(specifier.startsWith("."), `${path}: unexpected external dependency ${specifier}`).toBe(true);
+      const target = resolve(dirname(path), specifier);
+      expect(target === join(root, "api") || target.startsWith(packageRoot + sep), `${path} -> ${specifier}`).toBe(true);
+    }
+  }
+});
+
+it("forbids concrete default shape dependencies throughout the kernel", () => {
+  for (const folder of ["model", "commands", "services", "extensions", "io", "cli"]) {
+    for (const path of files(join(root, folder))) {
+      const source = readFileSync(path, "utf8");
+      for (const dependency of dependencies(source)) expect(dependency, path).not.toMatch(/plugins|ShapeFactory|ShapeSchema|\/(Rectangle|Circle|Ellipse|Line|TextShape|Group)$/);
+      expect(source, path).not.toMatch(/new\s+(Group|Rectangle|Circle|Ellipse|Line|TextShape)\s*\(/);
+    }
+  }
+});
+
+it("keeps integration plugin doubles on the public API and local doubles", () => {
+  const support = resolve(root,"../tests/support");
+  for (const specifier of dependencies(readFileSync(join(support,"WiredExtensions.ts"),"utf8"))) {
+    const target=resolve(support,specifier);
+    expect(target === join(root,"api") || target === join(support,"ContractShapes")).toBe(true);
   }
 });

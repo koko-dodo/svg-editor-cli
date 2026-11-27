@@ -1,6 +1,6 @@
-import type { Attributes } from "../api/Domain";
-import { Shape } from "./Shape";
-import type { ShapeStyle } from "./Shape";
+import type { Attributes } from "../../src/api";
+import { Shape } from "../../src/api";
+import type { ShapeStyle } from "../../src/api";
 
 export class TextShape extends Shape {
   readonly kind = "text";

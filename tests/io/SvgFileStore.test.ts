@@ -2,8 +2,8 @@ import * as fs from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { SvgFileStore } from "../../src/io/SvgFileStore";
-import { SvgDocument } from "../../src/model/SvgDocument";
+import { SvgFileStore } from "../support/defaults";
+import { SvgDocument } from "../support/defaults";
 
 let directory: string;
 beforeEach(async () => { directory = await fs.mkdtemp(join(tmpdir(), "svg-store-")); });

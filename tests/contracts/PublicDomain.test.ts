@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import * as api from "../../src/api";
 import type { AttributeMutation, CommandResult, DocumentQuery, MutationPort } from "../../src/api";
 import { CommandHistory } from "../../src/commands/CommandHistory";
-import { SvgDocument } from "../../src/model/SvgDocument";
-import { Editor } from "../../src/services/Editor";
+import { SvgDocument } from "../support/defaults";
+import { Editor } from "../support/defaults";
 import { ProbeLeaf, composite } from "../support/ContractShapes";
 
 const result: CommandResult = { operation: "move", targetIds: ["p"], parameters: { dx: 1 } };
@@ -28,7 +28,7 @@ void typeBoundary;
 
 describe("public domain API", () => {
   it("exports only model abstractions at runtime, not application ownership", () => {
-    expect(Object.keys(api).sort()).toEqual(["ContainerShape", "Shape"]);
+    expect(Object.keys(api).sort()).toEqual(["ContainerShape", "Shape", "parseNumberToken", "parseSvgNumber"]);
     expect(new ProbeLeaf("p").kind).toBe("probe-leaf");
   });
   it("supports an independent plugin model and deep-frozen scalar queries", () => {

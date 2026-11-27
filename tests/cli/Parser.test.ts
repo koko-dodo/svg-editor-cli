@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { Parser } from "../../src/cli/Parser";
-import { CommandCatalog } from "../../src/cli/CommandCatalog";
+import { CommandCatalog } from "../support/defaults";
 
 const parser = new Parser(new CommandCatalog());
 describe("Parser", () => {
@@ -45,7 +45,7 @@ describe("Parser", () => {
     if (parsed?.kind !== "create") throw new Error("expected create");
     expect(parsed.request).not.toHaveProperty("fill");
     expect(parsed.request).not.toHaveProperty("stroke");
-    expect(parsed.request.parentId).toBe("p");
+    expect((parsed.request as { readonly parentId?: string }).parentId).toBe("p");
   });
 
   it("keeps empty content and quoted in as positional data", () => {

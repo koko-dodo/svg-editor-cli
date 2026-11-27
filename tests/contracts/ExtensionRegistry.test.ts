@@ -5,7 +5,7 @@ import type {
 } from "../../src/api";
 import { ExtensionRegistry } from "../../src/extensions/ExtensionRegistry";
 import { CommandHistory } from "../../src/commands/CommandHistory";
-import { SvgDocument } from "../../src/model/SvgDocument";
+import { SvgDocument } from "../support/defaults";
 import { queryView } from "../../src/model/DocumentView";
 import { ProbeLeaf } from "../support/ContractShapes";
 import { activateProbe, ProbeAttribute, ProbeDecorator, ProbeEditCommand, ProbeProvider, ProbeQueryCommand } from "../support/RegistryExtensions";
@@ -181,7 +181,7 @@ describe("extension registry contracts", () => {
     const args = tokens("p", "8"); const invocation = registry.command("tweak-probe")!.parse(args, registry.shapeServices());
     args[0] = { value: "missing", quoted: false, column: 1 };
     expect(invocation.mode).toBe("edit"); if (invocation.mode !== "edit") throw new Error("wrong plan mode");
-    history.executeAction({ execute: document => invocation.execute({ document, shapes: registry.shapeServices(), rendering }) });
+    history.executeAction({ execute: document => invocation.execute({ document, shapes: registry.shapeServices(), rendering, setAttribute: request => registry.attributeAction(request).execute(Object.freeze({ view: document.view, find: document.find, parentId: document.parentId, setDefault: document.setDefault })) }) });
     expect(query(history).find("p")!.attributes.value).toBe(8); history.undo();
     expect(query(history).view()).toEqual(before.view); expect(history.canUndo).toBe(false); history.redo();
     expect(query(history).find("p")!.attributes.value).toBe(8);

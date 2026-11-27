@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import type { AttributeMutation, CommandResult, FeedbackContext, MutationPort } from "../../src/api";
 import { CommandHistory } from "../../src/commands/CommandHistory";
-import { SvgDocument } from "../../src/model/SvgDocument";
-import { Group } from "../../src/model/Group";
+import { SvgDocument } from "../support/defaults";
+import { Group } from "../../plugins/builtin-shapes/Group";
 import { ProbeLeaf, RequiredPartsContainer, composite } from "../support/ContractShapes";
 
 const result: CommandResult = { operation: "move", targetIds: ["compound"], parameters: { dx: 1, dy: 0 } };

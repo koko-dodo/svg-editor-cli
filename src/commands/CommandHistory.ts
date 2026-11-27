@@ -135,6 +135,8 @@ export class CommandHistory {
     const operation = result.operation;
     const operations: readonly string[] = ["create", "delete", "move", "scale", "set", "group", "ungroup", "addto", "front", "back"];
     if (typeof operation !== "string" || !operations.includes(operation)) throw new Error("invalid command result operation");
+    const commandName = result.commandName;
+    if (commandName !== undefined && (typeof commandName !== "string" || !commandName || /\s/.test(commandName))) throw new Error("invalid command name");
     const parameters: Record<string, CommandParameter> = {};
     for (const [key, value] of Object.entries(result.parameters)) {
       if (typeof value === "string" || (typeof value === "number" && Number.isFinite(value))) {
@@ -153,6 +155,7 @@ export class CommandHistory {
       typeof owner.name !== "string" || owner.name.trim() === "")) throw new Error("invalid feedback owner");
     return Object.freeze({
       operation,
+      ...(commandName === undefined ? {} : { commandName }),
       ...(owner === undefined ? {} : { feedbackOwner: Object.freeze({ category: owner.category, name: owner.name }) }),
       targetIds: Object.freeze([...targetIds]),
       parameters: Object.freeze(parameters),

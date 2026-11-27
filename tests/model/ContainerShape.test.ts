@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { ContainerShape } from "../../src/api";
-import { Group } from "../../src/model/Group";
-import { SvgDocument } from "../../src/model/SvgDocument";
+import { Group } from "../../plugins/builtin-shapes/Group";
+import { SvgDocument } from "../support/defaults";
 import { ProbeLeaf, composite, RequiredPartsContainer } from "../support/ContractShapes";
 
 describe("generic container and clone contract", () => {

@@ -1,5 +1,5 @@
-import { ContainerShape } from "./ContainerShape";
-import type { ShapeStyle } from "./Shape";
+import { ContainerShape } from "../../src/api";
+import type { ShapeStyle } from "../../src/api";
 
 /** The built-in ordinary container. Generic algorithms live in ContainerShape. */
 export class Group extends ContainerShape {

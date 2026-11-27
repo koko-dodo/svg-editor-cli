@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Rectangle } from "../../src/model/Rectangle";
+import { Rectangle } from "../../plugins/builtin-shapes/Rectangle";
 
 describe("Rectangle", () => {
   const make = () => new Rectangle("s1", 1, 2, 3, 4, { fill: "red", stroke: "blue", "stroke-width": 2 });

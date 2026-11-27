@@ -1,4 +1,3 @@
-import { Group } from "./Group";
 import { Shape } from "./Shape";
 import type { ContainerShape } from "./ContainerShape";
 import { cloneForest, freezeModel, validateForest } from "./ShapeTree";
@@ -23,7 +22,7 @@ export class SvgDocument {
   private _height: number;
   private roots: Shape[] = [];
 
-  constructor(width = 800, height = 600) {
+  constructor(width = 800, height = 600, private readonly makeGroup?: (id: string) => ContainerShape) {
     this.validateDimension(width, "width");
     this.validateDimension(height, "height");
     this._width = width;
@@ -90,7 +89,8 @@ export class SvgDocument {
    */
   group(newId: string, ids: readonly string[]): void {
     this.withStructureCopy(work => {
-      const group = new Group(newId);
+      if (!work.makeGroup) throw new Error("no group provider configured");
+      const group = work.makeGroup(newId);
       const all = work.locations();
       if (all.some(location => location.shape.id === newId)) {
         throw new Error(`id already exists: ${newId}`);
@@ -169,7 +169,7 @@ export class SvgDocument {
   }
 
   clone(): SvgDocument {
-    const copy = new SvgDocument(this._width, this._height);
+    const copy = new SvgDocument(this._width, this._height, this.makeGroup);
     copy.roots = cloneForest(this.roots);
     return copy;
   }

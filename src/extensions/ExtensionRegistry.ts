@@ -1,6 +1,6 @@
 import type {
   AttributeAction, AttributeHandler, AttributeRequest, Command, ContributionNames,
-  DocumentQuery, RegistrationContext, ShapeProvider, ShapeServices, SvgSelector,
+  DocumentQuery, RegistrationContext, ShapeProvider, ShapeServices, SvgReadPolicy, SvgSelector,
   TreeDecorationContext, TreeDecorator,
 } from "../api";
 import { queryView } from "../model/DocumentView";
@@ -33,9 +33,16 @@ function method<T extends object, K extends keyof T>(instance: T, name: K): T[K]
 function feedback<T extends ShapeProvider | AttributeHandler | Command>(instance: T) {
   return instance.describeOperation === undefined ? {} : { describeOperation: method(instance, "describeOperation")! };
 }
+function readPolicy(policy: SvgReadPolicy | undefined): { readonly readPolicy?: SvgReadPolicy } {
+  if (policy === undefined) return {};
+  if (!Array.isArray(policy.attributes) || !policy.attributes.every(name => typeof name === "string" && name.length > 0) ||
+    typeof policy.text !== "boolean" || typeof policy.children !== "boolean") throw new Error("invalid svg read policy");
+  return { readPolicy: Object.freeze({ attributes: Object.freeze([...policy.attributes]), text: policy.text, children: policy.children }) };
+}
 function copyShape(instance: ShapeProvider): ShapeProvider {
   if (typeof instance.createSyntax !== "string" || instance.createSyntax.length === 0) throw new Error("invalid shape syntax");
   return Object.freeze({ kind: key(instance.kind), svg: copySelector(instance.svg), createSyntax: instance.createSyntax,
+    ...readPolicy(instance.readPolicy),
     parseCreate: method(instance, "parseCreate"), create: method(instance, "create"), read: method(instance, "read"),
     write: method(instance, "write"), present: method(instance, "present"), readAttribute: method(instance, "readAttribute"),
     ...feedback(instance) });
@@ -132,6 +139,8 @@ export class ExtensionRegistry {
       return provider;
     };
     const services: ShapeServices = Object.freeze<ShapeServices>({
+      present: node => this.shape(node.kind)?.present(node) ?? { tag: node.kind, summary: "", position: null, geometry: [], styles: [] },
+      createHelp: () => Object.freeze([...this.#state.shapes.values()].map(p => p.createSyntax)),
       parseCreate: (kind, args) => requireShape(kind).parseCreate(args),
       create: (kind, id, parameters) => {
         const node = requireShape(kind).create(id, parameters, services);
@@ -172,7 +181,7 @@ export class ExtensionRegistry {
     return matches[0];
   }
 
-  /** Generic transaction adapter only; the legacy CLI set path is deliberately not connected yet. */
+  /** Resolve one set inside the caller's existing transaction; never swallow handler failures. */
   attributeAction(request: AttributeRequest): AttributeAction {
     const input = Object.freeze({ targetId: request.targetId, name: request.name, value: request.value });
     return Object.freeze<AttributeAction>({ execute: context => {

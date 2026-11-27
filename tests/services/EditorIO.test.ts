@@ -2,8 +2,8 @@ import * as fs from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { Editor } from "../../src/services/Editor";
-import { SvgFileStore } from "../../src/io/SvgFileStore";
+import { Editor } from "../support/defaults";
+import { SvgFileStore } from "../support/defaults";
 
 let directory: string; let source: string;
 beforeEach(async () => {

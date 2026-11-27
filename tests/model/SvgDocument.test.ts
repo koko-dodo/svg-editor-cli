@@ -1,12 +1,12 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { SvgDocument } from "../../src/model/SvgDocument";
+import { SvgDocument } from "../support/defaults";
 import { Shape } from "../../src/model/Shape";
-import { Group } from "../../src/model/Group";
-import { Rectangle } from "../../src/model/Rectangle";
-import { Circle } from "../../src/model/Circle";
-import { Ellipse } from "../../src/model/Ellipse";
-import { Line } from "../../src/model/Line";
-import { TextShape } from "../../src/model/TextShape";
+import { Group } from "../../plugins/builtin-shapes/Group";
+import { Rectangle } from "../../plugins/builtin-shapes/Rectangle";
+import { Circle } from "../../plugins/builtin-shapes/Circle";
+import { Ellipse } from "../../plugins/builtin-shapes/Ellipse";
+import { Line } from "../../plugins/builtin-shapes/Line";
+import { TextShape } from "../../plugins/builtin-shapes/TextShape";
 
 const circle = (id: string) => new Circle(id, 1, 2, 3);
 function group(id: string, ...children: Shape[]): Group {

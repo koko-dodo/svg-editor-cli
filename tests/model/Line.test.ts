@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Line } from "../../src/model/Line";
+import { Line } from "../../plugins/builtin-shapes/Line";
 
 describe("Line", () => {
   const make = () => new Line("s1", 1, 2, 3, 4, { fill: "red", stroke: "blue", "stroke-width": 2 });

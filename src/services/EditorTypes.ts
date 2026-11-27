@@ -1,8 +1,8 @@
-import type { ShapeDefinition } from "../model/ShapeFactory";
+
 import type { ShapeView } from "../commands/DocumentViewBuilder";
 
-/** All six variants support placement without requiring callers to construct Shapes. */
-export type CreateRequest = ShapeDefinition & { readonly parentId?: string };
+/** Legacy flat creation request; semantic providers own parameter validation. */
+export interface CreateRequest { readonly type: string; readonly id: string; readonly parentId?: string; readonly [name: string]: string | number | undefined; }
 
 export interface CanvasSize {
   readonly width: number;
@@ -16,15 +16,15 @@ export interface EditorStatus {
   readonly isBlocked: boolean;
 }
 
-/** TODO(CLI): type is a model class name, not an SVG tag; resolve display labels there. */
-export type ShapeDetails = Pick<ShapeView, "id" | "type" | "parentId" | "attributes">;
+/** Legacy show shape. Non-enumerable semantic metadata preserves the Phase 1 enumerable fields. */
+export type ShapeDetails = Pick<ShapeView, "id" | "type" | "parentId" | "attributes" | "kind" | "container">;
 
 // UI clients import public result types here, not from commands or model.
 export type { CommandResult } from "../commands/CommandResult";
 export type { HistoryResult } from "../commands/CommandHistory";
 export type { DocumentView, ShapeView } from "../commands/DocumentViewBuilder";
 
-export { ShapeSchema } from "../model/ShapeSchema";
+
 export interface FileResult {
   readonly path: string;
   readonly elements: number;

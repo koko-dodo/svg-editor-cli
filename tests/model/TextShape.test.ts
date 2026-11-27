@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { TextShape } from "../../src/model/TextShape";
+import { TextShape } from "../../plugins/builtin-shapes/TextShape";
 
 describe("TextShape", () => {
   const make = () => new TextShape("s1", 1, 2, "hello world", { fill: "red", stroke: "blue", "stroke-width": 2 });

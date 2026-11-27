@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Circle } from "../../src/model/Circle";
+import { Circle } from "../../plugins/builtin-shapes/Circle";
 
 describe("Circle", () => {
   const make = () => new Circle("s1", 1, 2, 3, { fill: "red", stroke: "blue", "stroke-width": 2 });

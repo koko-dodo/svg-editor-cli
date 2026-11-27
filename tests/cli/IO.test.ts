@@ -3,8 +3,8 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { PassThrough, Readable } from "node:stream";
 import { expect, it } from "vitest";
-import { Repl } from "../../src/cli/Repl";
-import { SvgReader } from "../../src/io/SvgReader";
+import { Repl } from "../support/defaults";
+import { SvgReader } from "../support/defaults";
 
 it("awaits real read/edit/save in input order and routes warnings/errors separately", async () => {
   const directory = await fs.mkdtemp(join(tmpdir(), "svg-cli-"));
