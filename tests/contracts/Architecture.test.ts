@@ -1,3 +1,4 @@
+import { isBuiltin } from "node:module";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join, relative, resolve, sep } from "node:path";
 import { expect, it } from "vitest";
@@ -183,14 +184,20 @@ it("keeps registry test plugins on the public API and the kernel independent of 
   }
 });
 
-it("limits default plugins to their own package and the public API", () => {
+// Human-authorized correction: platform builtins are not private kernel dependencies.
+function pluginDependencyAllowed(specifier: string, path: string, packageRoot: string): boolean {
+  if (specifier.startsWith("node:")) return isBuiltin(specifier);
+  if (!specifier.startsWith(".")) return false;
+  const target = resolve(dirname(path), specifier);
+  return target === join(root, "api") || target.startsWith(packageRoot + sep);
+}
+
+it("limits plugins to their own package, public API and validated node: builtins", () => {
   const plugins = resolve(root, "../plugins");
   for (const path of files(plugins)) {
     const packageRoot = join(plugins, relative(plugins, path).split(sep)[0]!);
     for (const specifier of dependencies(readFileSync(path, "utf8"))) {
-      expect(specifier.startsWith("."), `${path}: unexpected external dependency ${specifier}`).toBe(true);
-      const target = resolve(dirname(path), specifier);
-      expect(target === join(root, "api") || target.startsWith(packageRoot + sep), `${path} -> ${specifier}`).toBe(true);
+      expect(pluginDependencyAllowed(specifier, path, packageRoot), `${path} -> ${specifier}`).toBe(true);
     }
   }
 });
@@ -211,4 +218,27 @@ it("keeps integration plugin doubles on the public API and local doubles", () =>
     const target=resolve(support,specifier);
     expect(target === join(root,"api") || target === join(support,"ContractShapes")).toBe(true);
   }
+});
+
+
+it.each([
+  ["node:fs", true], ["node:fs/promises", true], ["node:path", true], ["node:module", true],
+  ["./helper", true], ["../../src/api", true],
+  ["node:not-a-real-builtin", false], ["node:fs/../private", false], ["fs", false], ["typescript", false],
+  ["../../src/model/Shape", false], ["../../src/host/composition", false], ["../another/index", false],
+  ["../../src/api/../services/Editor", false],
+])("checks authorized plugin dependency %s → %s", (specifier, expected) => {
+  const packageRoot = resolve(root, "../plugins/probe");
+  expect(pluginDependencyAllowed(String(specifier), join(packageRoot, "Probe.ts"), packageRoot)).toBe(expected);
+});
+
+it("applies the same builtin rule to imports, re-exports, require and dynamic import", () => {
+  const source = `import { readFile } from "node:fs";
+    export { join } from "node:path";
+    const a = require("node:fs/promises");
+    const b = import("node:module");`;
+  const packageRoot = resolve(root, "../plugins/probe");
+  const names = dependencies(source);
+  expect(names).toEqual(["node:fs", "node:path", "node:fs/promises", "node:module"]);
+  expect(names.every(name => pluginDependencyAllowed(name, join(packageRoot, "Probe.ts"), packageRoot))).toBe(true);
 });
