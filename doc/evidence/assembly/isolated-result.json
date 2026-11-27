@@ -1,0 +1,147 @@
+{
+  "sourceCommit": "97b8e97ddd080b3e6bcc29b2033bae60e0d81a0a",
+  "node": "v24.10.0",
+  "final": "177eb20e131849132a777ec0ca576c37a5b00728",
+  "frozen": {
+    "freeze": "3001b314a370a2df86f9ac476be9b54e0358e3b1",
+    "preservedFreezeFiles": 71,
+    "checkedCurrentRuntimeFiles": 93,
+    "pluginHistory": [
+      {
+        "commit": "ac557680aa2eabab4a5caef3e7fe24ba6b187c26",
+        "parent": "99db3a0038d776cfc62e6b1b74554adad144b11a",
+        "changes": "A\tplugins/command-stats/README.md\nA\tplugins/command-stats/StatsCommand.ts\nA\tplugins/command-stats/index.ts\nA\tplugins/command-stats/package.json\nA\ttests/plugins/Stats.test.ts\n"
+      },
+      {
+        "commit": "5325c8cad9d8afae823ad3f011a933ea68689924",
+        "parent": "ac557680aa2eabab4a5caef3e7fe24ba6b187c26",
+        "changes": "A\tplugins/command-dir/DirCommand.ts\nA\tplugins/command-dir/DirectoryPort.ts\nA\tplugins/command-dir/NodeDirectoryAdapter.ts\nA\tplugins/command-dir/README.md\nA\tplugins/command-dir/index.ts\nA\tplugins/command-dir/package.json\nA\ttests/plugins/Dir.test.ts\n"
+      },
+      {
+        "commit": "91a2ae212b96dac0bc1912e0a800bbd2848bc8f2",
+        "parent": "ae4e620beff9ce47d824f2e4d76fd9e54814da6d",
+        "changes": "M\tplugins.config.json\nA\tplugins/shape-box/Box.ts\nA\tplugins/shape-box/BoxAttributes.ts\nA\tplugins/shape-box/BoxDecorator.ts\nA\tplugins/shape-box/BoxProvider.ts\nA\tplugins/shape-box/BoxView.ts\nA\tplugins/shape-box/README.md\nA\tplugins/shape-box/index.ts\nA\tplugins/shape-box/package.json\nA\ttests/plugins/Box.test.ts\nA\ttests/plugins/fixtures/box-version-b.stdout.txt\n"
+      },
+      {
+        "commit": "97b8e97ddd080b3e6bcc29b2033bae60e0d81a0a",
+        "parent": "91a2ae212b96dac0bc1912e0a800bbd2848bc8f2",
+        "changes": "A\tplugins.star.config.json\nA\tplugins/tree-star/ModifiedStarDecorator.ts\nA\tplugins/tree-star/README.md\nA\tplugins/tree-star/index.ts\nA\tplugins/tree-star/package.json\nA\ttests/plugins/TreeStar.test.ts\n"
+      }
+    ]
+  },
+  "assemblyMode": "isolated-Git-export-with-code-assembly-patch",
+  "actualABCommitProof": "PENDING: developer must create A/B demonstration commits",
+  "options": {},
+  "order": [
+    "command-stats",
+    "command-dir",
+    "shape-box",
+    "tree-star"
+  ],
+  "pluginHashes": {
+    "plugins/command-stats/README.md": "16089a3e94f7be04869ce1f75684ff133f8e252e7848e2cb31af3f86fee110a2",
+    "plugins/command-stats/StatsCommand.ts": "b628d58c75c04d34cba63b12d512bfd1bfa2544e749bb95b50f767d6d52707f4",
+    "plugins/command-stats/index.ts": "6fa63ec8af0e661cf308a2b36f70798daf585ad39395d5de8bd0f4b6a081ab73",
+    "plugins/command-stats/package.json": "504ab9e01f685aaad393d847935f0458550b8d9e589835a96ef1a533419aa727",
+    "plugins/command-dir/DirCommand.ts": "0b55c2c2e5f0f34bc636a0545c5d3bd849e6421c8c330502885847183cf63d2d",
+    "plugins/command-dir/DirectoryPort.ts": "e0a55e48ef5fe0cef1499cb928e400a8b977f4b04518547283f2a2e3e5a74608",
+    "plugins/command-dir/NodeDirectoryAdapter.ts": "85426bff2e40cf3ee7b9fa06daf66c11e92afc4db204feb6c44182651112f607",
+    "plugins/command-dir/README.md": "fdad4bfe7e66f08954d44760183f597e8caeea5adcbd57ed23f1db4010977bca",
+    "plugins/command-dir/index.ts": "d084bd129f8413a87ce7f3b93d95d943c48e3bcff2433a8cae89b4be526f5af6",
+    "plugins/command-dir/package.json": "010a52faa2797fc30ff560947964da9b9eb6760d86d913805c43c1bf0778e2c1",
+    "plugins/shape-box/Box.ts": "64bcf7a0f88d551bffdf4a7356351eb53d5e744055240683d49a024a9a27a380",
+    "plugins/shape-box/BoxAttributes.ts": "d70cc619c9e6d4a41a5f5ddef4510817fcc5181fe4063eea75d7433239c4876d",
+    "plugins/shape-box/BoxDecorator.ts": "a9874faa707b7096f55f8d3a5ff24718d852e750e3fa39c4939c4a4fd0191a78",
+    "plugins/shape-box/BoxProvider.ts": "4baf6c5ae3a8eb4910fd49665a7b8310369168391abaee10fdc5b790ad5e1e94",
+    "plugins/shape-box/BoxView.ts": "28f9f9c9c5d907ec602a3b3884f02fa2faff4fb9295859738286650a6a78e8a1",
+    "plugins/shape-box/README.md": "31a0e1da1fe28bd139a3912e0fc89e8a5f5a5db58c66246c71fd3e0a196b61c7",
+    "plugins/shape-box/index.ts": "f76e3176c7022565b58bc2afcfa6a58751f983334aa2615597ed652b27dea19e",
+    "plugins/shape-box/package.json": "4552c668f0987c2fc19c64aa73d6726f05442f3263939e244d5e502d1ccb7173",
+    "plugins/tree-star/ModifiedStarDecorator.ts": "76bccf278eb444d88f6f5dd3f51340244c4c5e82314fda9be334a0e08ab69fa3",
+    "plugins/tree-star/README.md": "7e35faf79daa0fcb0ae39ab167ee6a5cf67dca4a4aa20532b91d71fbe3812ff2",
+    "plugins/tree-star/index.ts": "1b2e0fa9c70a74eb44acbaa04d729b21125950068d85142d18e0b4a2d1903fae",
+    "plugins/tree-star/package.json": "2c40c0677297da6f89c8dc1c5864b06b404121210b95ba23e53073bda2e5f57b"
+  },
+  "codePatchSHA256": "290f6f55fcc9aea64ac6da4d9cd666f25d627f8f3a467a75069b6a32ffe739ee",
+  "builds": [
+    "A",
+    "B"
+  ],
+  "results": [
+    {
+      "name": "section6",
+      "input": "doc/transcript/phase1-section6.txt",
+      "inputSHA256": "fab867ec405a4c7c2d9a8dcc39dd677b27e38170dc5b28c3acd6020ffd172b90",
+      "artifacts": {
+        "stdout.txt": {
+          "bytes": 950,
+          "sha256": "1ff375eecd1f9f716885f994435fb637a5f989f30421bc5453d0ffe65b19c143"
+        },
+        "stderr.txt": {
+          "bytes": 151,
+          "sha256": "a5bdfd8a86781d001ebc36bd3c322fbae45b6cb7f30e27104ea1bbda24bcde7e"
+        },
+        "exit-code.txt": {
+          "bytes": 2,
+          "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+        },
+        "demo.svg": {
+          "bytes": 389,
+          "sha256": "eaf4a0eb67b69855d15fb1d1ebe417bccde472ea1c1f0766a9ddbae24ec48326"
+        }
+      }
+    },
+    {
+      "name": "box",
+      "input": "doc/transcript/box-version-b.txt",
+      "inputSHA256": "ad28ba7b05f70e998a57530fc8cf84ac91492a776dcce708942f4284486b7d07",
+      "artifacts": {
+        "stdout.txt": {
+          "bytes": 815,
+          "sha256": "110e8a10f587929fe1d1b93555bcfb461bb9eb226ea9894f2289adf76db28f49"
+        },
+        "stderr.txt": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "exit-code.txt": {
+          "bytes": 2,
+          "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+        },
+        "flowchart-box.svg": {
+          "bytes": 540,
+          "sha256": "feb462f81520604f6b544c8e625ffc03e725201e086d651e789067ff96599341"
+        }
+      }
+    },
+    {
+      "name": "commands",
+      "input": "doc/transcript/acceptance/commands.txt",
+      "inputSHA256": "01368950ca5d1ef640ffa1ae2f7240955184807565ad740e39d93c51a1dfe79f",
+      "artifacts": {
+        "stdout.txt": {
+          "bytes": 1104,
+          "sha256": "75ab63e70bdf77503aafd71952e6a786f84172ee10942746f9f076fa0a4de922"
+        },
+        "stderr.txt": {
+          "bytes": 47,
+          "sha256": "a71f3818923cdf3537d006e54b981176760e2fa373989bbf5984c35cf364b878"
+        },
+        "exit-code.txt": {
+          "bytes": 2,
+          "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+        },
+        "stats.svg": {
+          "bytes": 295,
+          "sha256": "bcfbafb00f88994e773a6e6421198ebb3ccbba7defb419fbc66bbc55bd913ba5"
+        }
+      }
+    }
+  ],
+  "compatibility": [
+    "phase1-section6",
+    "phase1-version-a",
+    "phase1-compatibility"
+  ],
+  "conditions": "same absolute cwd reset before each run; identical seeds, stdin and environment; logs outside cwd; raw stdout/stderr/exit/SVG byte comparison; no normalization"
+}

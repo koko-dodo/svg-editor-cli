@@ -1,0 +1,43 @@
+[DIR]  .hidden-dir
+[DIR]  A-dir
+[DIR]  z-dir
+[FILE]  .hidden
+[FILE]  A.txt
+[FILE]  other.svg
+[FILE]  z.txt
+canvas 800x600 created
+g#outer created
+rect#first created in g#outer
+circle#second created in g#outer
+rect#third created
+rect: 2  circle: 1  (total 3, containers 1)
+rect#third deleted
+rect: 1  circle: 1  (total 2, containers 1)
+rect#third created
+rect: 2  circle: 1  (total 3, containers 1)
+svg (800x600) *
+├── g#outer *
+│   ├── rect#first  x=1 y=2 w=3 h=4 *
+│   └── circle#second  cx=5 cy=6 r=7 *
+└── rect#third  x=8 y=9 w=10 h=11 *
+saved to stats.svg (4 elements)
+rect#first updated: x=20
+svg (800x600) *
+├── g#outer *
+│   ├── rect#first  x=20 y=2 w=3 h=4 *
+│   └── circle#second  cx=5 cy=6 r=7
+└── rect#third  x=8 y=9 w=10 h=11
+rect#first updated: x=1
+svg (800x600)
+├── g#outer
+│   ├── rect#first  x=1 y=2 w=3 h=4
+│   └── circle#second  cx=5 cy=6 r=7
+└── rect#third  x=8 y=9 w=10 h=11
+[DIR]  .hidden-dir
+[DIR]  A-dir
+[DIR]  z-dir
+[FILE]  .hidden
+[FILE]  A.txt
+[FILE]  other.svg
+[FILE]  stats.svg
+[FILE]  z.txt

@@ -2560,7 +2560,7 @@
     ]
   },
   "current": {
-    "commit": "da65fd1855a0cc9f3145cf05e7095289be7b7e1b",
+    "commit": "97b8e97ddd080b3e6bcc29b2033bae60e0d81a0a",
     "totals": {
       "kernel": {
         "files": 49,
@@ -2583,14 +2583,14 @@
         "cc": 113
       },
       "plugins": {
-        "files": 14,
-        "lines": 658,
-        "nonblank": 594,
-        "sloc": 586,
-        "functions": 173,
-        "ccFunctions": 266,
-        "ccModule": 13,
-        "cc": 279
+        "files": 28,
+        "lines": 904,
+        "nonblank": 826,
+        "sloc": 813,
+        "functions": 219,
+        "ccFunctions": 389,
+        "ccModule": 26,
+        "cc": 415
       },
       "vscode": {
         "files": 4,
@@ -2603,14 +2603,14 @@
         "cc": 45
       },
       "cli": {
-        "files": 69,
-        "lines": 3374,
-        "nonblank": 3074,
-        "sloc": 2911,
-        "functions": 542,
-        "ccFunctions": 1153,
-        "ccModule": 58,
-        "cc": 1211
+        "files": 83,
+        "lines": 3620,
+        "nonblank": 3306,
+        "sloc": 3138,
+        "functions": 588,
+        "ccFunctions": 1276,
+        "ccModule": 71,
+        "cc": 1347
       }
     },
     "files": [
@@ -3770,6 +3770,530 @@
             "name": "activate",
             "line": 4,
             "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "plugins/command-dir/DirCommand.ts",
+        "blob": "9e5de4ef1a7f73946e3de13dfb542e6131332d71",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 24,
+        "nonblank": 22,
+        "sloc": 22,
+        "functions": 6,
+        "ccFunctions": 15,
+        "ccModule": 1,
+        "cc": 16,
+        "maxFunctionCC": 5,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 7,
+            "complexity": 1
+          },
+          {
+            "name": "parse",
+            "line": 9,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 11,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 14,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 15,
+            "complexity": 5
+          },
+          {
+            "name": "<anonymous>",
+            "line": 17,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "plugins/command-dir/DirectoryPort.ts",
+        "blob": "9673cdd05919bb579daebf4dafc2cfcecb6e486d",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 9,
+        "nonblank": 9,
+        "sloc": 8,
+        "functions": 0,
+        "ccFunctions": 0,
+        "ccModule": 0,
+        "cc": 0,
+        "maxFunctionCC": 0,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 0
+          }
+        ]
+      },
+      {
+        "path": "plugins/command-dir/NodeDirectoryAdapter.ts",
+        "blob": "f3c6a0ff1be437d80ad3278f848dbd0b65d00ee2",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 13,
+        "nonblank": 12,
+        "sloc": 11,
+        "functions": 4,
+        "ccFunctions": 4,
+        "ccModule": 1,
+        "cc": 5,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "constructor",
+            "line": 7,
+            "complexity": 1
+          },
+          {
+            "name": "currentDirectory",
+            "line": 8,
+            "complexity": 1
+          },
+          {
+            "name": "read",
+            "line": 9,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 11,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "plugins/command-dir/index.ts",
+        "blob": "e00332f86f2d952d904ab0c2e6c093d803bed662",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 7,
+        "nonblank": 7,
+        "sloc": 7,
+        "functions": 1,
+        "ccFunctions": 1,
+        "ccModule": 1,
+        "cc": 2,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "activate",
+            "line": 4,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "plugins/command-stats/StatsCommand.ts",
+        "blob": "bdaadc78bc906a18947bf49b28fbe4042317179c",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 27,
+        "nonblank": 25,
+        "sloc": 24,
+        "functions": 4,
+        "ccFunctions": 10,
+        "ccModule": 1,
+        "cc": 11,
+        "maxFunctionCC": 4,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "parse",
+            "line": 8,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 10,
+            "complexity": 3
+          },
+          {
+            "name": "<anonymous>",
+            "line": 14,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 22,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "plugins/command-stats/index.ts",
+        "blob": "ffbb825e9bf97624cdef2213e99f85c456fbbbdb",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 4,
+        "nonblank": 4,
+        "sloc": 4,
+        "functions": 1,
+        "ccFunctions": 1,
+        "ccModule": 1,
+        "cc": 2,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "activate",
+            "line": 3,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "plugins/shape-box/Box.ts",
+        "blob": "c9f50afb9f59ed0b8f55cdb3281849902de427a3",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 19,
+        "nonblank": 18,
+        "sloc": 17,
+        "functions": 2,
+        "ccFunctions": 6,
+        "ccModule": 1,
+        "cc": 7,
+        "maxFunctionCC": 4,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "validate",
+            "line": 8,
+            "complexity": 4
+          },
+          {
+            "name": "clone",
+            "line": 14,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "plugins/shape-box/BoxAttributes.ts",
+        "blob": "d0fa1adcfecb702149e63aee5b8720f9ebcb4814",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 15,
+        "nonblank": 15,
+        "sloc": 15,
+        "functions": 3,
+        "ccFunctions": 10,
+        "ccModule": 1,
+        "cc": 11,
+        "maxFunctionCC": 5,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "handles",
+            "line": 5,
+            "complexity": 2
+          },
+          {
+            "name": "apply",
+            "line": 6,
+            "complexity": 3
+          },
+          {
+            "name": "describeOperation",
+            "line": 9,
+            "complexity": 5
+          }
+        ]
+      },
+      {
+        "path": "plugins/shape-box/BoxDecorator.ts",
+        "blob": "7b0fe346068fdfc19d7165604f1a8fbc3cdd0952",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 5,
+        "nonblank": 5,
+        "sloc": 5,
+        "functions": 1,
+        "ccFunctions": 2,
+        "ccModule": 1,
+        "cc": 3,
+        "maxFunctionCC": 2,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "tags",
+            "line": 4,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "plugins/shape-box/BoxProvider.ts",
+        "blob": "e3b4476dd950d92de43190192e03cec5b229a6cf",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 54,
+        "nonblank": 53,
+        "sloc": 53,
+        "functions": 10,
+        "ccFunctions": 38,
+        "ccModule": 1,
+        "cc": 39,
+        "maxFunctionCC": 17,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "parseCreate",
+            "line": 11,
+            "complexity": 6
+          },
+          {
+            "name": "create",
+            "line": 18,
+            "complexity": 1
+          },
+          {
+            "name": "read",
+            "line": 24,
+            "complexity": 4
+          },
+          {
+            "name": "<anonymous>",
+            "line": 29,
+            "complexity": 1
+          },
+          {
+            "name": "write",
+            "line": 31,
+            "complexity": 3
+          },
+          {
+            "name": "present",
+            "line": 36,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 37,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 37,
+            "complexity": 1
+          },
+          {
+            "name": "readAttribute",
+            "line": 39,
+            "complexity": 3
+          },
+          {
+            "name": "describeOperation",
+            "line": 42,
+            "complexity": 17
+          }
+        ]
+      },
+      {
+        "path": "plugins/shape-box/BoxView.ts",
+        "blob": "dd904fb10946aa679e441e77f361d87f30f0fda4",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 14,
+        "nonblank": 14,
+        "sloc": 14,
+        "functions": 5,
+        "ccFunctions": 9,
+        "ccModule": 1,
+        "cc": 10,
+        "maxFunctionCC": 4,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "find",
+            "line": 2,
+            "complexity": 1
+          },
+          {
+            "name": "<anonymous>",
+            "line": 3,
+            "complexity": 4
+          },
+          {
+            "name": "part",
+            "line": 9,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 10,
+            "complexity": 1
+          },
+          {
+            "name": "singleLine",
+            "line": 14,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "plugins/shape-box/index.ts",
+        "blob": "342a889b05a9d328705cb9a3e003dcf6fbd8af15",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 10,
+        "nonblank": 10,
+        "sloc": 10,
+        "functions": 1,
+        "ccFunctions": 1,
+        "ccModule": 1,
+        "cc": 2,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "activate",
+            "line": 5,
+            "complexity": 1
+          }
+        ]
+      },
+      {
+        "path": "plugins/tree-star/ModifiedStarDecorator.ts",
+        "blob": "07a376d77762f554f43d84db1ff416246d7eca18",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 38,
+        "nonblank": 32,
+        "sloc": 31,
+        "functions": 7,
+        "ccFunctions": 25,
+        "ccModule": 1,
+        "cc": 26,
+        "maxFunctionCC": 7,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "tags",
+            "line": 7,
+            "complexity": 6
+          },
+          {
+            "name": "find",
+            "line": 14,
+            "complexity": 4
+          },
+          {
+            "name": "documentEquals",
+            "line": 23,
+            "complexity": 3
+          },
+          {
+            "name": "childrenEqual",
+            "line": 27,
+            "complexity": 2
+          },
+          {
+            "name": "<anonymous>",
+            "line": 28,
+            "complexity": 1
+          },
+          {
+            "name": "nodeEquals",
+            "line": 31,
+            "complexity": 7
+          },
+          {
+            "name": "<anonymous>",
+            "line": 35,
+            "complexity": 2
+          }
+        ]
+      },
+      {
+        "path": "plugins/tree-star/index.ts",
+        "blob": "778ece03c07ef07a05b176cc192ad7ecc4e1e8d9",
+        "role": "plugins",
+        "responsibility": "Plugin-owned models / grammar / behavior / presentation",
+        "lines": 7,
+        "nonblank": 6,
+        "sloc": 6,
+        "functions": 1,
+        "ccFunctions": 1,
+        "ccModule": 1,
+        "cc": 2,
+        "maxFunctionCC": 1,
+        "scopes": [
+          {
+            "name": "<module>",
+            "line": 1,
+            "complexity": 1
+          },
+          {
+            "name": "activate",
+            "line": 4,
+            "complexity": 1
           }
         ]
       },
@@ -6966,14 +7490,14 @@
       "cc": 109
     },
     "plugins": {
-      "files": 14,
-      "lines": 658,
-      "nonblank": 594,
-      "sloc": 586,
-      "functions": 173,
-      "ccFunctions": 266,
-      "ccModule": 13,
-      "cc": 279
+      "files": 28,
+      "lines": 904,
+      "nonblank": 826,
+      "sloc": 813,
+      "functions": 219,
+      "ccFunctions": 389,
+      "ccModule": 26,
+      "cc": 415
     },
     "vscode": {
       "files": 4,
@@ -6986,14 +7510,14 @@
       "cc": 45
     },
     "cli": {
-      "files": 28,
-      "lines": 1249,
-      "nonblank": 1156,
-      "sloc": 1057,
-      "functions": 214,
-      "ccFunctions": 485,
-      "ccModule": 20,
-      "cc": 505
+      "files": 42,
+      "lines": 1495,
+      "nonblank": 1388,
+      "sloc": 1284,
+      "functions": 260,
+      "ccFunctions": 608,
+      "ccModule": 33,
+      "cc": 641
     }
   }
 }

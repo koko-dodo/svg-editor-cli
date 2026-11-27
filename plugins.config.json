@@ -1,0 +1,7 @@
+{
+  "plugins": [
+    { "module": "./plugins/command-stats" },
+    { "module": "./plugins/command-dir" },
+    { "module": "./plugins/shape-box" }
+  ]
+}

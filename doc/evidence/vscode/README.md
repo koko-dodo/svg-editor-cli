@@ -1,6 +1,6 @@
 # VSCode 人工验收证据
 
-状态：功能已由开发者在macOS真实Extension Development Host验收通过，等待最终提交；七张原始截图已归档。
+状态：功能已由开发者在macOS真实Extension Development Host验收通过；七张原始截图已原样归档并提交。
 
 最初聊天附件未提供可读PNG；开发者随后提供本地原图目录，已逐张查看并确认与消息上传顺序一致，按下表原样复制。没有裁剪、转换或生成替代图。源目录：`/Users/kodia/Documents/工作:学业/Obsidian Vault/📎`；按源文件时间顺序映射为01–07，逐字节一致。
 
