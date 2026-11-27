@@ -1,0 +1,8 @@
+{
+  "name": "@svg-editor/shape-box",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "main": "index.ts",
+  "contributes": { "shapes": ["box"], "attributes": ["box-attributes"], "decorators": ["box-type-label"] }
+}

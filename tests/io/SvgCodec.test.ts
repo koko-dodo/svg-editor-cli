@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { SvgReader } from "../../src/io/SvgReader";
-import { SvgWriter } from "../../src/io/SvgWriter";
+import { SvgReader } from "../support/defaults";
+import { SvgWriter } from "../support/defaults";
 import { SvgValidation } from "../../src/io/SvgValidation";
 import { DocumentViewBuilder } from "../../src/commands/DocumentViewBuilder";
-import { ShapeFactory } from "../../src/model/ShapeFactory";
-import { SvgDocument } from "../../src/model/SvgDocument";
+import { ShapeFactory } from "../../plugins/builtin-shapes/ShapeFactory";
+import { SvgDocument } from "../support/defaults";
 
 const wrap = (body: string, attrs = '') => `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" ${attrs}>${body}</svg>`;
 const rect = '<rect x="0" y="1" width="2" height="3"/>';

@@ -1,8 +1,8 @@
 import { PassThrough, Readable } from "node:stream";
 import { spawnSync } from "node:child_process";
 import { describe, expect, it } from "vitest";
-import { Editor } from "../../src/services/Editor";
-import { Repl } from "../../src/cli/Repl";
+import { Editor } from "../support/defaults";
+import { Repl } from "../support/defaults";
 
 async function session(script: string, interactive = false, editor = new Editor()) {
   const input = Readable.from([script]);

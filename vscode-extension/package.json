@@ -1,0 +1,21 @@
+{
+  "name": "svg-outline-lab",
+  "displayName": "SVG Outline Lab",
+  "description": "SVG Explorer badges and native XML element outline",
+  "version": "0.1.0",
+  "publisher": "svg-editor-lab",
+  "private": true,
+  "type": "commonjs",
+  "engines": { "vscode": "^1.85.0" },
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test test/*.check.cjs"
+  },
+  "dependencies": { "saxes": "6.0.0" },
+  "devDependencies": {
+    "@types/vscode": "1.85.0",
+    "typescript": "7.0.2"
+  }
+}

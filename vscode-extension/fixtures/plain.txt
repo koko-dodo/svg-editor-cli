@@ -1,0 +1,1 @@
+This ordinary file must not receive an SVG badge.

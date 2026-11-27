@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { Editor } from "../../src/services/Editor";
-import { Formatter } from "../../src/cli/Formatter";
+import { Editor } from "../support/defaults";
+import { Formatter } from "../support/defaults";
 
 function fixture(): Editor {
   const editor = new Editor();

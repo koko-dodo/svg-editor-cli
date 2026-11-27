@@ -1,15 +1,15 @@
 import { describe, expect, it } from "vitest";
-import { ShapeFactory } from "../../src/model/ShapeFactory";
-import type { ShapeDefinition } from "../../src/model/ShapeFactory";
-import { SvgDocument } from "../../src/model/SvgDocument";
-import { SvgReader } from "../../src/io/SvgReader";
-import { SvgWriter } from "../../src/io/SvgWriter";
+import { ShapeFactory } from "../../plugins/builtin-shapes/ShapeFactory";
+import type { ShapeDefinition } from "../../plugins/builtin-shapes/ShapeFactory";
+import { SvgDocument } from "../support/defaults";
+import { SvgReader } from "../support/defaults";
+import { SvgWriter } from "../support/defaults";
 import { SvgValidation } from "../../src/io/SvgValidation";
-import { Group } from "../../src/model/Group";
-import { Editor } from "../../src/services/Editor";
-import { CommandCatalog } from "../../src/cli/CommandCatalog";
+import { Group } from "../../plugins/builtin-shapes/Group";
+import { Editor } from "../support/defaults";
+import { CommandCatalog } from "../support/defaults";
 import { Parser } from "../../src/cli/Parser";
-import { Dispatcher } from "../../src/cli/Dispatcher";
+import { Dispatcher } from "../support/defaults";
 
 const definitions: ShapeDefinition[] = [
   { type: "rect", id: "r", x: 1, y: 2, width: 3, height: 4 },

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+  <defs><linearGradient id="paint"><stop offset="0" stop-color="red"/></linearGradient></defs>
+  <g id="flow">
+    <rect id="start" x="20" y="20" width="120" height="60"/>
+    <g id="nested">
+      <circle cx="220" cy="50" r="25"/>
+      <text x="30" y="150">你好 😀 <tspan>SVG &amp; XML</tspan></text>
+      <path d="M 0 0 L 10 10"/>
+    </g>
+  </g>
+</svg>

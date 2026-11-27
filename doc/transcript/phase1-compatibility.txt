@@ -1,0 +1,29 @@
+help
+move missing 1 2
+init
+create ellipse e 1 2 3 4
+create line l 0 1 2 3 black
+create circle c 1 2 3
+create rect r 1 2 3 4
+create text t 1 2 "hello world"
+create g g
+create g g
+create g x in missing
+create g x in r
+create hexagon h
+set r label x
+scale r 0
+show e
+set e rx 5
+move g 0 0
+undo
+redo
+canvas
+canvas 100
+canvas 100 200
+undo
+save
+read other.svg
+save copied.svg
+init
+save

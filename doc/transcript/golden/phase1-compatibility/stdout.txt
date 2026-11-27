@@ -1,0 +1,45 @@
+init [w] [h]
+canvas [w h]
+create <type> <id> [params...] [in <containerId>]
+delete <id>
+move <id> <dx> <dy>
+scale <id> <factor>
+set <id> <attr> <value>
+group <newGid> <id1> [id2 ...]
+ungroup <gid>
+addto <gid> <id>
+front <id>
+back <id>
+tree [id]
+show <id>
+help
+undo
+redo
+read <file.svg>
+save [file.svg]
+
+Create parameters:
+create rect <id> <x> <y> <width> <height> [fill] [in <containerId>]
+create circle <id> <cx> <cy> <r> [fill] [in <containerId>]
+create ellipse <id> <cx> <cy> <rx> <ry> [fill] [in <containerId>]
+create line <id> <x1> <y1> <x2> <y2> [stroke] [in <containerId>]
+create text <id> <x> <y> "content" [in <containerId>]
+create g <id> [in <containerId>]
+canvas 800x600 created
+ellipse#e created
+line#l created
+circle#c created
+rect#r created
+text#t created
+g#g created
+ellipse#e  parent=svg
+  cx=1 cy=2 rx=3 ry=4
+ellipse#e updated: rx=5
+g#g moved by (0,0)
+g#g moved back by (0,0)
+g#g moved by (0,0)
+canvas 800x600
+canvas 100x200 resized
+read other.svg (7 elements)
+saved to copied.svg (7 elements)
+canvas 800x600 created

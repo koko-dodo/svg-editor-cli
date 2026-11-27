@@ -4,8 +4,8 @@ import { join } from "node:path";
 import { PassThrough, Readable } from "node:stream";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { DOMParser } from "@xmldom/xmldom";
-import { Editor } from "../../src/services/Editor";
-import { Repl } from "../../src/cli/Repl";
+import { Editor } from "../support/defaults";
+import { Repl } from "../support/defaults";
 
 let directory: string;
 beforeEach(async () => { directory = await fs.mkdtemp(join(tmpdir(), "svg-contract-")); });

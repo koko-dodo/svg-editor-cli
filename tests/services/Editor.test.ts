@@ -1,6 +1,7 @@
+import type { CreateRequest } from "../../plugins/builtin-shapes/ShapeFactory";
 import { describe, expect, it } from "vitest";
-import { Editor } from "../../src/services/Editor";
-import type { CreateRequest, DocumentView, ShapeView } from "../../src/services/EditorTypes";
+import { Editor } from "../support/defaults";
+import type { DocumentView, ShapeView } from "../../src/services/EditorTypes";
 
 function fixture(): Editor {
   const editor = new Editor();
