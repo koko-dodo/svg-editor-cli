@@ -1,7 +1,11 @@
 import { Group } from "./Group";
 import { Shape } from "./Shape";
+import type { ContainerShape } from "./ContainerShape";
+import { cloneForest, freezeModel, validateForest } from "./ShapeTree";
+import { captureView, queryView } from "./DocumentView";
+import type { DocumentView } from "../api/Domain";
 
-type Container = Group | null;
+type Container = ContainerShape | null;
 interface Location {
   readonly shape: Shape;
   readonly parent: Container;
@@ -41,11 +45,11 @@ export class SvgDocument {
   }
 
   getShapeSnapshot(id: string): Shape {
-    return this.requireLocation(id).shape.clone();
+    return cloneForest([this.requireLocation(id).shape])[0]!;
   }
 
   getRootSnapshots(): readonly Shape[] {
-    return Object.freeze(this.roots.map(shape => shape.clone()));
+    return Object.freeze(cloneForest(this.roots));
   }
 
   getParentId(id: string): string | null {
@@ -58,9 +62,9 @@ export class SvgDocument {
     this.validateIndex(position, this.childrenOf(parent).length);
     // Validate BEFORE cloning: Group.clone() would unfold shared objects.
     const existingIds = new Set(this.locations().map(location => location.shape.id));
-    this.validateForest([shape], existingIds);
-    const copy = shape.clone();
-    this.validateForest([copy], existingIds);
+    validateForest([shape], existingIds);
+    const copy = cloneForest([shape])[0]!;
+    validateForest([copy], existingIds);
     this.insert(parent, copy, position);
   }
 
@@ -129,9 +133,10 @@ export class SvgDocument {
   ungroup(id: string): void {
     this.withStructureCopy(work => {
       const location = work.requireLocation(id);
-      if (!(location.shape instanceof Group)) throw new Error(`not a container: ${id}`);
+      const group = location.shape.asContainer();
+      if (group === null) throw new Error(`not a container: ${id}`);
+      if (group.ungroupPolicy === "reject-composite") throw new Error(`cannot ungroup composite shape: ${id}`);
       if (location.parent === null) throw new Error(`cannot ungroup top-level container: ${id}`);
-      const group = location.shape;
       const children = group.children;
       work.detach(location);
       children.forEach((child, offset) => {
@@ -143,8 +148,8 @@ export class SvgDocument {
 
   addTo(groupId: string, id: string): void {
     this.withStructureCopy(work => {
-      const target = work.requireLocation(groupId).shape;
-      if (!(target instanceof Group)) throw new Error(`not a container: ${groupId}`);
+      const target = work.requireLocation(groupId).shape.asContainer();
+      if (target === null) throw new Error(`not a container: ${groupId}`);
       const source = work.requireLocation(id);
       const destination = work.requireLocation(groupId);
       if (source.shape === target || destination.ancestors.some(parent => parent === source.shape)) {
@@ -165,7 +170,7 @@ export class SvgDocument {
 
   clone(): SvgDocument {
     const copy = new SvgDocument(this._width, this._height);
-    copy.roots = this.roots.map(shape => shape.clone());
+    copy.roots = cloneForest(this.roots);
     return copy;
   }
 
@@ -188,7 +193,8 @@ export class SvgDocument {
     const visit = (parent: Container, ancestors: readonly Container[]): void => {
       this.childrenOf(parent).forEach((shape, index) => {
         result.push({ shape, parent, index, ancestors });
-        if (shape instanceof Group) visit(shape, [...ancestors, shape]);
+        const container = shape.asContainer();
+        if (container !== null) visit(container, [...ancestors, container]);
       });
     };
     visit(null, [null]);
@@ -201,11 +207,12 @@ export class SvgDocument {
     return result;
   }
 
-  private requireContainer(id: string): Group {
+  private requireContainer(id: string): ContainerShape {
     const location = this.locations().find(entry => entry.shape.id === id);
     if (!location) throw new Error(`no such container: ${id}`);
-    if (!(location.shape instanceof Group)) throw new Error(`not a container: ${id}`);
-    return location.shape;
+    const container = location.shape.asContainer();
+    if (container === null) throw new Error(`not a container: ${id}`);
+    return container;
   }
 
   private insert(parent: Container, shape: Shape, index: number): void {
@@ -239,24 +246,30 @@ export class SvgDocument {
   private withStructureCopy(edit: (work: SvgDocument) => void): void {
     const work = this.clone();
     edit(work);
-    this.validateForest(work.roots);
+    validateForest(work.roots);
     this.roots = work.roots;
   }
 
-  private validateForest(roots: readonly Shape[], reservedIds: ReadonlySet<string> = new Set()): void {
-    const ids = new Set(reservedIds);
-    const seen = new Set<Shape>();
-    const active = new Set<Shape>();
-    const visit = (shape: Shape): void => {
-      if (active.has(shape)) throw new Error("circular containment");
-      if (seen.has(shape)) throw new Error(`shape has multiple parents: ${shape.id}`);
-      if (ids.has(shape.id)) throw new Error(`id already exists: ${shape.id}`);
-      seen.add(shape);
-      ids.add(shape.id);
-      active.add(shape);
-      if (shape instanceof Group) shape.children.forEach(visit);
-      active.delete(shape);
-    };
-    roots.forEach(visit);
+  /** Internal immutable value query; no model references escape. */
+  view(): DocumentView {
+    validateForest(this.roots);
+    return captureView(this._width, this._height, this.roots);
+  }
+
+  /** Seal an isolated final candidate, then run pure validators before ownership commit. */
+  validateComplete(): void {
+    validateForest(this.roots);
+    const before = this.view();
+    freezeModel(this.roots);
+    const query = queryView(before);
+    for (const { shape } of this.locations()) {
+      const returned: unknown = shape.validate(query);
+      if (returned !== undefined) {
+        // Reject async validators; consume rejection without accepting delayed work.
+        void Promise.resolve(returned).catch(() => {});
+        throw new Error("shape validation must be synchronous and return void");
+      }
+    }
+    if (JSON.stringify(this.view()) !== JSON.stringify(before)) throw new Error("shape validation must be pure");
   }
 }

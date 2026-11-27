@@ -1,3 +1,5 @@
+import type { EditingAction, AttributeAction } from "../api/Editing";
+import type { CommitPreparer } from "../commands/CommandHistory";
 import { SvgFileStore } from "../io/SvgFileStore";
 import type { FileResult } from "./EditorTypes";
 import { SvgDocument } from "../model/SvgDocument";
@@ -21,12 +23,25 @@ import type {
 
 /** Application facade. History is the sole owner of the current document version. */
 export class Editor {
-  private readonly history = new CommandHistory();
+  private readonly history: CommandHistory;
   private readonly factory = new ShapeFactory();
 
   private busy = false;
   private readPath: string | undefined;
-  constructor(private readonly files: Pick<SvgFileStore, "read" | "save"> = new SvgFileStore()) {}
+  constructor(private readonly files: Pick<SvgFileStore, "read" | "save"> = new SvgFileStore(), preparer?: CommitPreparer) {
+    this.history = new CommandHistory(preparer);
+  }
+
+  /** Trusted application entry: plugins receive only the scoped domain port. */
+  executeAction(action: EditingAction): CommandResult {
+    this.assertIdle();
+    return this.history.executeAction(action);
+  }
+
+  executeAttributes(action: AttributeAction): CommandResult {
+    this.assertIdle();
+    return this.history.executeAttributes(action);
+  }
 
   async read(path: string): Promise<FileResult> {
     this.assertIdle();

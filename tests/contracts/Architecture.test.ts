@@ -1,11 +1,14 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
-import { dirname, join, relative, resolve } from "node:path";
+import { dirname, join, relative, resolve, sep } from "node:path";
 import { expect, it } from "vitest";
+import { API } from "typescript/unstable/sync";
+import { createVirtualFileSystem } from "typescript/unstable/fs";
+import * as ts from "typescript/unstable/ast";
 
 // Project architecture agreement, not a prescribed directory layout in the lab.
 const allowed: Record<string, readonly string[]> = {
-  model: [], commands: ["model"], io: ["model"],
-  services: ["commands", "model", "io"], cli: ["services"],
+  api: ["model"], model: ["api"], commands: ["model", "api"], io: ["model"],
+  services: ["commands", "model", "io", "api"], cli: ["services"],
 };
 const root = resolve(__dirname, "../../src");
 function files(directory: string): string[] {
@@ -36,7 +39,7 @@ it("checks literal imports and re-exports recursively across every src module", 
       }
     }
   }
-  expect([...checked].sort()).toEqual(["cli", "commands", "io", "model", "services"]);
+  expect([...checked].sort()).toEqual(["api", "cli", "commands", "io", "model", "services"]);
   expect(violations).toEqual([]);
 });
 
@@ -51,4 +54,113 @@ it("includes alternate literal import forms rather than checking only CLI from c
     import C = require("../model/C");
     type D = import("../model/D").D;
   `)).toEqual(["./side-effect", "../model/X", "../services/Y", "../io/Z", "../cli/A", "../commands/B", "../model/C", "../model/D"]);
+});
+
+it("keeps the public entry free of application/history/document exports and test plugins on public imports", () => {
+  const entry = readFileSync(join(root, "api/index.ts"), "utf8");
+  expect(entry).not.toMatch(/SvgDocument|CommandHistory|Session|Editor|ShapeFactory|ShapeSchema/);
+  const plugin = readFileSync(resolve(root, "../tests/support/ContractShapes.ts"), "utf8");
+  expect(dependencies(plugin)).toEqual(["../../src/api", "../../src/api"]);
+  for (const path of files(join(root, "model"))) {
+    expect(dependencies(readFileSync(path, "utf8")).filter(name => /commands|services|cli|host/.test(name))).toEqual([]);
+  }
+});
+
+// TS 7 exposes parsing through its bundled native API. Virtual files avoid disk
+// fixtures; every snapshot/client is disposed, including assertion failures.
+function runtimeApiDependencies(source: string, path = join(root, "model/Probe.ts")): string[] {
+  const file = "/architecture-probe/probe.ts";
+  const config = "/architecture-probe/tsconfig.json";
+  const compiler = new API({ fs: createVirtualFileSystem({
+    [file]: source,
+    [config]: JSON.stringify({ compilerOptions: { noLib: true }, files: ["probe.ts"] }),
+  }) });
+  try {
+    const snapshot = compiler.updateSnapshot({ openProjects: [config] });
+    try {
+      const program = snapshot.getProject(config)!.program;
+      expect(program.getSyntacticDiagnostics(file)).toEqual([]);
+      const sourceFile = program.getSourceFile(file)!;
+      const result: string[] = [];
+      const record = (specifier: ts.Node | undefined): void => {
+        if (!specifier || !ts.isStringLiteralLikeNode(specifier)) return;
+        const target = resolve(dirname(path), specifier.text);
+        const api = join(root, "api");
+        if (target === api || target.startsWith(api + sep)) result.push(specifier.text);
+      };
+      const visit = (node: ts.Node): void => {
+        if (ts.isImportDeclaration(node)) {
+          const clause = node.importClause;
+          const bindings = clause?.namedBindings;
+          const typeOnly = clause?.phaseModifier === ts.SyntaxKind.TypeKeyword ||
+            (clause !== undefined && clause.name === undefined && bindings !== undefined &&
+              ts.isNamedImports(bindings) && bindings.elements.length > 0 && bindings.elements.every(item => item.isTypeOnly));
+          if (!typeOnly) record(node.moduleSpecifier);
+        } else if (ts.isExportDeclaration(node)) {
+          const bindings = node.exportClause;
+          const typeOnly = node.isTypeOnly || (bindings !== undefined && ts.isNamedExports(bindings) &&
+            bindings.elements.length > 0 && bindings.elements.every(item => item.isTypeOnly));
+          if (!typeOnly) record(node.moduleSpecifier);
+        } else if (ts.isImportEqualsDeclaration(node)) {
+          if (!node.isTypeOnly && ts.isExternalModuleReference(node.moduleReference)) record(node.moduleReference.expression);
+        } else if (ts.isCallExpression(node)) {
+          if (node.expression.kind === ts.SyntaxKind.ImportKeyword ||
+            (ts.isIdentifier(node.expression) && node.expression.text === "require")) record(node.arguments[0]);
+        }
+        node.forEachChild(visit);
+      };
+      visit(sourceFile);
+      return result;
+    } finally { snapshot.dispose(); }
+  } finally { compiler.close(); }
+}
+
+it("allows only type dependencies from every model module to api", () => {
+  for (const path of files(join(root, "model"))) {
+    expect(runtimeApiDependencies(readFileSync(path, "utf8"), path), relative(root, path)).toEqual([]);
+  }
+});
+
+it.each([
+  'import type { DocumentQuery } from "../api/Domain";',
+  'import type * as Domain from "../api/Domain";',
+  'import { type DocumentQuery, type Attributes as A } from "../api/Domain";',
+  'export type { DocumentQuery } from "../api/Domain";',
+  'export { type DocumentQuery, type Attributes } from "../api/Domain";',
+  'export type * from "../api/Domain";',
+  'import type Domain = require("../api/Domain");',
+  'type Query = import("../api/Domain").DocumentQuery; type Module = typeof import("../api/Domain");',
+  `// import "../api";\nconst text = 'require("../api")'; /* export * from "../api"; */`,
+])("accepts explicit type-only dependency or non-code text: %s", source => {
+  expect(runtimeApiDependencies(source)).toEqual([]);
+});
+
+it.each([
+  'import { Shape } from "../api";',
+  'import Shape from "../api";',
+  'import * as Domain from "../api";',
+  'import "../api";',
+  'import {} from "../api";',
+  'import { type DocumentQuery, Shape } from "../api";',
+  'import Shape, { type DocumentQuery } from "../api";',
+  'export { Shape } from "../api";',
+  'export * from "../api";',
+  'export * as Domain from "../api";',
+  'export {} from "../api";',
+  'export { type DocumentQuery, Shape } from "../api";',
+  'import Domain = require("../api");',
+  'const domain = require /* comment */ ("../api");',
+  'async function load() { return import /* comment */ ("../api"); }',
+  'const domain = require(`../api`);',
+  'const domain = import(`../api`);',
+])("rejects model runtime dependency: %s", source => {
+  expect(runtimeApiDependencies(source)).toEqual(["../api"]);
+});
+
+it("checks api subpaths after path normalization without banning model-local imports", () => {
+  expect(runtimeApiDependencies(`
+    const a = require("../api/Domain");
+    const b = import("../api/../api/Editing");
+    import { Shape } from "./Shape";
+  `)).toEqual(["../api/Domain", "../api/../api/Editing"]);
 });

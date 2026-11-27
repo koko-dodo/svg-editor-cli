@@ -17,7 +17,7 @@ export interface EditorStatus {
 }
 
 /** TODO(CLI): type is a model class name, not an SVG tag; resolve display labels there. */
-export type ShapeDetails = Omit<ShapeView, "children">;
+export type ShapeDetails = Pick<ShapeView, "id" | "type" | "parentId" | "attributes">;
 
 // UI clients import public result types here, not from commands or model.
 export type { CommandResult } from "../commands/CommandResult";

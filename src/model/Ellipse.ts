@@ -1,7 +1,14 @@
+import type { Attributes } from "../api/Domain";
 import { Shape } from "./Shape";
 import type { ShapeStyle } from "./Shape";
 
 export class Ellipse extends Shape {
+  readonly kind = "ellipse";
+
+  override attributes(): Attributes {
+    return Object.freeze({ ...super.attributes(), cx: this._cx, cy: this._cy, rx: this._rx, ry: this._ry });
+  }
+
   private _cx: number;
   private _cy: number;
   private _rx: number;

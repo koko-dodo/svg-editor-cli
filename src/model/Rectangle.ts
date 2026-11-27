@@ -1,7 +1,14 @@
+import type { Attributes } from "../api/Domain";
 import { Shape } from "./Shape";
 import type { ShapeStyle } from "./Shape";
 
 export class Rectangle extends Shape {
+  readonly kind = "rect";
+
+  override attributes(): Attributes {
+    return Object.freeze({ ...super.attributes(), x: this._x, y: this._y, width: this._width, height: this._height });
+  }
+
   private _x: number;
   private _y: number;
   private _width: number;

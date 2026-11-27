@@ -1,14 +1,24 @@
+import type { EditingAction, AttributeAction } from "../api/Editing";
+import type { CommitPreparation, FeedbackContext } from "../api/Feedback";
+import { executeScoped, attributePort } from "./EditingContext";
+
 import type { SvgDocument } from "../model/SvgDocument";
 import type { Command } from "./Command";
 import type { CommandParameter, CommandResult } from "./CommandResult";
 import { DocumentViewBuilder } from "./DocumentViewBuilder";
 import type { DocumentView } from "./DocumentViewBuilder";
 
+/** Trusted host injection; not a plugin transaction capability. */
+export interface CommitPreparer {
+  prepare(context: FeedbackContext): CommitPreparation;
+}
+
 export interface HistoryResult {
   readonly direction: "undo" | "redo";
   readonly command: CommandResult;
   /** Complete restored values, including geometry, styles, parents and order. */
   readonly restored: DocumentView;
+  readonly feedback?: readonly string[];
 }
 
 interface Entry {
@@ -30,6 +40,16 @@ export class CommandHistory {
   private state: HistoryState = { current: null, undo: [], redo: [], blocked: false };
   private busy = false;
 
+  constructor(private readonly preparer?: CommitPreparer) {}
+
+  executeAction(action: EditingAction): CommandResult {
+    return this.execute({ execute: work => executeScoped(work, action) });
+  }
+
+  executeAttributes(action: AttributeAction): CommandResult {
+    return this.executeAction({ execute: port => action.execute(attributePort(port)) });
+  }
+
   get hasDocument(): boolean { return this.state.current !== null; }
   get isBlocked(): boolean { return this.state.blocked; }
   get canUndo(): boolean { return !this.state.blocked && this.state.undo.length > 0; }
@@ -45,7 +65,10 @@ export class CommandHistory {
       const work = before.clone();
       const rawResult = command.execute(work);
       const after = work.clone();
-      const result = this.copyResult(rawResult);
+      const copied = this.copyResult(rawResult);
+      after.validateComplete();
+      const feedback = this.prepare("execute", copied, before, after);
+      const result: CommandResult = feedback === undefined ? copied : Object.freeze({ ...copied, preparedFeedback: feedback });
       const entry: Entry = { before, after, result };
       const next: HistoryState = {
         current: after,
@@ -65,6 +88,7 @@ export class CommandHistory {
   replaceDocumentWithBarrier(document: SvgDocument): void {
     this.mutate(() => {
       const current = document.clone();
+      current.validateComplete();
       this.state = { current, undo: [], redo: [], blocked: true };
     });
   }
@@ -85,11 +109,13 @@ export class CommandHistory {
       const entry = source[source.length - 1];
       if (entry === undefined) throw new Error(`nothing to ${direction}`);
       const current = direction === "undo" ? entry.before : entry.after;
+      const feedback = this.prepare(direction, entry.result, this.requireDocument(), current);
       // Building the returned view can fail too; do it before moving any entry.
       const result: HistoryResult = Object.freeze({
         direction,
         command: entry.result,
         restored: DocumentViewBuilder.capture(current),
+        ...(feedback === undefined ? {} : { feedback }),
       });
       const next: HistoryState = direction === "undo"
         ? { current, undo: source.slice(0, -1), redo: [...this.state.redo, entry], blocked: false }
@@ -113,19 +139,42 @@ export class CommandHistory {
     for (const [key, value] of Object.entries(result.parameters)) {
       if (typeof value === "string" || (typeof value === "number" && Number.isFinite(value))) {
         Object.defineProperty(parameters, key, { value, enumerable: true });
-      } else if (Array.isArray(value) && value.every(item => typeof item === "string")) {
+      } else if (Array.isArray(value) && Array.from(value).every(item => typeof item === "string")) {
         Object.defineProperty(parameters, key, { value: Object.freeze([...value]), enumerable: true });
       } else {
         throw new Error("invalid command result parameter");
       }
     }
     const targetIds = result.targetIds;
-    if (!Array.isArray(targetIds) || !targetIds.every(id => typeof id === "string")) throw new Error("invalid command result targets");
+    if (!Array.isArray(targetIds) || !Array.from(targetIds).every(id => typeof id === "string")) throw new Error("invalid command result targets");
+    const rawOwner = result.feedbackOwner;
+    const owner = rawOwner === undefined ? undefined : { category: rawOwner.category, name: rawOwner.name };
+    if (owner !== undefined && ((owner.category !== "shapes" && owner.category !== "attributes") ||
+      typeof owner.name !== "string" || owner.name.trim() === "")) throw new Error("invalid feedback owner");
     return Object.freeze({
       operation,
+      ...(owner === undefined ? {} : { feedbackOwner: Object.freeze({ category: owner.category, name: owner.name }) }),
       targetIds: Object.freeze([...targetIds]),
       parameters: Object.freeze(parameters),
     });
+  }
+
+  private prepare(direction: FeedbackContext["direction"], result: CommandResult,
+    before: SvgDocument, after: SvgDocument): readonly string[] | undefined {
+    if (this.preparer === undefined) return undefined;
+    const prepared = this.preparer.prepare(Object.freeze({
+      direction, result, before: before.view(), after: after.view(),
+    }));
+    if (prepared === null || typeof prepared !== "object") throw new Error("invalid prepared feedback");
+    if ("then" in prepared) {
+      void Promise.resolve(prepared).catch(() => {});
+      throw new Error("invalid prepared feedback");
+    }
+    const lines = prepared.feedback;
+    if (!Array.isArray(lines) || !Array.from(lines).every(line => typeof line === "string" && !/[\r\n]/.test(line))) {
+      throw new Error("invalid prepared feedback");
+    }
+    return Object.freeze([...lines]);
   }
 
   /** Prevent a command from reentering history and creating a second commit. */

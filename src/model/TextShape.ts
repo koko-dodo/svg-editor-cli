@@ -1,7 +1,14 @@
+import type { Attributes } from "../api/Domain";
 import { Shape } from "./Shape";
 import type { ShapeStyle } from "./Shape";
 
 export class TextShape extends Shape {
+  readonly kind = "text";
+
+  override attributes(): Attributes {
+    return Object.freeze({ ...super.attributes(), x: this._x, y: this._y, text: this._text });
+  }
+
   private _x: number;
   private _y: number;
   private _text: string;

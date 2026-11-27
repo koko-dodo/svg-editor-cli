@@ -1,7 +1,14 @@
+import type { Attributes } from "../api/Domain";
 import { Shape } from "./Shape";
 import type { ShapeStyle } from "./Shape";
 
 export class Circle extends Shape {
+  readonly kind = "circle";
+
+  override attributes(): Attributes {
+    return Object.freeze({ ...super.attributes(), cx: this._cx, cy: this._cy, r: this._r });
+  }
+
   private _cx: number;
   private _cy: number;
   private _r: number;
