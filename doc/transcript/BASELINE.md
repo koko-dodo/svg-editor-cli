@@ -10,7 +10,7 @@
 - ../../tests/fixtures/phase1/other.svg：原题 §6 独立外部 SVG。
 - golden/provenance.json：来源 SHA、运行条件、源文件及输入 SHA256。
 - golden/每个会话/：stdout.txt、stderr.txt、exit-code.txt 和生成的 SVG。exit-code.txt 是十进制退出码加 LF。
-- box-version-b.txt：§6.1 B 全命令，**尚未启用验收**。
+- box-version-b.txt：§6.1 B 全命令；已由box插件测试及[真实双装配验收](../evidence/assembly/committed-result.json)启用验证，仍不属于final的基础Golden。
 - box-version-b.assignment.txt：题目 B 的原始示例会话摘录，含题目输出/提示符，**不是执行输入或真实结果**。没有为 B 生成 Golden。
 
 原题示例中的树对齐空格及版本 A 的 line 样式显示与 final 不完全一致；本基线记录 final 实际行为，不据此断言它与题目完全相符。默认保存路径的成功输出会包含 readPath 的绝对临时路径，因此补充会话不对该非稳定输出做 Golden；原有 EditorIO.test.ts 仍覆盖默认路径行为。

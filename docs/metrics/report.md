@@ -1,7 +1,7 @@
 # Git 历史指标
 
 Baseline: `177eb20e131849132a777ec0ca576c37a5b00728`
-Target: `da65fd1855a0cc9f3145cf05e7095289be7b7e1b`
+Target: `97b8e97ddd080b3e6bcc29b2033bae60e0d81a0a`
 
 由 collect.mjs 生成；口径见 README.md。目标由参数指定，不自动宣称最终验收。
 
@@ -9,9 +9,9 @@ Target: `da65fd1855a0cc9f3145cf05e7095289be7b7e1b`
 |---|---:|---:|---:|
 | kernel | 40→49 | 1848→2108 (260) | 702→819 (117) |
 | host | 1→6 | 6→217 (211) | 4→113 (109) |
-| plugins | 0→14 | 0→586 (586) | 0→279 (279) |
+| plugins | 0→28 | 0→813 (813) | 0→415 (415) |
 | vscode | 0→4 | 0→111 (111) | 0→45 (45) |
-| cli | 41→69 | 1854→2911 (1057) | 706→1211 (505) |
+| cli | 41→83 | 1854→3138 (1284) | 706→1347 (641) |
 
 ## final 文件清单与职责
 
@@ -77,6 +77,20 @@ Target: `da65fd1855a0cc9f3145cf05e7095289be7b7e1b`
 | plugins/builtin-shapes/ShapeSchema.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 24 | 22 | 8 |
 | plugins/builtin-shapes/TextShape.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 59 | 50 | 15 |
 | plugins/builtin-shapes/index.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 7 | 7 | 3 |
+| plugins/command-dir/DirCommand.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 24 | 22 | 16 |
+| plugins/command-dir/DirectoryPort.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 9 | 8 | 0 |
+| plugins/command-dir/NodeDirectoryAdapter.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 13 | 11 | 5 |
+| plugins/command-dir/index.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 7 | 7 | 2 |
+| plugins/command-stats/StatsCommand.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 27 | 24 | 11 |
+| plugins/command-stats/index.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 4 | 4 | 2 |
+| plugins/shape-box/Box.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 19 | 17 | 7 |
+| plugins/shape-box/BoxAttributes.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 15 | 15 | 11 |
+| plugins/shape-box/BoxDecorator.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 5 | 5 | 3 |
+| plugins/shape-box/BoxProvider.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 54 | 53 | 39 |
+| plugins/shape-box/BoxView.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 14 | 14 | 10 |
+| plugins/shape-box/index.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 10 | 10 | 2 |
+| plugins/tree-star/ModifiedStarDecorator.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 38 | 31 | 26 |
+| plugins/tree-star/index.ts | plugins | Plugin-owned models / grammar / behavior / presentation | 7 | 6 | 2 |
 | src/api/AttributeHandler.ts | kernel | Public domain and extension contracts | 21 | 18 | 0 |
 | src/api/Command.ts | kernel | Public domain and extension contracts | 64 | 54 | 0 |
 | src/api/CommandResult.ts | kernel | Public domain and extension contracts | 22 | 13 | 0 |

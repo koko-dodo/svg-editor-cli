@@ -7,14 +7,12 @@
 在仓库根目录使用已有 Node/TypeScript 依赖，无需安装工具：
 
 ```sh
-node docs/metrics/collect.mjs --base final --target HEAD
-# 仅建立冻结候选范围时显式附加；普通指标重算不覆盖冻结记录：
-node docs/metrics/collect.mjs --base final --target HEAD --freeze-scope
-# 最终 p2 由开发者创建后，再按原文计算最终增量：
-node docs/metrics/collect.mjs --base final --target p2
+node docs/metrics/collect.mjs --base final --target 97b8e97ddd080b3e6bcc29b2033bae60e0d81a0a
+# 最终p2由开发者创建后正式复验，独立目录不覆盖候选证据：
+node docs/metrics/collect.mjs --base final --target p2 --out /tmp/svg-p2-metrics
 ```
 
-可用 `--out <独立目录>` 重算和比较结果，避免覆盖现有证据。脚本只执行 Git 的 rev-parse、ls-tree、show，不切换分支，不修改索引、提交或标签；失败引用不会生成伪造数据。两端均读取明确 commit 的 blob，不读取工作区源码。当前快照指向 R5 提交的运行代码；本阶段没有改动运行源码，所以它也准确表示当前冻结候选的运行代码，不包含未提交的测试和本指标工具。
+可用 `--out <独立目录>` 重算和比较结果，避免覆盖现有证据。脚本只执行 Git 的 rev-parse、ls-tree、show，不切换分支，不修改索引、提交或标签；失败引用不会生成伪造数据。两端均读取明确 commit 的 blob，不读取工作区源码。当前快照指向包含全部正式插件的运行代码候选 `97b8e97ddd080b3e6bcc29b2033bae60e0d81a0a`。之后的验收/证据提交未改变运行blob；本次文档整理也不改运行源码。p2尚未创建，这不是p2报告。
 
 `metrics.json` 保存完整 SHA、逐文件 Git blob、分类/职责、行数、函数位置及复杂度、汇总和增量。`report.md` 是同一数据自动生成的可读表。无时间戳、随机路径或手填指标；同样的两端和同版分析器应逐字节一致。`freeze-scope.json` 仅在显式参数下生成，列出候选冻结源码和插件元数据；它不是人工批准或已存在的冻结提交。冻结规则见 [FREEZE.md](FREEZE.md)。
 
@@ -48,3 +46,12 @@ else、default、try/finally、return、可选链和类型条件不另加；默�
 ## 当前限制
 
 分析器绑定仓库已有 TypeScript 版本；升级分析器时须同时重算两端，不把不同口径结果混比。当前范围不含第三方依赖、测试、构建产物或动态生成代码；本阶段不是最终 p2 结果，也不是正式插件零修改证明。
+
+
+## 候选与最终标签复验
+
+逐文件职责表在[report.md](report.md)，完整函数位置/复杂度、Git blob和汇总在[metrics.json](metrics.json)。文件清单覆盖两端全部计量运行源码，CLI和VSCode单列；行数/复杂度增量为target−final。指标增长来自新增公开契约、注册、事务边界、加载器及插件功能，不以代码量减少证明扩展性，扩展性另由真实Git零修改证据证明。
+
+`freeze-scope.json`保留原冻结候选清单，不随最终指标重算覆盖；当前真实冻结提交见[FREEZE.md](FREEZE.md)。没有传--freeze-scope，不把历史候选改成虚构的最终状态。
+
+p2由开发者创建后运行上方正式复验命令，再比较JSON的current.files（path/blob/role/SLOC/CC）及totals。仅文档与证据新增时应相同，current.commit不同是预期。独立输出目录中的正式报告可在后续交付记录关联，不为把报告包含自身SHA而移动已有标签。若p2运行文件不同，应解释并重跑功能验收。
