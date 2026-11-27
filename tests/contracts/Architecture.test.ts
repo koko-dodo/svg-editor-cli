@@ -8,6 +8,7 @@ import * as ts from "typescript/unstable/ast";
 // Project architecture agreement, not a prescribed directory layout in the lab.
 const allowed: Record<string, readonly string[]> = {
   api: ["model"], model: ["api"], commands: ["model", "api"], io: ["model"],
+  extensions: ["api", "model"],
   services: ["commands", "model", "io", "api"], cli: ["services"],
 };
 const root = resolve(__dirname, "../../src");
@@ -39,7 +40,7 @@ it("checks literal imports and re-exports recursively across every src module", 
       }
     }
   }
-  expect([...checked].sort()).toEqual(["api", "cli", "commands", "io", "model", "services"]);
+  expect([...checked].sort()).toEqual(["api", "cli", "commands", "extensions", "io", "model", "services"]);
   expect(violations).toEqual([]);
 });
 
@@ -163,4 +164,20 @@ it("checks api subpaths after path normalization without banning model-local imp
     const b = import("../api/../api/Editing");
     import { Shape } from "./Shape";
   `)).toEqual(["../api/Domain", "../api/../api/Editing"]);
+});
+
+
+it("keeps registry test plugins on the public API and the kernel independent of concrete plugin paths", () => {
+  const support = resolve(root, "../tests/support");
+  for (const name of ["RegistryExtensions.ts", "ContractShapes.ts"]) {
+    for (const specifier of dependencies(readFileSync(join(support, name), "utf8"))) {
+      const target = resolve(support, specifier);
+      expect(target === join(root, "api") || target === join(support, "ContractShapes")).toBe(true);
+    }
+  }
+  for (const path of files(join(root, "extensions"))) {
+    for (const specifier of dependencies(readFileSync(path, "utf8"))) {
+      expect(specifier).not.toMatch(/plugins|support|services|cli|host/);
+    }
+  }
 });

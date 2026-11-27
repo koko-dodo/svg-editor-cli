@@ -6,3 +6,8 @@ export type { AttributeValue, Attributes, ShapeView, DocumentView, DocumentQuery
 export type { MutationPort, AttributeMutation, EditingAction, AttributeAction } from "./Editing";
 export type { FeedbackOwner, FeedbackContext, OperationFeedback, CommitPreparation } from "./Feedback";
 export type { CommandOperation, CommandParameter, CommandResult } from "./CommandResult";
+export type { SvgSelector, SvgElementData, ShapeCreateArguments, ShapeServices, ShapePresentation, ShapeProvider } from "./ShapeProvider";
+export type { CommandToken, ExtensionOutput, RenderingServices, QueryCommandContext, EditCommandContext, CommandInvocation, Command } from "./Command";
+export type { TreeDecorationContext, TreeDecorator } from "./TreeDecorator";
+export type { AttributeRequest, AttributeMatchContext, AttributeHandler } from "./AttributeHandler";
+export type { ContributionNames, RegistrationContext } from "./Registration";
