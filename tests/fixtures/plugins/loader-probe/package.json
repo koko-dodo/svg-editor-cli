@@ -1,0 +1,11 @@
+{
+  "name": "@tests/loader-probe",
+  "type": "commonjs",
+  "main": "index.ts",
+  "contributes": {
+    "shapes": ["loader-leaf"],
+    "commands": ["loader-echo"],
+    "decorators": ["loader-tag"],
+    "attributes": ["loader-pair"]
+  }
+}

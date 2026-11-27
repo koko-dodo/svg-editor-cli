@@ -1,5 +1,8 @@
-import { activate as activateShapes } from "../../plugins/builtin-shapes";
-import { activate as activateCommands } from "../../plugins/builtin-commands";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { PluginInstaller } from "./loading/PluginInstaller";
+import * as shapePlugin from "../../plugins/builtin-shapes";
+import * as commandPlugin from "../../plugins/builtin-commands";
 import { ExtensionRegistry } from "../extensions/ExtensionRegistry";
 import { SvgDocument } from "../model/SvgDocument";
 import { SvgReader } from "../io/SvgReader";
@@ -7,13 +10,15 @@ import { SvgWriter } from "../io/SvgWriter";
 import { SvgFileStore } from "../io/SvgFileStore";
 import { Editor } from "../services/Editor";
 
-/** Code composition only. Configuration/module loading belongs to the next stage. */
+/** Default module selection belongs exclusively to this composition root. */
 export function defaultRegistry(): ExtensionRegistry {
   const registry = new ExtensionRegistry();
-  registry.register(context => {
-    activateShapes(context);
-    activateCommands(context);
-  });
+  const installer = new PluginInstaller(registry);
+  for (const [directory, plugin] of [["builtin-shapes", shapePlugin], ["builtin-commands", commandPlugin]] as const) {
+    const metadata: unknown = JSON.parse(readFileSync(join(__dirname, "../../plugins", directory, "package.json"), "utf8"));
+    const error = installer.install(directory, metadata, plugin);
+    if (error) throw new Error(error);
+  }
   return registry;
 }
 

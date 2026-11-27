@@ -1,0 +1,10 @@
+{
+  "name": "@svg-editor/builtin-commands",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "main": "index.ts",
+  "contributes": {
+    "commands": ["init", "canvas", "create", "delete", "move", "scale", "set", "group", "ungroup", "addto", "front", "back", "tree", "show", "help", "undo", "redo", "read", "save"]
+  }
+}

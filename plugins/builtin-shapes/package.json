@@ -1,0 +1,10 @@
+{
+  "name": "@svg-editor/builtin-shapes",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "main": "index.ts",
+  "contributes": {
+    "shapes": ["rect", "circle", "ellipse", "line", "text", "g"]
+  }
+}

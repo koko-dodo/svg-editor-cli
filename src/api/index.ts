@@ -13,3 +13,4 @@ export type { AttributeRequest, AttributeMatchContext, AttributeHandler } from "
 export type { ContributionNames, RegistrationContext } from "./Registration";
 
 export { parseNumberToken, parseSvgNumber } from "./Numbers";
+export type { PluginValue, PluginManifest, PluginModule } from "./Plugin";
