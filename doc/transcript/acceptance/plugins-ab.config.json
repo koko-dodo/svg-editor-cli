@@ -1,0 +1,8 @@
+{
+  "plugins": [
+    { "module": "./plugins/command-stats", "options": {} },
+    { "module": "./plugins/command-dir", "options": {} },
+    { "module": "./plugins/shape-box", "options": {} },
+    { "module": "./plugins/tree-star", "options": {} }
+  ]
+}

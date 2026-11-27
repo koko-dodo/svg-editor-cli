@@ -1,0 +1,20 @@
+# dir works before init, stats requires a document
+dir
+stats
+init 800 600
+create g outer
+create rect first 1 2 3 4 in outer
+create circle second 5 6 7 in outer
+create rect third 8 9 10 11
+stats
+undo
+stats
+redo
+stats
+tree
+save stats.svg
+set first x 20
+tree
+undo
+tree
+dir
