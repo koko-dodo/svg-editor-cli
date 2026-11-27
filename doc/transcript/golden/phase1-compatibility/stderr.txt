@@ -1,0 +1,12 @@
+error: no document. use 'init' or 'read' first
+error: id already exists: g
+error: no such container: missing
+error: not a container: r
+error: unknown shape type: hexagon (is the plugin loaded?)
+error: unknown attribute: label
+error: scale factor must be positive
+error: usage: canvas [w h]
+error: undo not allowed after io command
+error: no default save path. use 'save <file.svg>' or 'read' first
+warning: assigned id rect1 to unnamed <rect>
+error: no default save path. use 'save <file.svg>' or 'read' first
