@@ -1,0 +1,8 @@
+{
+  "name": "@svg-editor/command-stats",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "main": "index.ts",
+  "contributes": { "commands": ["stats"] }
+}

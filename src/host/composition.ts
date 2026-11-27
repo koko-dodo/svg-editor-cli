@@ -3,6 +3,10 @@ import { join } from "node:path";
 import { PluginInstaller } from "./loading/PluginInstaller";
 import * as shapePlugin from "../../plugins/builtin-shapes";
 import * as commandPlugin from "../../plugins/builtin-commands";
+import * as statsPlugin from "../../plugins/command-stats";
+import * as dirPlugin from "../../plugins/command-dir";
+import * as boxPlugin from "../../plugins/shape-box";
+import * as starPlugin from "../../plugins/tree-star";
 import { ExtensionRegistry } from "../extensions/ExtensionRegistry";
 import { SvgDocument } from "../model/SvgDocument";
 import { SvgReader } from "../io/SvgReader";
@@ -19,6 +23,13 @@ export function defaultRegistry(): ExtensionRegistry {
     const error = installer.install(directory, metadata, plugin);
     if (error) throw new Error(error);
   }
+  const errors = installer.installCode([
+    { module: "./plugins/command-stats", manifest: JSON.parse(readFileSync(join(__dirname, "../../plugins/command-stats/package.json"), "utf8")), exports: statsPlugin, options: {} },
+    { module: "./plugins/command-dir", manifest: JSON.parse(readFileSync(join(__dirname, "../../plugins/command-dir/package.json"), "utf8")), exports: dirPlugin, options: {} },
+    { module: "./plugins/shape-box", manifest: JSON.parse(readFileSync(join(__dirname, "../../plugins/shape-box/package.json"), "utf8")), exports: boxPlugin, options: {} },
+    { module: "./plugins/tree-star", manifest: JSON.parse(readFileSync(join(__dirname, "../../plugins/tree-star/package.json"), "utf8")), exports: starPlugin, options: {} },
+  ]);
+  if (errors.length) throw new Error(errors.join("\n"));
   return registry;
 }
 
